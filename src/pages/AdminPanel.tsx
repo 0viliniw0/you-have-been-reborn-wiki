@@ -11,6 +11,7 @@ export default function AdminPanel() {
   const currentLang = i18n.language.split("-")[0] as "ru" | "en";
 
   const [draftEntities, setDraftEntities] = useState<Entity[]>([]);
+  const [deletedIds, setDeletedIds] = useState<string[]>([]);
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [dirHandle, setDirHandle] = useState<any>(null);
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -26,6 +27,13 @@ export default function AdminPanel() {
   };
 
   useEffect(() => {
+    // Restore drafts and deletions
+    const savedDrafts = localStorage.getItem("wiki_draft_entities");
+    if (savedDrafts) setDraftEntities(JSON.parse(savedDrafts));
+
+    const savedDeleted = localStorage.getItem("wiki_deleted_ids");
+    if (savedDeleted) setDeletedIds(JSON.parse(savedDeleted));
+
     const restoreHandle = async () => {
       try {
         const db = await getDB();
@@ -123,18 +131,34 @@ export default function AdminPanel() {
 
     try {
       const dataDir = await dirHandle.getDirectoryHandle("data");
-      const groups: Record<string, Entity[]> = {};
       
+      // Group drafts by category
+      const groups: Record<string, Entity[]> = {};
       draftEntities.forEach(entity => {
         if (!groups[entity.category]) groups[entity.category] = [];
         groups[entity.category].push(entity);
       });
 
-      for (const [category, entities] of Object.entries(groups)) {
+      // Group deletions by category
+      const deletionsByCategory: Record<string, string[]> = {};
+      deletedIds.forEach(id => {
+        const entity = dbEntities?.find(e => e.id === id);
+        if (entity) {
+          if (!deletionsByCategory[entity.category]) deletionsByCategory[entity.category] = [];
+          deletionsByCategory[entity.category].push(id);
+        }
+      });
+
+      const allAffectedCategories = new Set([
+        ...Object.keys(groups),
+        ...Object.keys(deletionsByCategory)
+      ]);
+
+      for (const category of allAffectedCategories) {
         const fileName = `${category}.json`;
         const fileHandle = await dataDir.getFileHandle(fileName, { create: true });
         
-        // 2. Load existing data
+        // Load existing data
         let existingData: any[] = [];
         try {
           const file = await fileHandle.getFile();
@@ -142,9 +166,12 @@ export default function AdminPanel() {
           if (text) existingData = JSON.parse(text);
         } catch (e) { /* New or empty file */ }
 
-        // 3. Merge
-        const updatedData = [...existingData];
-        entities.forEach(entity => {
+        // Apply deletions
+        let updatedData = existingData.filter(e => !(deletionsByCategory[category] || []).includes(e.id));
+
+        // Apply updates/adds
+        const entitiesToUpdate = groups[category] || [];
+        entitiesToUpdate.forEach(entity => {
           const index = updatedData.findIndex(e => e.id === entity.id);
           if (index > -1) {
             updatedData[index] = entity;
@@ -153,15 +180,17 @@ export default function AdminPanel() {
           }
         });
 
-        // 4. Write back
+        // Write back
         const writable = await fileHandle.createWritable();
         await writable.write(JSON.stringify(updatedData, null, 2));
         await writable.close();
       }
 
-      alert("Successfully saved to files!");
+      alert("Successfully saved to disk!");
       setDraftEntities([]);
+      setDeletedIds([]);
       localStorage.removeItem("wiki_draft_entities");
+      localStorage.removeItem("wiki_deleted_ids");
       setSelectedEntity(null);
       queryClient.invalidateQueries({ queryKey: ["entities"] });
     } catch (err) {
@@ -300,7 +329,7 @@ export default function AdminPanel() {
   const allIds = Array.from(new Set([
     ...(dbEntities?.map(e => e.id) || []),
     ...draftEntities.map(e => e.id)
-  ]));
+  ])).filter(id => !deletedIds.includes(id));
 
   if (!isAuthorized) {
     return (
@@ -382,7 +411,7 @@ export default function AdminPanel() {
           
           <button
             onClick={saveToFiles}
-            disabled={!dirHandle || draftEntities.length === 0}
+            disabled={!dirHandle || (draftEntities.length === 0 && deletedIds.length === 0)}
             className="w-full bg-green-600 text-white py-3 rounded-lg font-bold disabled:opacity-30 disabled:grayscale hover:bg-green-700 transition-colors shadow-sm"
           >
             💾 Push Changes to Disk
@@ -630,7 +659,14 @@ export default function AdminPanel() {
             <div className="mt-12 flex gap-4">
               <button
                 onClick={() => {
-                  if (confirm("Delete this draft?")) {
+                  if (confirm(t("admin.deleteConfirm") || "Are you sure?")) {
+                    const isOriginal = dbEntities?.some(e => e.id === selectedEntity.id);
+                    if (isOriginal) {
+                      const newDeletedIds = [...deletedIds, selectedEntity.id];
+                      setDeletedIds(newDeletedIds);
+                      localStorage.setItem("wiki_deleted_ids", JSON.stringify(newDeletedIds));
+                    }
+                    
                     const newDrafts = draftEntities.filter(
                       (e) => e.id !== selectedEntity.id,
                     );

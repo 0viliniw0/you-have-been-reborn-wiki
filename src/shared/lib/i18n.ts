@@ -37,7 +37,8 @@ i18n
             addNew: "Add New",
             export: "Export Drafts to JSON",
             edit: "Edit Entity",
-            delete: "Delete Draft",
+            delete: "Delete",
+            deleteConfirm: "Are you sure you want to delete this entity? This will be applied to disk when you push changes.",
             fields: {
               name: "Name",
               slug: "Slug",
@@ -82,6 +83,7 @@ i18n
             export: "Экспорт в JSON",
             edit: "Редактировать",
             delete: "Удалить",
+            deleteConfirm: "Вы уверены, что хотите удалить эту сущность? Изменения будут применены к диску при нажатии 'Push Changes to Disk'.",
             fields: {
               name: "Название",
               slug: "Slug (ЧПУ)",
