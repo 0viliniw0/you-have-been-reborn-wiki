@@ -2,8 +2,9 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { loadAllEntities } from "../shared/api/dataService";
 import { useTranslation } from "react-i18next";
-import { Header } from "../widgets/Header/ui/Header";
+import { Entity } from "../shared/types/entities";
 import ReactMarkdown from "react-markdown";
+import { motion } from "framer-motion";
 
 export default function EntityDetail() {
   const { category, slug } = useParams();
@@ -17,7 +18,10 @@ export default function EntityDetail() {
 
   if (isLoading)
     return (
-      <div className="p-8 text-center animate-pulse">{t("common.loading")}</div>
+      <div className="flex flex-col items-center justify-center py-32">
+         <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+         <p className="mt-4 font-black uppercase tracking-widest text-slate-400 animate-pulse">{t("common.loading")}</p>
+      </div>
     );
 
   const entity = entities?.find(
@@ -25,279 +29,184 @@ export default function EntityDetail() {
   );
 
   if (!entity)
-    return <div className="p-8 text-center">{t("common.notFound")}</div>;
+    return <div className="p-32 text-center text-2xl font-black uppercase tracking-widest text-slate-400">{t("common.notFound")}</div>;
 
-  const renderStats = (stats?: Record<string, number>) => {
-    if (!stats) return null;
-    return (
-      <div className="grid grid-cols-2 gap-4 mt-4">
-        {Object.entries(stats).map(([key, value]) => (
-          <div
-            key={key}
-            className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-xl border border-gray-100 dark:border-gray-800"
-          >
-            <span className="text-[10px] uppercase font-black text-gray-400 block mb-1">
-              {key}
-            </span>
-            <span className="text-lg font-bold">+{value}</span>
-          </div>
-        ))}
-      </div>
-    );
-  };
+  const rarity = 'rarity' in entity && entity.category !== 'materials' ? (entity as { rarity?: string }).rarity : undefined;
+  const isBoss = 'isBoss' in entity ? (entity as { isBoss?: boolean }).isBoss : false;
 
-  const renderRelations = () => {
-    const relations: React.ReactNode[] = [];
+  return (
+    <div className="max-w-7xl mx-auto w-full px-4 py-8">
+      {/* Breadcrumbs */}
+      <nav className="mb-12 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em]">
+        <Link to="/" className="text-slate-400 hover:text-blue-600 transition-colors">{t("common.home")}</Link>
+        <span className="text-slate-300 dark:text-slate-700">/</span>
+        <Link to={`/${category}`} className="text-slate-400 hover:text-blue-600 transition-colors">{t(`categories.${category}`)}</Link>
+        <span className="text-slate-300 dark:text-slate-700">/</span>
+        <span className="text-blue-600">{entity.name[currentLang] || entity.name["ru"]}</span>
+      </nav>
 
-    // Helper to find entity by ID
-    const findEntity = (id: string) => entities?.find((e) => e.id === id);
-
-    if (entity.category === "bestiary" && entity.locationId) {
-      const loc = findEntity(entity.locationId);
-      if (loc) {
-        relations.push(
-          <div key="location" className="mt-8">
-            <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2 text-gray-400">
-              Primary Habitat
-            </h3>
-            <Link
-              to={`/locations/${loc.slug}`}
-              className="text-xl font-bold hover:text-blue-600 transition-colors underline decoration-blue-200 decoration-4 underline-offset-4"
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* Main Content */}
+        <div className="lg:col-span-8 space-y-12">
+          <header>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
             >
-              {loc.name[currentLang] || loc.name["ru"]}
-            </Link>
-          </div>,
-        );
-      }
-    }
+              <div className="flex items-center gap-3 mb-4">
+                <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest rounded-lg">
+                  {t(`categories.${entity.category}`)}
+                </span>
+                {isBoss && (
+                  <span className="inline-block px-3 py-1 bg-red-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg shadow-lg shadow-red-500/20 animate-pulse">
+                    Boss Entity
+                  </span>
+                )}
+              </div>
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-8">
+                {entity.name[currentLang] || entity.name["ru"]}
+              </h1>
+              
+              <div className="flex flex-wrap gap-2 mb-12">
+                {entity.tags.map((tag) => (
+                  <span key={tag} className="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </header>
 
-    if (entity.category === "bestiary" && entity.drops?.length) {
-      relations.push(
-        <div key="drops" className="mt-8">
-          <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-4">
-            Drop Table
-          </h3>
-          <div className="space-y-2">
-            {entity.drops.map((drop) => {
+          <section className="prose prose-slate dark:prose-invert max-w-none">
+            <ReactMarkdown>
+              {entity.description[currentLang] || entity.description["ru"]}
+            </ReactMarkdown>
+          </section>
+
+          {'effect' in entity && entity.effect && (
+            <section className="relative p-8 rounded-[2.5rem] bg-gradient-to-br from-emerald-500/5 to-teal-500/5 border border-emerald-500/10 overflow-hidden">
+               <div className="absolute top-0 right-0 p-8 text-6xl opacity-5 grayscale">✨</div>
+               <h3 className="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-4">Unique Effect</h3>
+               <div className="text-2xl font-bold italic leading-relaxed text-slate-700 dark:text-slate-200">
+                  <ReactMarkdown>{entity.effect[currentLang] || entity.effect['ru']}</ReactMarkdown>
+               </div>
+            </section>
+          )}
+
+          {/* Relations (Drops, Locations, etc.) */}
+          <Relations entity={entity} entities={entities || []} />
+        </div>
+
+        {/* Infobox Sidebar */}
+        <aside className="lg:col-span-4 sticky top-24">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden"
+          >
+            {/* Entity Image */}
+            <div className="aspect-square bg-slate-50 dark:bg-slate-800/50 p-8 flex items-center justify-center relative group">
+              {entity.image ? (
+                <img
+                  src={entity.image.startsWith("http") ? entity.image : `.${entity.image}`}
+                  alt=""
+                  className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700"
+                />
+              ) : (
+                <span className="text-9xl grayscale opacity-10">🖼️</span>
+              )}
+              
+              {rarity && (
+                <div className="absolute top-6 right-6">
+                   <span className="px-4 py-1.5 bg-blue-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl shadow-blue-500/20">
+                     {rarity}
+                   </span>
+                </div>
+              )}
+            </div>
+
+            {/* Infobox Stats */}
+            <div className="p-8 space-y-6">
+               <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] border-b border-slate-100 dark:border-slate-800 pb-2">Technical Specs</h3>
+               
+               <div className="grid grid-cols-1 gap-4">
+                  {'stats' in entity && entity.stats && Object.entries(entity.stats).map(([key, value]) => (
+                    <div key={key} className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-800/50 last:border-0">
+                      <span className="text-[10px] uppercase font-black text-slate-500 tracking-wider">{key.replace('_', ' ')}</span>
+                      <span className="font-black text-blue-600">+{value}</span>
+                    </div>
+                  ))}
+                  <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-800/50 last:border-0">
+                    <span className="text-[10px] uppercase font-black text-slate-500 tracking-wider">Category</span>
+                    <span className="font-black capitalize">{entity.category}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-slate-50 dark:border-slate-800/50 last:border-0">
+                    <span className="text-[10px] uppercase font-black text-slate-500 tracking-wider">Identifer</span>
+                    <span className="font-mono text-[10px] text-slate-400">{entity.slug}</span>
+                  </div>
+               </div>
+            </div>
+
+            <div className="p-8 bg-slate-50 dark:bg-slate-800/30 text-center">
+               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                 Updated: {new Date(entity.updatedAt).toLocaleDateString()}
+               </span>
+            </div>
+          </motion.div>
+        </aside>
+      </div>
+    </div>
+  );
+}
+
+// Sub-component for relations
+function Relations({ entity, entities }: { entity: Entity, entities: Entity[] }) {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language.split("-")[0] as "ru" | "en";
+  const findEntity = (id: string) => entities?.find(e => e.id === id);
+
+  const habitat = entity.category === 'bestiary' && entity.locationId ? findEntity(entity.locationId) : null;
+  const drops = entity.category === 'bestiary' ? entity.drops : [];
+
+  if (!habitat && (!drops || drops.length === 0)) return null;
+
+  return (
+    <div className="space-y-12 pt-12 border-t border-slate-100 dark:border-slate-800">
+      {habitat && (
+        <div>
+          <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6">Primary Habitat</h3>
+          <Link to={`/locations/${habitat.slug}`} className="group inline-flex items-center gap-6 p-6 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-slate-800 hover:border-blue-500/50 transition-all shadow-sm hover:shadow-xl">
+             <div className="w-16 h-16 bg-blue-50 dark:bg-blue-950 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🗺️</div>
+             <div>
+               <span className="block text-xl font-black group-hover:text-blue-600 transition-colors">{habitat.name[currentLang] || habitat.name['ru']}</span>
+               <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">View Location details →</span>
+             </div>
+          </Link>
+        </div>
+      )}
+
+      {drops && drops.length > 0 && (
+        <div>
+          <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6">Loot Table</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {drops.map(drop => {
               const item = findEntity(drop.id);
               if (!item) return null;
               return (
-                <Link
-                  key={drop.id}
-                  to={`/${item.category}/${item.slug}`}
-                  className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-blue-300 transition-colors"
-                >
-                  <span className="font-bold">
-                    {item.name[currentLang] || item.name["ru"]}
-                  </span>
-                  <span className="text-xs font-black text-blue-500 bg-blue-50 px-2 py-1 rounded-full">
-                    {drop.chance}%
-                  </span>
+                <Link key={drop.id} to={`/${item.category}/${item.slug}`} className="flex justify-between items-center p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-blue-500/50 transition-all shadow-sm group">
+                  <div className="flex items-center gap-4">
+                    <span className="text-2xl group-hover:scale-110 transition-transform">💎</span>
+                    <span className="font-bold text-lg group-hover:text-blue-600 transition-colors">{item.name[currentLang] || item.name['ru']}</span>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-[10px] font-black text-blue-500 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">{drop.chance}%</span>
+                  </div>
                 </Link>
               );
             })}
           </div>
-        </div>,
-      );
-    }
-
-    if (entity.category === "npcs" && entity.locationId) {
-      const loc = findEntity(entity.locationId);
-      if (loc) {
-        relations.push(
-          <div key="npc-loc" className="mt-8">
-            <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2 text-gray-400">
-              Found In
-            </h3>
-            <Link
-              to={`/locations/${loc.slug}`}
-              className="text-xl font-bold underline decoration-blue-200 decoration-4 underline-offset-4"
-            >
-              {loc.name[currentLang] || loc.name["ru"]}
-            </Link>
-          </div>,
-        );
-      }
-    }
-
-    return relations;
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8 w-full">
-      <Header />
-
-      <nav className="mb-8 text-sm font-medium">
-        <Link
-          to="/"
-          className="text-blue-600 hover:text-blue-500 transition-colors"
-        >
-          {t("common.home")}
-        </Link>
-        <span className="mx-2 text-gray-300">/</span>
-        <Link
-          to={`/${category}`}
-          className="text-blue-600 hover:text-blue-500 transition-colors capitalize"
-        >
-          {t(`categories.${category}`)}
-        </Link>
-        <span className="mx-2 text-gray-300">/</span>
-        <span className="text-gray-400">
-          {entity.name[currentLang] || entity.name["ru"]}
-        </span>
-      </nav>
-
-      <div className="bg-white dark:bg-gray-800 rounded-[2.5rem] shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-800 transition-all">
-        <div className="p-10 md:flex gap-12">
-          <div className="w-full md:w-2/5 flex flex-col gap-6">
-            <div className="bg-gray-50 dark:bg-gray-900/50 rounded-[2rem] aspect-square flex items-center justify-center overflow-hidden border border-gray-100 dark:border-gray-800 shadow-inner">
-              {entity.image ? (
-                <img
-                  src={
-                    entity.image.startsWith("http")
-                      ? entity.image
-                      : `.${entity.image}`
-                  }
-                  alt={entity.name[currentLang] || entity.name["ru"]}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="text-gray-300 dark:text-gray-700 flex flex-col items-center">
-                  <span className="text-6xl mb-4">🖼️</span>
-                  <span className="font-bold uppercase tracking-widest text-sm">
-                    No Image
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {"stats" in entity && entity.stats && (
-              <div>
-                <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">
-                  Attributes / Stats
-                </h3>
-                {renderStats(entity.stats)}
-              </div>
-            )}
-          </div>
-
-          <div className="flex-1 flex flex-col">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <div className="text-xs text-blue-600 font-black uppercase tracking-[0.2em] mb-2">
-                  {t(`categories.${entity.category}`)}
-                </div>
-                <h1 className="text-5xl font-black tracking-tight leading-tight">
-                  {entity.name[currentLang] || entity.name["ru"]}
-                </h1>
-              </div>
-
-              {"rarity" in entity && entity.rarity && (
-                <span
-                  className={`px-4 py-2 rounded-2xl text-xs font-black uppercase tracking-widest shadow-sm border border-white/20
-                  ${
-                    entity.rarity === "legendary"
-                      ? "bg-orange-500 text-white"
-                      : entity.rarity === "epic"
-                        ? "bg-purple-600 text-white"
-                        : "bg-gray-100 text-gray-600"
-                  }`}
-                >
-                  {entity.rarity}
-                </span>
-              )}
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-8">
-              {entity.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-4 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-black uppercase tracking-wider"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex-1 space-y-8">
-              <div>
-                <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-3">
-                  {t("admin.fields.description")}
-                </h3>
-                <div className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium prose dark:prose-invert max-w-none">
-                  <ReactMarkdown>
-                    {entity.description[currentLang] ||
-                      entity.description["ru"]}
-                  </ReactMarkdown>
-                </div>
-              </div>
-
-              {"effect" in entity && entity.effect && (
-                <div>
-                  <h3 className="text-xs font-black text-green-600 uppercase tracking-widest mb-3">
-                    Effect
-                  </h3>
-                  <div className="text-lg font-bold prose dark:prose-invert">
-                    <ReactMarkdown>
-                      {entity.effect[currentLang] || entity.effect["ru"]}
-                    </ReactMarkdown>
-                  </div>
-                </div>
-              )}
-
-              {"role" in entity && entity.role && (
-                <div>
-                  <h3 className="text-xs font-black text-purple-600 uppercase tracking-widest mb-3">
-                    Role
-                  </h3>
-                  <div className="text-lg font-bold prose dark:prose-invert">
-                    <ReactMarkdown>
-                      {entity.role[currentLang] || entity.role["ru"]}
-                    </ReactMarkdown>
-                  </div>
-                </div>
-              )}
-
-              {"source" in entity && entity.source && (
-                <div>
-                  <h3 className="text-xs font-black text-amber-600 uppercase tracking-widest mb-3">
-                    Source
-                  </h3>
-                  <div className="text-lg font-bold prose dark:prose-invert">
-                    <ReactMarkdown>
-                      {entity.source[currentLang] || entity.source["ru"]}
-                    </ReactMarkdown>
-                  </div>
-                </div>
-              )}
-
-              {renderRelations()}
-            </div>
-
-            <div className="grid grid-cols-2 gap-8 border-t border-gray-50 dark:border-gray-800 pt-8 mt-8">
-              <div>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-black mb-2 block">
-                  Identifier
-                </span>
-                <p className="font-mono text-sm bg-gray-50 dark:bg-gray-900 px-2 py-1 rounded inline-block">
-                  {entity.slug}
-                </p>
-              </div>
-              <div>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-black mb-2 block">
-                  Last Updated
-                </span>
-                <p className="font-bold">
-                  {new Date(entity.updatedAt).toLocaleDateString(
-                    i18n.language,
-                    { day: "numeric", month: "long", year: "numeric" },
-                  )}
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

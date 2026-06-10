@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from '@tanstack/react-query';
+import { motion } from 'framer-motion';
 
 export const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
@@ -8,17 +9,19 @@ export const LanguageSwitcher = () => {
   const toggleLanguage = () => {
     const newLang = i18n.language.startsWith('en') ? 'ru' : 'en';
     i18n.changeLanguage(newLang).then(() => {
-      // Invalidate queries to refresh UI with new translations
       queryClient.invalidateQueries();
     });
   };
 
   return (
-    <button 
+    <motion.button 
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       onClick={toggleLanguage}
-      className="fixed top-4 right-4 z-50 bg-white dark:bg-gray-800 p-2 rounded-full shadow-md border border-gray-200 dark:border-gray-700 font-bold text-xs uppercase"
+      className="flex items-center gap-2 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 font-black text-[10px] uppercase tracking-wider"
     >
-      {i18n.language.startsWith('en') ? '🇷🇺 RU' : '🇺🇸 EN'}
-    </button>
+      <span className="opacity-70">{i18n.language.startsWith('en') ? '🇺🇸' : '🇷🇺'}</span>
+      <span>{i18n.language.startsWith('en') ? 'English' : 'Русский'}</span>
+    </motion.button>
   );
 };

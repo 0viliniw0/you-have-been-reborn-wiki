@@ -57,7 +57,6 @@ export const ConsumableSchema = BaseEntitySchema.extend({
 
 export const MaterialSchema = BaseEntitySchema.extend({
   category: z.literal('materials'),
-  rarity: z.enum(['common', 'uncommon', 'rare', 'epic', 'legendary']),
   source: LocalizedStringSchema.optional(),
 });
 
