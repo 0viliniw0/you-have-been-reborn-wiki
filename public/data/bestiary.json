@@ -2,31 +2,59 @@
   {
     "id": "mob-wolf",
     "slug": "gray-wolf",
-    "name": { "ru": "Серый волк", "en": "Gray Wolf" },
-    "description": { "ru": "Дикий зверь, охотящийся в лесах.", "en": "A wild beast hunting in the forests." },
+    "name": {
+      "ru": "Серый волк",
+      "en": "Gray Wolf"
+    },
+    "description": {
+      "ru": "Дикий зверь, охотящийся в лесах.",
+      "en": "A wild beast hunting in the forests."
+    },
+    "tags": [],
     "category": "bestiary",
+    "updatedAt": "2024-01-01T00:00:00.000Z",
     "isBoss": false,
     "level": 3,
     "locationId": "loc-dark-forest",
-    "stats": { "hp": 50, "attack": 10 },
+    "stats": {
+      "hp": 50,
+      "attack": 10
+    },
     "drops": [
-      { "id": "mat-iron-ore", "chance": 10 }
-    ],
-    "updatedAt": "2024-01-01T00:00:00.000Z"
+      {
+        "id": "mat-iron-ore",
+        "chance": 10
+      }
+    ]
   },
   {
     "id": "mob-ancient-dragon",
     "slug": "ancient-dragon",
-    "name": { "ru": "Древний дракон", "en": "Ancient Dragon" },
-    "description": { "ru": "Огромный крылатый змей, повелитель пламени.", "en": "A massive winged serpent, lord of the flame." },
+    "name": {
+      "ru": "Древний дракон",
+      "en": "Ancient Dragon"
+    },
+    "description": {
+      "ru": "Огромный крылатый змей, повелитель пламени.",
+      "en": "A massive winged serpent, lord of the flame."
+    },
     "category": "bestiary",
     "isBoss": true,
     "level": 60,
     "locationId": "loc-dark-forest",
-    "stats": { "hp": 10000, "attack": 500 },
+    "stats": {
+      "hp": 10000,
+      "attack": 500
+    },
     "drops": [
-      { "id": "mat-dragon-scale", "chance": 100 },
-      { "id": "eq-dragon-armor", "chance": 5 }
+      {
+        "id": "mat-dragon-scale",
+        "chance": 100
+      },
+      {
+        "id": "eq-dragon-armor",
+        "chance": 5
+      }
     ],
     "updatedAt": "2024-01-01T00:00:00.000Z"
   }

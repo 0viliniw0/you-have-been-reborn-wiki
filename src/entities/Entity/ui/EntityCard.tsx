@@ -23,8 +23,16 @@ export const EntityCard = ({ entity, variant = 'full' }: EntityCardProps) => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language.split('-')[0] as 'ru' | 'en';
 
-  const rarity = (entity as any).rarity;
-  const isBoss = (entity as any).isBoss;
+  const rarity = 'rarity' in entity ? (entity as { rarity?: string }).rarity : undefined;
+  const isBoss = 'isBoss' in entity ? (entity as { isBoss?: boolean }).isBoss : false;
+
+  // Simple helper to strip markdown tags for preview
+  const stripMarkdown = (text: string) => {
+    return text
+      .replace(/[#*`_>]/g, '') // remove common symbols
+      .replace(/\[(.*?)\]\(.*?\)/g, '$1') // remove links but keep text
+      .trim();
+  };
 
   if (variant === 'compact') {
     return (
@@ -81,7 +89,7 @@ export const EntityCard = ({ entity, variant = 'full' }: EntityCardProps) => {
           {t(`categories.${entity.category}`)}
         </div>
         <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">
-          {entity.description[currentLang] || entity.description['ru']}
+          {stripMarkdown(entity.description[currentLang] || entity.description['ru'])}
         </p>
       </div>
     </Link>

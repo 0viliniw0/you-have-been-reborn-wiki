@@ -2,23 +2,41 @@
   {
     "id": "skl-fireball",
     "slug": "fireball",
-    "name": { "ru": "Огненный шар", "en": "Fireball" },
-    "description": { "ru": "Запускает шар огня в противника.", "en": "Launches a ball of fire at the enemy." },
+    "name": {
+      "ru": "Огненный шар",
+      "en": "Fireball"
+    },
+    "description": {
+      "ru": "Запускает шар огня в противника.\n\n### Эффекты:\n* Наносит **50** единиц урона огнем\n* Поджигает цель на **3** секунды\n\n> Сила пламени зависит от вашего интеллекта.",
+      "en": "Launches a ball of fire at the enemy.\n\n### Effects:\n* Deals **50** fire damage\n* Ignites the target for **3** seconds\n\n> The power of the flame depends on your intelligence."
+    },
+    "tags": [],
     "category": "skills",
+    "updatedAt": "2024-01-01T00:00:00.000Z",
     "manaCost": 20,
     "cooldown": 5,
-    "requirements": { "level": 5 },
-    "updatedAt": "2024-01-01T00:00:00.000Z"
+    "requirements": {
+      "level": 5
+    },
+    "image": "/images/skills_fireball_1781104112264.png"
   },
   {
     "id": "skl-slash",
     "slug": "slash",
-    "name": { "ru": "Рассекающий удар", "en": "Slash" },
-    "description": { "ru": "Быстрый удар мечом.", "en": "A quick sword strike." },
+    "name": {
+      "ru": "Рассекающий удар",
+      "en": "Slash"
+    },
+    "description": {
+      "ru": "Быстрый удар мечом.",
+      "en": "A quick sword strike."
+    },
     "category": "skills",
     "manaCost": 0,
     "cooldown": 2,
-    "requirements": { "level": 1 },
+    "requirements": {
+      "level": 1
+    },
     "updatedAt": "2024-01-01T00:00:00.000Z"
   }
 ]

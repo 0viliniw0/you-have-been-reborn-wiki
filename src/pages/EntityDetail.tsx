@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { loadAllEntities } from "../shared/api/dataService";
 import { useTranslation } from "react-i18next";
 import { Header } from "../widgets/Header/ui/Header";
-import { Entity } from "../shared/types/entities";
+import ReactMarkdown from "react-markdown";
 
 export default function EntityDetail() {
   const { category, slug } = useParams();
@@ -32,8 +32,13 @@ export default function EntityDetail() {
     return (
       <div className="grid grid-cols-2 gap-4 mt-4">
         {Object.entries(stats).map(([key, value]) => (
-          <div key={key} className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-xl border border-gray-100 dark:border-gray-800">
-            <span className="text-[10px] uppercase font-black text-gray-400 block mb-1">{key}</span>
+          <div
+            key={key}
+            className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-xl border border-gray-100 dark:border-gray-800"
+          >
+            <span className="text-[10px] uppercase font-black text-gray-400 block mb-1">
+              {key}
+            </span>
             <span className="text-lg font-bold">+{value}</span>
           </div>
         ))}
@@ -45,54 +50,74 @@ export default function EntityDetail() {
     const relations: React.ReactNode[] = [];
 
     // Helper to find entity by ID
-    const findEntity = (id: string) => entities?.find(e => e.id === id);
+    const findEntity = (id: string) => entities?.find((e) => e.id === id);
 
-    if (entity.category === 'bestiary' && entity.locationId) {
+    if (entity.category === "bestiary" && entity.locationId) {
       const loc = findEntity(entity.locationId);
       if (loc) {
         relations.push(
           <div key="location" className="mt-8">
-            <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2 text-gray-400">Primary Habitat</h3>
-            <Link to={`/locations/${loc.slug}`} className="text-xl font-bold hover:text-blue-600 transition-colors underline decoration-blue-200 decoration-4 underline-offset-4">
-              {loc.name[currentLang] || loc.name['ru']}
+            <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2 text-gray-400">
+              Primary Habitat
+            </h3>
+            <Link
+              to={`/locations/${loc.slug}`}
+              className="text-xl font-bold hover:text-blue-600 transition-colors underline decoration-blue-200 decoration-4 underline-offset-4"
+            >
+              {loc.name[currentLang] || loc.name["ru"]}
             </Link>
-          </div>
+          </div>,
         );
       }
     }
 
-    if (entity.category === 'bestiary' && entity.drops?.length) {
+    if (entity.category === "bestiary" && entity.drops?.length) {
       relations.push(
         <div key="drops" className="mt-8">
-          <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-4">Drop Table</h3>
+          <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-4">
+            Drop Table
+          </h3>
           <div className="space-y-2">
-            {entity.drops.map(drop => {
+            {entity.drops.map((drop) => {
               const item = findEntity(drop.id);
               if (!item) return null;
               return (
-                <Link key={drop.id} to={`/${item.category}/${item.slug}`} className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-blue-300 transition-colors">
-                  <span className="font-bold">{item.name[currentLang] || item.name['ru']}</span>
-                  <span className="text-xs font-black text-blue-500 bg-blue-50 px-2 py-1 rounded-full">{drop.chance}%</span>
+                <Link
+                  key={drop.id}
+                  to={`/${item.category}/${item.slug}`}
+                  className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-900/50 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-blue-300 transition-colors"
+                >
+                  <span className="font-bold">
+                    {item.name[currentLang] || item.name["ru"]}
+                  </span>
+                  <span className="text-xs font-black text-blue-500 bg-blue-50 px-2 py-1 rounded-full">
+                    {drop.chance}%
+                  </span>
                 </Link>
               );
             })}
           </div>
-        </div>
+        </div>,
       );
     }
 
-    if (entity.category === 'npcs' && entity.locationId) {
-       const loc = findEntity(entity.locationId);
-       if (loc) {
-         relations.push(
-           <div key="npc-loc" className="mt-8">
-             <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2 text-gray-400">Found In</h3>
-             <Link to={`/locations/${loc.slug}`} className="text-xl font-bold underline decoration-blue-200 decoration-4 underline-offset-4">
-               {loc.name[currentLang] || loc.name['ru']}
-             </Link>
-           </div>
-         );
-       }
+    if (entity.category === "npcs" && entity.locationId) {
+      const loc = findEntity(entity.locationId);
+      if (loc) {
+        relations.push(
+          <div key="npc-loc" className="mt-8">
+            <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2 text-gray-400">
+              Found In
+            </h3>
+            <Link
+              to={`/locations/${loc.slug}`}
+              className="text-xl font-bold underline decoration-blue-200 decoration-4 underline-offset-4"
+            >
+              {loc.name[currentLang] || loc.name["ru"]}
+            </Link>
+          </div>,
+        );
+      }
     }
 
     return relations;
@@ -139,22 +164,19 @@ export default function EntityDetail() {
               ) : (
                 <div className="text-gray-300 dark:text-gray-700 flex flex-col items-center">
                   <span className="text-6xl mb-4">🖼️</span>
-                  <span className="font-bold uppercase tracking-widest text-sm">No Image</span>
+                  <span className="font-bold uppercase tracking-widest text-sm">
+                    No Image
+                  </span>
                 </div>
               )}
             </div>
-            
-            {(entity as any).stats && (
+
+            {"stats" in entity && entity.stats && (
               <div>
-                <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">Attributes / Stats</h3>
-                {renderStats((entity as any).stats)}
-              </div>
-            )}
-            
-            {(entity as any).baseStats && (
-              <div>
-                <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">Base Attributes</h3>
-                {renderStats((entity as any).baseStats)}
+                <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-2">
+                  Attributes / Stats
+                </h3>
+                {renderStats(entity.stats)}
               </div>
             )}
           </div>
@@ -169,12 +191,19 @@ export default function EntityDetail() {
                   {entity.name[currentLang] || entity.name["ru"]}
                 </h1>
               </div>
-              
-              {(entity as any).rarity && (
-                <span className={`px-4 py-2 rounded-2xl text-xs font-black uppercase tracking-widest shadow-sm border border-white/20
-                  ${(entity as any).rarity === 'legendary' ? 'bg-orange-500 text-white' : 
-                    (entity as any).rarity === 'epic' ? 'bg-purple-600 text-white' : 'bg-gray-100 text-gray-600'}`}>
-                  {(entity as any).rarity}
+
+              {"rarity" in entity && entity.rarity && (
+                <span
+                  className={`px-4 py-2 rounded-2xl text-xs font-black uppercase tracking-widest shadow-sm border border-white/20
+                  ${
+                    entity.rarity === "legendary"
+                      ? "bg-orange-500 text-white"
+                      : entity.rarity === "epic"
+                        ? "bg-purple-600 text-white"
+                        : "bg-gray-100 text-gray-600"
+                  }`}
+                >
+                  {entity.rarity}
                 </span>
               )}
             </div>
@@ -195,15 +224,50 @@ export default function EntityDetail() {
                 <h3 className="text-xs font-black text-blue-600 uppercase tracking-widest mb-3">
                   {t("admin.fields.description")}
                 </h3>
-                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
-                  {entity.description[currentLang] || entity.description["ru"]}
-                </p>
+                <div className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-medium prose dark:prose-invert max-w-none">
+                  <ReactMarkdown>
+                    {entity.description[currentLang] ||
+                      entity.description["ru"]}
+                  </ReactMarkdown>
+                </div>
               </div>
 
-              {(entity as any).effect && (
+              {"effect" in entity && entity.effect && (
                 <div>
-                  <h3 className="text-xs font-black text-green-600 uppercase tracking-widest mb-3">Effect</h3>
-                  <p className="text-lg font-bold">{(entity as any).effect[currentLang] || (entity as any).effect['ru']}</p>
+                  <h3 className="text-xs font-black text-green-600 uppercase tracking-widest mb-3">
+                    Effect
+                  </h3>
+                  <div className="text-lg font-bold prose dark:prose-invert">
+                    <ReactMarkdown>
+                      {entity.effect[currentLang] || entity.effect["ru"]}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              )}
+
+              {"role" in entity && entity.role && (
+                <div>
+                  <h3 className="text-xs font-black text-purple-600 uppercase tracking-widest mb-3">
+                    Role
+                  </h3>
+                  <div className="text-lg font-bold prose dark:prose-invert">
+                    <ReactMarkdown>
+                      {entity.role[currentLang] || entity.role["ru"]}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              )}
+
+              {"source" in entity && entity.source && (
+                <div>
+                  <h3 className="text-xs font-black text-amber-600 uppercase tracking-widest mb-3">
+                    Source
+                  </h3>
+                  <div className="text-lg font-bold prose dark:prose-invert">
+                    <ReactMarkdown>
+                      {entity.source[currentLang] || entity.source["ru"]}
+                    </ReactMarkdown>
+                  </div>
                 </div>
               )}
 

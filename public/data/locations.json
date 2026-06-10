@@ -3,7 +3,10 @@
     "id": "loc-starting-village",
     "slug": "starting-village",
     "name": { "ru": "Начальная деревня", "en": "Starting Village" },
-    "description": { "ru": "Тихое место, где начинаются все приключения.", "en": "A quiet place where all adventures begin." },
+    "description": { 
+      "ru": "Тихое место, где начинаются все приключения.\n\n**Особенности:**\n- Безопасная зона\n- Есть торговец и кузнец\n- Рядом находится *Темный лес*", 
+      "en": "A quiet place where all adventures begin.\n\n**Features:**\n- Safe zone\n- Merchant and blacksmith available\n- Located near the *Dark Forest*" 
+    },
     "category": "locations",
     "type": "city",
     "updatedAt": "2024-01-01T00:00:00.000Z"
