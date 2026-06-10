@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '../shared/ui/LanguageSwitcher';
+import { Entity } from '../shared/types/entities';
 
 export default function Home() {
   const { t, i18n } = useTranslation();
@@ -16,7 +17,7 @@ export default function Home() {
   });
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<Entity[]>([]);
 
   useEffect(() => {
     if (entities) {
@@ -77,9 +78,11 @@ export default function Home() {
         ))}
       </div>
       
-      <div className="mt-12 text-center">
-        <Link to="/admin" className="text-blue-500 hover:underline">{t('admin.panel')}</Link>
-      </div>
+      {import.meta.env.DEV && (
+        <div className="mt-12 text-center">
+          <Link to="/admin" className="text-blue-500 hover:underline">{t('admin.panel')}</Link>
+        </div>
+      )}
     </div>
   );
 }

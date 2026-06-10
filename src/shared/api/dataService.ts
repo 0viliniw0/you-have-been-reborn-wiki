@@ -1,40 +1,47 @@
-import { BaseEntity, EntityType } from "../types/entities";
+import { BaseEntity, EntityCategory as EntityType, ItemSchema, MobSchema, NpcSchema, QuestSchema, RecipeSchema, BaseEntitySchema } from "../types/entities";
+import { z } from 'zod';
+
+const SchemaMap: Record<string, z.ZodSchema> = {
+  items: ItemSchema,
+  mobs: MobSchema,
+  npcs: NpcSchema,
+  quests: QuestSchema,
+  recipes: RecipeSchema,
+};
 
 // Metadata file that tracks all data files for automatic discovery
-export interface DataRegistry {
-  [key: string]: string[];
-}
+export type DataRegistry = string[];
 
 export const fetchRegistry = async (): Promise<DataRegistry> => {
-  const response = await fetch("/data/registry.json");
+  const response = await fetch("./data/registry.json");
+  if (!response.ok) throw new Error("Failed to load registry");
   return response.json();
 };
 
-export const fetchEntitiesBatch = async <T extends BaseEntity>(
-  type: EntityType,
+export const fetchEntitiesBatch = async (
   fileName: string,
-): Promise<T[]> => {
-  const response = await fetch(`/data/${type}/${fileName}`);
-  if (!response.ok) throw new Error(`Failed to load ${type}/${fileName}`);
-  return response.json();
+): Promise<BaseEntity[]> => {
+  const response = await fetch(`./data/${fileName}`);
+  if (!response.ok) throw new Error(`Failed to load ${fileName}`);
+  const data = await response.json();
+
+  // Extract category from filename (e.g., "items.json" -> "items")
+  const type = fileName.replace(".json", "") as EntityType;
+  const schema = SchemaMap[type] || BaseEntitySchema;
+  const result = z.array(schema).safeParse(data);
+
+  if (!result.success) {
+    console.error(`Validation error in ${fileName}:`, result.error);
+    return data as BaseEntity[]; 
+  }
+
+  return result.data as BaseEntity[];
 };
 
 export const loadAllEntities = async (): Promise<BaseEntity[]> => {
-  console.log("loadAllEntities");
   const registry = await fetchRegistry();
-  const allPromises: Promise<BaseEntity[]>[] = [];
-
-  for (const [type, files] of Object.entries(registry)) {
-    files.forEach((file) => {
-      console.log("file", file);
-
-      allPromises.push(fetchEntitiesBatch(type as EntityType, file));
-    });
-  }
-  console.log("results1");
-
+  const allPromises = registry.map(file => fetchEntitiesBatch(file));
   const results = await Promise.all(allPromises);
-  console.log("results", results);
-
   return results.flat();
 };
+

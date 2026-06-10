@@ -7,11 +7,13 @@
       "en": "Test"
     },
     "description": {
-      "ru": "тест",
-      "en": "test"
+      "ru": "тест11",
+      "en": "test1"
     },
+    "tags": [
+      "тест"
+    ],
     "category": "items",
-    "tags": ["тест"],
     "updatedAt": "2026-06-10T12:56:29.057Z",
     "recipeId": "recipe-1"
   }

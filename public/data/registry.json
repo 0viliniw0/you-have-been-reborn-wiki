@@ -1,10 +1,10 @@
-{
-  "items": ["swords.json"],
-  "mobs": [],
-  "skills": [],
-  "npcs": [],
-  "locations": [],
-  "quests": [],
-  "recipes": [],
-  "achievements": []
-}
+[
+  "items.json",
+  "mobs.json",
+  "skills.json",
+  "npcs.json",
+  "locations.json",
+  "quests.json",
+  "recipes.json",
+  "achievements.json"
+]

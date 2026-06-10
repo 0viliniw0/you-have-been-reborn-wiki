@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './index.css'
 import './shared/lib/i18n'
@@ -22,14 +22,14 @@ const queryClient = new QueryClient({
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:category" element={<CategoryPage />} />
           <Route path="/:category/:slug" element={<EntityDetail />} />
-          <Route path="/admin" element={<AdminPanel />} />
+          {import.meta.env.DEV && <Route path="/admin" element={<AdminPanel />} />}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </QueryClientProvider>
   </StrictMode>,
 )
