@@ -1,10 +1,10 @@
 [
-  "items.json",
-  "mobs.json",
-  "skills.json",
-  "npcs.json",
-  "locations.json",
-  "quests.json",
-  "recipes.json",
-  "achievements.json"
+  "skills",
+  "equipment",
+  "consumables",
+  "materials",
+  "bestiary",
+  "locations",
+  "npcs",
+  "quests"
 ]

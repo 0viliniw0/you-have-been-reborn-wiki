@@ -1,1 +1,33 @@
-[]
+[
+  {
+    "id": "qst-first-steps",
+    "slug": "first-steps",
+    "name": { "ru": "Первые шаги", "en": "First Steps" },
+    "description": { "ru": "Поговорите со старейшиной деревни.", "en": "Talk to the village elder." },
+    "category": "quests",
+    "giverNpcId": "npc-elder",
+    "minLevel": 1,
+    "rewards": {
+      "exp": 100,
+      "gold": 50,
+      "items": ["eq-rusty-sword"]
+    },
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "qst-dragon-slayer",
+    "slug": "dragon-slayer",
+    "name": { "ru": "Убийца драконов", "en": "Dragon Slayer" },
+    "description": { "ru": "Победите древнего дракона в темном лесу.", "en": "Defeat the ancient dragon in the dark forest." },
+    "category": "quests",
+    "giverNpcId": "npc-elder",
+    "minLevel": 50,
+    "rewards": {
+      "exp": 10000,
+      "gold": 1000,
+      "items": ["mat-dragon-scale"]
+    },
+    "chainParentId": "qst-first-steps",
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]

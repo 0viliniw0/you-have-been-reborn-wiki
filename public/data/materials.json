@@ -1,0 +1,22 @@
+[
+  {
+    "id": "mat-iron-ore",
+    "slug": "iron-ore",
+    "name": { "ru": "Железная руда", "en": "Iron Ore" },
+    "description": { "ru": "Обычный металл для ковки.", "en": "Common metal for forging." },
+    "category": "materials",
+    "rarity": "common",
+    "source": { "ru": "Шахты, Скалы", "en": "Mines, Rocks" },
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "mat-dragon-scale",
+    "slug": "dragon-scale",
+    "name": { "ru": "Чешуя дракона", "en": "Dragon Scale" },
+    "description": { "ru": "Невероятно прочный материал.", "en": "Incredibly durable material." },
+    "category": "materials",
+    "rarity": "legendary",
+    "source": { "ru": "Драконы", "en": "Dragons" },
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]

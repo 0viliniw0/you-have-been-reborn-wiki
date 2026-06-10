@@ -1,12 +1,27 @@
-import { BaseEntity, EntityCategory as EntityType, ItemSchema, MobSchema, NpcSchema, QuestSchema, RecipeSchema, BaseEntitySchema } from "../types/entities";
+import { 
+  BaseEntity, 
+  EntityCategory as EntityType, 
+  NpcSchema, 
+  QuestSchema, 
+  BaseEntitySchema,
+  SkillSchema,
+  BestiarySchema,
+  ConsumableSchema,
+  EquipmentSchema,
+  LocationSchema,
+  MaterialSchema
+} from "../types/entities";
 import { z } from 'zod';
 
 const SchemaMap: Record<string, z.ZodSchema> = {
-  items: ItemSchema,
-  mobs: MobSchema,
+  skills: SkillSchema,
+  bestiary: BestiarySchema,
+  consumables: ConsumableSchema,
+  equipment: EquipmentSchema,
+  locations: LocationSchema,
+  materials: MaterialSchema,
   npcs: NpcSchema,
   quests: QuestSchema,
-  recipes: RecipeSchema,
 };
 
 // Metadata file that tracks all data files for automatic discovery
@@ -19,8 +34,12 @@ export const fetchRegistry = async (): Promise<DataRegistry> => {
 };
 
 export const fetchEntitiesBatch = async (
-  fileName: string,
+  categoryOrFileName: string,
 ): Promise<BaseEntity[]> => {
+  const fileName = categoryOrFileName.endsWith(".json") 
+    ? categoryOrFileName 
+    : `${categoryOrFileName}.json`;
+    
   const response = await fetch(`./data/${fileName}`);
   if (!response.ok) throw new Error(`Failed to load ${fileName}`);
   const data = await response.json();

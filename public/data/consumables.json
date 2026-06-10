@@ -1,0 +1,11 @@
+[
+  {
+    "id": "con-healing-potion",
+    "slug": "healing-potion",
+    "name": { "ru": "Зелье лечения", "en": "Healing Potion" },
+    "description": { "ru": "Восстанавливает 50 HP.", "en": "Restores 50 HP." },
+    "category": "consumables",
+    "effect": { "ru": "Восстановление здоровья", "en": "Health Restoration" },
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]

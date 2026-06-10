@@ -22,13 +22,14 @@ i18n
             results: "Search Results"
           },
           categories: {
-            items: "Items",
-            mobs: "Mobs",
             skills: "Skills",
+            equipment: "Equipment",
+            consumables: "Consumables",
+            materials: "Materials",
+            bestiary: "Bestiary",
             locations: "Locations",
-            quests: "Quests",
-            recipes: "Recipes",
-            achievements: "Achievements"
+            npcs: "NPCs",
+            quests: "Quests"
           },
           admin: {
             panel: "Admin Panel",
@@ -67,13 +68,14 @@ i18n
             results: "Результаты поиска"
           },
           categories: {
-            items: "Предметы",
-            mobs: "Мобы",
             skills: "Навыки",
+            equipment: "Снаряжение",
+            consumables: "Расходники",
+            materials: "Материалы",
+            bestiary: "Бестиарий",
             locations: "Локации",
-            quests: "Квесты",
-            recipes: "Рецепты",
-            achievements: "Достижения"
+            npcs: "NPC",
+            quests: "Квесты"
           },
           admin: {
             panel: "Админ-панель",

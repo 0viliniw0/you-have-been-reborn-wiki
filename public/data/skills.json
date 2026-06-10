@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "id": "skl-fireball",
+    "slug": "fireball",
+    "name": { "ru": "Огненный шар", "en": "Fireball" },
+    "description": { "ru": "Запускает шар огня в противника.", "en": "Launches a ball of fire at the enemy." },
+    "category": "skills",
+    "manaCost": 20,
+    "cooldown": 5,
+    "requirements": { "level": 5 },
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "skl-slash",
+    "slug": "slash",
+    "name": { "ru": "Рассекающий удар", "en": "Slash" },
+    "description": { "ru": "Быстрый удар мечом.", "en": "A quick sword strike." },
+    "category": "skills",
+    "manaCost": 0,
+    "cooldown": 2,
+    "requirements": { "level": 1 },
+    "updatedAt": "2024-01-01T00:00:00.000Z"
+  }
+]

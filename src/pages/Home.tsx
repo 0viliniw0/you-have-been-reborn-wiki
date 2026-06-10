@@ -30,7 +30,16 @@ export default function Home() {
     setResults(searchEntities(q));
   };
 
-  const categories = ['items', 'mobs', 'skills', 'locations', 'quests', 'recipes', 'achievements'];
+  const categories = [
+    'skills', 
+    'equipment', 
+    'consumables', 
+    'materials', 
+    'bestiary', 
+    'locations', 
+    'npcs', 
+    'quests'
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
