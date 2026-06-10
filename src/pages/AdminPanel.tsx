@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { BaseEntity, Entity, EntityCategory } from "../shared/types/entities";
-import { loadAllEntities, fetchRegistry } from "../shared/api/dataService";
+import { Entity, EntityCategory } from "../shared/types/entities";
+import { loadAllEntities } from "../shared/api/dataService";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../shared/ui/LanguageSwitcher";
 
@@ -173,11 +173,6 @@ export default function AdminPanel() {
   const { data: dbEntities } = useQuery({
     queryKey: ["entities", "all"],
     queryFn: loadAllEntities,
-  });
-
-  const { data: registry } = useQuery({
-    queryKey: ["registry"],
-    queryFn: fetchRegistry,
   });
 
   const allAvailableEntities: Entity[] = [...(dbEntities || []), ...draftEntities];
