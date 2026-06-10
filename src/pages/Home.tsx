@@ -4,12 +4,12 @@ import { initSearchIndex, searchEntities } from '../features/search/searchEngine
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { LanguageSwitcher } from '../shared/ui/LanguageSwitcher';
 import { Entity } from '../shared/types/entities';
+import { Header } from '../widgets/Header/ui/Header';
+import { EntityCard } from '../entities/Entity/ui/EntityCard';
 
 export default function Home() {
-  const { t, i18n } = useTranslation();
-  const currentLang = i18n.language.split('-')[0] as 'ru' | 'en';
+  const { t } = useTranslation();
 
   const { data: entities } = useQuery({
     queryKey: ['entities', 'all'],
@@ -34,33 +34,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
-      <LanguageSwitcher />
-      
-      <header className="max-w-4xl mx-auto text-center mb-12">
-        <h1 className="text-5xl font-bold mb-4">{t('header.title')}</h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400">{t('header.subtitle')}</p>
-      </header>
+      <Header />
 
       <div className="max-w-2xl mx-auto mb-12">
         <input
           type="text"
           placeholder={t('search.placeholder')}
-          className="w-full p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm focus:ring-2 focus:ring-blue-500"
+          className="w-full p-4 rounded-2xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 shadow-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none"
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
         />
         
         {results.length > 0 && (
-          <div className="mt-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg overflow-hidden">
+          <div className="mt-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl overflow-hidden divide-y divide-gray-50 dark:divide-gray-700">
             {results.slice(0, 10).map((item) => (
-              <Link
-                key={item.id}
-                to={`/${item.category}/${item.slug}`}
-                className="block p-4 hover:bg-gray-100 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 last:border-0"
-              >
-                <div className="font-bold">{item.name[currentLang] || item.name['ru']}</div>
-                <div className="text-sm text-gray-500">{t(`categories.${item.category}`)} • {item.tags.join(', ')}</div>
-              </Link>
+              <EntityCard key={item.id} entity={item} variant="compact" />
             ))}
           </div>
         )}

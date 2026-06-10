@@ -8,54 +8,49 @@ Designed to handle thousands of entities (items, mobs, quests) using a serverles
 
 # Technology Stack
 
-- **Framework**: React 18+ with TypeScript.
-- **Build Tool**: Vite (configured with relative base paths for `file://` support).
-- **Routing**: React Router 6 (HashRouter for static/local compatibility).
-- **Data Storage**: Flat JSON files in `/public/data/`.
-- **Validation**: Zod (all data validated at runtime).
-- **State/Fetching**: TanStack Query (React Query).
-- **Search**: Fuse.js (Fuzzy search).
-- **Editor Sync**: File System Access API + IndexedDB (to persist folder handles).
+- **Framework**: React 18+ with TypeScript (Strict mode).
+- **Build Tool**: Vite (configured with `./` base for `file://` and static host compatibility).
+- **Routing**: React Router 6 (HashRouter for seamless static navigation).
+- **Data Storage**: Flat JSON files in `/public/data/` (one file per category).
+- **Validation**: Zod (runtime schema validation for all JSON data).
+- **State/Fetching**: TanStack Query (React Query) for efficient caching.
+- **Search**: Fuse.js (Client-side fuzzy search).
+- **Editor Sync**: File System Access API + IndexedDB (persists folder handles for a seamless dev experience).
 
 # Architecture Rules (CRITICAL)
 
-1. **NO BACKEND**: Never implement server-side logic.
-2. **NO DATABASES**: All data must live in `/public/data/*.json`.
-3. **FLAT DATA STRUCTURE**: Use one JSON file per category in root of data folder (e.g., `items.json`). No nested category folders.
-4. **RELATIVE PATHS**: Use `./` base in Vite and `./data/` in fetches to ensure portability.
+1. **NO BACKEND**: Zero server-side logic. All logic is client-side.
+2. **NO DATABASES**: All data lives in `/public/data/*.json`.
+3. **FLAT DATA STRUCTURE**: Strictly one JSON file per category in the root of the data folder. No nested folders.
+4. **FEATURE-SLICED DESIGN (FSD)**: Adhere strictly to the layers (`app`, `pages`, `widgets`, `features`, `entities`, `shared`).
+5. **ASSET MANAGEMENT**: All static assets (images, svgs) must live in `/public/`. Use `/public/assets/` for app icons and `/public/images/` for game entities.
 
 # Directory Responsibilities (FSD)
 
-- `src/app/`: Global providers, styles, and router (HashRouter).
-- `src/pages/`: Page components (Home, CategoryPage, EntityDetail). 
-  - *Note*: AdminPanel is only rendered in DEV mode.
-- `src/features/`: Search engine, local editor logic.
-- `src/entities/`: Domain schemas (Zod) and types.
-- `src/shared/`: 
-  - `api/`: `dataService.ts` handles fetch + Zod validation.
-  - `ui/`: Reusable UI components (LanguageSwitcher, etc.).
-- `public/data/`: JSON storage.
-- `public/images/`: Automatically managed assets.
+- **`src/app/`**: Global configuration (providers, styles, router).
+- **`src/pages/`**: Composition layer for routes. 
+  - `AdminPanel.tsx` is protected by a permission overlay and only accessible in DEV mode.
+- **`src/widgets/`**: Complex UI units. 
+  - `Header/`: Includes navigation and `LanguageSwitcher`.
+- **`src/features/`**: User actions (Search logic, Local Admin sync).
+- **`src/entities/`**: Domain-specific logic. 
+  - `Entity/`: Contains common `EntityCard` used for lists and search results.
+- **`src/shared/`**: Reusable infrastructure.
+  - `api/`: `dataService.ts` (JSON fetching + Zod validation).
+  - `types/`: Global interfaces and Zod schemas.
+  - `ui/`: Generic UI components (Buttons, Switchers).
+  - `lib/`: Utilities (i18n configuration).
 
-# Data Model & Editor Rules
+# Local Content Editor (Admin Panel)
 
-### Image Management:
-- Images are stored in `/public/images/`.
-- The Admin Panel can upload images directly to this folder and delete them from disk.
-- Paths in JSON should be relative: `/images/filename.png`.
+- **Access**: Only available during `npm run dev` at `/#/admin`.
+- **Authorization**: Uses a "Permission Overlay". Access is blocked until the local `/public` folder is connected and write permissions are granted.
+- **Image Handling**: Supports direct file uploads. Uploaded images are physically saved to `/public/images/` and paths are automatically mapped.
+- **Persistence**: Folder handles are saved in IndexedDB. Users only need to "Unlock" the session once per browser restart.
+- **Data Sync**: "Push Changes to Disk" merges drafts into the corresponding JSON files in `/public/data/`.
 
-### Local Editor (Admin Panel):
-- **Access**: Only available in `npm run dev` at `/#/admin`.
-- **Sync**: Requires connecting to the project's root `/public` folder.
-- **Persistence**: Folder access is remembered via IndexedDB; needs a one-click re-authorization per session.
-- **Workflow**: 
-  1. Click "Connect Local Folder".
-  2. Edit content or upload images.
-  3. Click "Push Changes to Disk" to overwrite JSON files.
+# Deployment & Usage
 
-# Deployment
-
-- **Build**: `npm run build`
-- **Preview**: `npm run preview`
-- **Hosting**: Compatible with GitHub Pages, Cloudflare Pages, Netlify.
-- **Pathing**: Ensure `HashRouter` is used for proper sub-page navigation on static hosts.
+- **Environment**: Optimized for static hosting (GitHub Pages, Cloudflare, etc.).
+- **Build**: `npm run build` produces a portable `dist` folder.
+- **Local Preview**: Use `npm run preview`. Avoid opening `index.html` via `file://` directly due to CORS; use a local static server.
