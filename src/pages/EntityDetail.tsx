@@ -32,8 +32,22 @@ export default function EntityDetail() {
 
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700">
         <div className="p-8 md:flex gap-8">
-          <div className="w-full md:w-1/3 bg-gray-100 dark:bg-gray-700 rounded-xl aspect-square flex items-center justify-center mb-6 md:mb-0">
-             <span className="text-gray-400">No Image</span>
+          <div className="w-full md:w-1/3 bg-gray-100 dark:bg-gray-700 rounded-xl aspect-square flex items-center justify-center mb-6 md:mb-0 overflow-hidden">
+            {entity.image ? (
+              <img 
+                src={entity.image.startsWith('http') ? entity.image : `.${entity.image}`} 
+                alt={entity.name[currentLang] || entity.name['ru']}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://placehold.co/400?text=No+Image';
+                }}
+              />
+            ) : (
+              <div className="text-gray-400 flex flex-col items-center">
+                <span className="text-4xl mb-2">🖼️</span>
+                <span>No Image</span>
+              </div>
+            )}
           </div>
           
           <div className="flex-1">

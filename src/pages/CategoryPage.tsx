@@ -34,10 +34,21 @@ export default function CategoryPage() {
           <Link
             key={item.id}
             to={`/${item.category}/${item.slug}`}
-            className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow"
+            className="group p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all flex gap-4"
           >
-            <h3 className="text-xl font-bold mb-2">{item.name[currentLang] || item.name['ru']}</h3>
-            <p className="text-sm text-gray-500 line-clamp-2">{item.description[currentLang] || item.description['ru']}</p>
+            {item.image && (
+              <div className="w-16 h-16 rounded-lg bg-gray-50 dark:bg-gray-700 flex-shrink-0 overflow-hidden">
+                <img 
+                  src={item.image.startsWith('http') ? item.image : `.${item.image}`} 
+                  alt="" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+                />
+              </div>
+            )}
+            <div>
+              <h3 className="text-xl font-bold mb-1">{item.name[currentLang] || item.name['ru']}</h3>
+              <p className="text-sm text-gray-500 line-clamp-2">{item.description[currentLang] || item.description['ru']}</p>
+            </div>
           </Link>
         ))}
         {filteredEntities.length === 0 && (

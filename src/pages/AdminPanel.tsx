@@ -13,43 +13,116 @@ export default function AdminPanel() {
   const [draftEntities, setDraftEntities] = useState<Entity[]>([]);
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [dirHandle, setDirHandle] = useState<any>(null);
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
-  const { data: dbEntities } = useQuery({
-    queryKey: ["entities", "all"],
-    queryFn: loadAllEntities,
-  });
-
-  const allAvailableEntities: Entity[] = [...(dbEntities || []), ...draftEntities];
+  // Helper to save/load handle from IndexedDB
+  const getDB = () => {
+    return new Promise<IDBDatabase>((resolve, reject) => {
+      const request = indexedDB.open("WikiEditorDB", 1);
+      request.onupgradeneeded = () => request.result.createObjectStore("handles");
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  };
 
   useEffect(() => {
-    const saved = localStorage.getItem("wiki_draft_entities");
-    if (saved) setDraftEntities(JSON.parse(saved));
-  }, []);
+    const restoreHandle = async () => {
+      try {
+        const db = await getDB();
+        const tx = db.transaction("handles", "readonly");
+        const handle = await new Promise<any>((res) => {
+          const req = tx.objectStore("handles").get("publicFolder");
+          req.onsuccess = () => res(req.result);
+        });
 
-  const saveToLocal = (newEntities: Entity[]) => {
-    setDraftEntities(newEntities);
-    localStorage.setItem("wiki_draft_entities", JSON.stringify(newEntities));
-  };
+        if (handle) {
+          setDirHandle(handle);
+          const mode = "readwrite";
+          if ((await handle.queryPermission({ mode })) === "granted") {
+            setIsAuthorized(true);
+          }
+        }
+      } catch (e) {
+        console.warn("Could not restore folder handle", e);
+      }
+    };
+    restoreHandle();
+  }, []);
 
   const connectToFolder = async () => {
     try {
-      const handle = await (window as any).showDirectoryPicker();
-      setDirHandle(handle);
-      alert("Connected to folder successfully!");
+      let handle = dirHandle;
+      const mode = "readwrite";
+      
+      if (!handle) {
+        handle = await (window as any).showDirectoryPicker();
+      }
+
+      if ((await handle.queryPermission({ mode })) !== "granted") {
+        await handle.requestPermission({ mode });
+      }
+      
+      if ((await handle.queryPermission({ mode })) === "granted") {
+        const db = await getDB();
+        const tx = db.transaction("handles", "readwrite");
+        tx.objectStore("handles").put(handle, "publicFolder");
+        setDirHandle(handle);
+        setIsAuthorized(true);
+      }
     } catch (err) {
       console.error(err);
-      alert("Failed to connect to folder");
+      alert("Connection failed or access denied");
+    }
+  };
+
+  const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!dirHandle || !selectedEntity) {
+      alert("Please connect to 'public' folder first!");
+      return;
+    }
+
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const imgDir = await dirHandle.getDirectoryHandle("images", { create: true });
+      const ext = file.name.split('.').pop();
+      const fileName = `${selectedEntity.category}_${selectedEntity.slug}_${Date.now()}.${ext}`;
+      
+      const fileHandle = await imgDir.getFileHandle(fileName, { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(file);
+      await writable.close();
+
+      updateField("image", `/images/${fileName}`);
+      alert("Image uploaded!");
+    } catch (err) {
+      console.error(err);
+      alert("Upload failed: " + (err as Error).message);
+    }
+  };
+
+  const deleteImage = async () => {
+    if (!dirHandle || !selectedEntity?.image) return;
+    try {
+      const fileName = selectedEntity.image.split('/').pop()!;
+      const imgDir = await dirHandle.getDirectoryHandle("images");
+      await imgDir.removeEntry(fileName);
+      updateField("image", "");
+      alert("Image deleted from disk");
+    } catch (err) {
+      updateField("image", "");
     }
   };
 
   const saveToFiles = async () => {
     if (!dirHandle) {
-      alert("Please connect to public/data folder first!");
+      alert("Please connect to 'public' folder first!");
       return;
     }
 
     try {
-      // Group entities by their category (file name is derived from category)
+      const dataDir = await dirHandle.getDirectoryHandle("data");
       const groups: Record<string, Entity[]> = {};
       
       draftEntities.forEach(entity => {
@@ -59,7 +132,7 @@ export default function AdminPanel() {
 
       for (const [category, entities] of Object.entries(groups)) {
         const fileName = `${category}.json`;
-        const fileHandle = await dirHandle.getFileHandle(fileName, { create: true });
+        const fileHandle = await dataDir.getFileHandle(fileName, { create: true });
         
         // 2. Load existing data
         let existingData: any[] = [];
@@ -95,6 +168,23 @@ export default function AdminPanel() {
       console.error(err);
       alert("Error saving: " + (err as Error).message);
     }
+  };
+
+  const { data: dbEntities } = useQuery({
+    queryKey: ["entities", "all"],
+    queryFn: loadAllEntities,
+  });
+
+  const { data: registry } = useQuery({
+    queryKey: ["registry"],
+    queryFn: fetchRegistry,
+  });
+
+  const allAvailableEntities: Entity[] = [...(dbEntities || []), ...draftEntities];
+
+  const saveToLocal = (newEntities: Entity[]) => {
+    setDraftEntities(newEntities);
+    localStorage.setItem("wiki_draft_entities", JSON.stringify(newEntities));
   };
 
   const handleCreate = () => {
@@ -217,6 +307,33 @@ export default function AdminPanel() {
     ...draftEntities.map(e => e.id)
   ]));
 
+  if (!isAuthorized) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center font-sans p-6 text-white">
+        <div className="max-w-md w-full text-center space-y-8">
+          <div className="inline-block p-8 bg-blue-600 rounded-[3rem] shadow-[0_0_50px_rgba(37,99,235,0.3)] animate-pulse">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+          </div>
+          <div className="space-y-4">
+            <h1 className="text-5xl font-black tracking-tight bg-gradient-to-br from-white to-gray-500 bg-clip-text text-transparent">Wiki Editor</h1>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              To manage content, you must grant access to your project's <code className="text-blue-400 font-bold">/public</code> folder.
+            </p>
+          </div>
+          <button
+            onClick={connectToFolder}
+            className="group relative w-full flex justify-center py-5 px-4 border border-transparent text-xl font-black rounded-3xl text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-2xl"
+          >
+            {dirHandle ? "🔓 Unlock Session" : "📁 Select /public Folder"}
+          </button>
+          <p className="text-xs text-gray-600 font-medium">
+            Strictly local access. No data leaves your machine.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 p-8 flex gap-8 font-sans">
       <LanguageSwitcher />
@@ -263,32 +380,17 @@ export default function AdminPanel() {
         <div className="mt-6 pt-6 border-t space-y-2">
           <button
             onClick={connectToFolder}
-            className={`w-full py-2 rounded-lg font-bold border-2 transition-colors ${dirHandle ? 'border-green-500 text-green-600 bg-green-50' : 'border-blue-600 text-blue-600 hover:bg-blue-50'}`}
+            className={`w-full py-3 rounded-lg font-bold border-2 transition-all flex items-center justify-center gap-2 ${dirHandle ? 'border-green-500 text-green-600 bg-green-50' : 'border-blue-600 text-blue-600 hover:bg-blue-50 animate-pulse'}`}
           >
-            {dirHandle ? "✅ Connected to /public/data" : "🔗 Connect to public/data"}
+            {dirHandle ? "✅ Local Sync Active" : "🔗 Connect Local Folder"}
           </button>
           
           <button
             onClick={saveToFiles}
             disabled={!dirHandle || draftEntities.length === 0}
-            className="w-full bg-green-600 text-white py-3 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-green-700 transition-colors"
+            className="w-full bg-green-600 text-white py-3 rounded-lg font-bold disabled:opacity-30 disabled:grayscale hover:bg-green-700 transition-colors shadow-sm"
           >
-            💾 Save All to Files
-          </button>
-
-          <button
-            onClick={() => {
-              const dataStr =
-                "data:text/json;charset=utf-8," +
-                encodeURIComponent(JSON.stringify(draftEntities, null, 2));
-              const link = document.createElement("a");
-              link.setAttribute("href", dataStr);
-              link.setAttribute("download", `exported_entities.json`);
-              link.click();
-            }}
-            className="w-full border border-gray-300 text-gray-600 py-2 rounded-lg font-bold hover:bg-gray-50 transition-colors text-sm"
-          >
-            {t("admin.export")} (JSON)
+            💾 Push Changes to Disk
           </button>
         </div>
       </div>
@@ -370,6 +472,53 @@ export default function AdminPanel() {
                 value={selectedEntity.slug}
                 onChange={(e) => updateField("slug", e.target.value)}
               />
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-bold mb-1">
+                Entity Image
+              </label>
+              <div className="flex items-center gap-4">
+                {selectedEntity.image ? (
+                  <div className="relative group w-24 h-24">
+                    <img 
+                      src={selectedEntity.image.startsWith('http') ? selectedEntity.image : `.${selectedEntity.image}`} 
+                      className="w-24 h-24 object-cover rounded-lg border shadow-sm"
+                      alt="Preview"
+                    />
+                    <button 
+                      onClick={deleteImage}
+                      className="absolute -top-2 -right-2 bg-red-500 text-white p-1 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+                      title="Delete file from disk"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                  </div>
+                ) : (
+                  <div className="w-24 h-24 bg-gray-50 border-2 border-dashed rounded-lg flex items-center justify-center text-gray-400">
+                    <span className="text-2xl">🖼️</span>
+                  </div>
+                )}
+                
+                <div className="flex-1">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={uploadImage}
+                    className="hidden"
+                    id="image-upload"
+                  />
+                  <label 
+                    htmlFor="image-upload"
+                    className="inline-block bg-blue-50 text-blue-600 px-4 py-2 rounded-lg border border-blue-200 font-bold text-sm cursor-pointer hover:bg-blue-100 transition-colors"
+                  >
+                    {selectedEntity.image ? "Replace Image" : "Upload to /public/images"}
+                  </label>
+                  <p className="text-[10px] text-gray-400 mt-1">
+                    Directly saves to your project folder
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="mb-6 space-y-4">
