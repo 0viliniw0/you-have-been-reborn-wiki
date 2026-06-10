@@ -1,0 +1,18 @@
+[
+  {
+    "id": "8f22906f-cb79-4e02-aa7c-0cc77a2106fc",
+    "slug": "test",
+    "name": {
+      "ru": "Тест",
+      "en": "Test"
+    },
+    "description": {
+      "ru": "тест",
+      "en": "test"
+    },
+    "category": "items",
+    "tags": ["тест"],
+    "updatedAt": "2026-06-10T12:56:29.057Z",
+    "recipeId": "recipe-1"
+  }
+]
