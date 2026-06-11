@@ -13,7 +13,7 @@
     "image": "/images/bestiary_deer_1781174349602.png",
     "tags": [],
     "category": "bestiary",
-    "updatedAt": "2026-06-11T10:37:27.321Z",
+    "updatedAt": "2026-06-11T13:08:38.282Z",
     "behavior": "passive",
     "drops": [
       {
@@ -21,8 +21,8 @@
         "chance": 100
       },
       {
-        "id": "39bdd553-9403-41e0-9935-584c4099081b",
-        "chance": 80
+        "id": "7dca7e66-2d69-4d39-a6c6-9363bbf01e27",
+        "chance": 10
       }
     ]
   }
