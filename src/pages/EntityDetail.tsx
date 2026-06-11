@@ -74,19 +74,6 @@ export default function EntityDetail() {
                 <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest rounded-lg">
                   {t(`categories.${entity.category}`)}
                 </span>
-                {behavior && behavior !== "aggressive" && (
-                  <span
-                    className={`inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-lg shadow-lg ${
-                      behavior === "boss"
-                        ? "bg-red-600 text-white shadow-red-500/20 animate-pulse"
-                        : behavior === "peaceful"
-                          ? "bg-emerald-500 text-white shadow-emerald-500/20"
-                          : "bg-amber-500 text-white shadow-amber-500/20"
-                    }`}
-                  >
-                    {behavior} Entity
-                  </span>
-                )}
               </div>
               <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-8">
                 {entity.name[currentLang] || entity.name["ru"]}
