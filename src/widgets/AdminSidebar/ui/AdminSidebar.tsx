@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Entity } from "../../../shared/types/entities";
-import { LanguageSwitcher } from "../../../shared/ui/LanguageSwitcher";
 
 interface AdminSidebarProps {
   allEntities: Entity[];

@@ -135,9 +135,6 @@ export default function AdminPanel() {
                   className="px-10 py-5 bg-blue-600 text-white rounded-[2rem] font-black text-lg shadow-2xl shadow-blue-500/50 flex items-center gap-4"
                 >
                   <span>Push {draftEntities.length + deletedIds.length} Changes to Disk</span>
-                  <span className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm italic">
-                    S
-                  </span>
                 </motion.button>
               </motion.div>
             )}
