@@ -19,5 +19,25 @@
       "level": 1
     },
     "image": "/images/skills_new_1781177807764.png"
-  }
+  },{
+  "id": "f491a6a1-5e2c-4eba-9df6-ee58e0f27129",
+  "slug": "stable-azure-soulstone",
+  "name": {
+    "ru": "Стабильный лазурный камень души",
+    "en": "Stable azure soulstone"
+  },
+  "description": {
+    "ru": "Стабильный камень души, в котором сосредоточена мана его носителя. Его мягкое лазурное свечение стабилизирует потоки маны и делает его ценным компонентом для создания магических инструментов, оружия, а также печатей и заклинаний.\n\n**Источник получения:**\n\n* Добывается с существа: Олень, Баран\n\n> Подсказка: Из **стабильного**  камня легче извлекать энергию манны, а так же он менее подвержен разрушению\n> Особенно полезен для создания магических печатей, усиливающих контроль над маной и защитные заклинания.\n\n> «Где лазурь души спокойна — там даже хаос вынужден подчиниться.»",
+    "en": "A stable soul stone in which the mana of its bearer is concentrated. Its soft azure glow stabilizes mana flows, making it a valuable component for crafting magical tools, weapons, as well as seals and spells.\n\n**Source of acquisition:**\n\n* Obtained from creature: Deer\n\n> Hint: It is easier to extract mana energy from a **stable** stone, and it is also less prone to destruction.\n> Especially useful for creating magical seals that enhance mana control and defensive spells.\n\n> “Where the azure of the soul is calm, even chaos is forced to obey.”"
+  },
+  "category": "consumables",
+  "tags": [],
+  "updatedAt": "2026-06-11T14:08:11.188Z",
+  "manaCost": 0,
+  "cooldown": 0,
+  "requirements": {
+    "level": 1
+  },
+  "image": "/images/skills_new-1781185297174_1781185301363.png"
+}
 ]

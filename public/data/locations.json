@@ -1,18 +1,18 @@
 [
   {
-    "id": "eb24d594-56c3-4e70-8183-bba8ff5bd3d7",
-    "slug": "new-1781190897454",
+    "id": "a389641f-aa7c-43e8-a7e1-4fed76aabe89",
+    "slug": "magical-forest",
     "name": {
-      "ru": "Новая сущность",
-      "en": "New Entity"
+      "ru": "Магический лес",
+      "en": "Magical forest"
     },
     "description": {
-      "ru": "",
-      "en": ""
+      "ru": "Магический лес — древний биом, пропитанный нестабильной природной магией. Деревья здесь светятся мягким свечением, а воздух насыщен остаточной маной, влияющей на заклинания и поведение существ. В этом месте реальность кажется слегка искажённой, а магия усиливается сама по себе.\n\n**Обитатели биома:**\n\n* Олень, Святой олень, Волк, Лютоволк, Лиса, Большая лиса, Баран, Большерогий Баран, Овца белоснежная, Черная овца\n* Гремлин летун, Люминария Эфирная, Огненная саламандра, Саламандра, Кровавый паук\n* Темный эльф, Гоблин с топором, Гоблин\n\n**Ресурсы биома:**\n\n\n\n**Боссы биома:**\n* Дух цветов\n\n> «Лес не просто живёт — он наблюдает и запоминает каждое заклинание, произнесённое в его тени.»\n\n**Подсказка:**\nВ этом биоме магия восстанавливается быстрее, но некоторые заклинания могут вести себя нестабильно. Будь осторожен при использовании разрушительных чар.\n\n> **Совет игроку:**\n> Ищи редкие ресурсы ночью — в это время магические потоки становятся более концентрированными и легче обнаружить скрытые сущности и аномалии.",
+      "en": "The Magical Forest is an ancient biome saturated with unstable natural magic. The trees here glow with a soft radiance, while the air is filled with residual mana that influences spells and the behavior of creatures. In this place, reality feels slightly distorted, and magic seems to amplify itself.\n\n**Biome inhabitants:**\n\n* Deer, Sacred Deer, Wolf, Dire Wolf, Fox, Large Fox, Ram, Great-Horned Ram, Snow-White Sheep, Black Sheep\n* Flying Gremlin, Ethereal Luminaris, Fire Salamander, Salamander, Blood Spider\n* Dark Elf, Axe Goblin, Goblin\n\n**Biome resources:**\n\n\n\n**Biome bosses:**\n\n* Spirit of Flowers\n\n> “The forest does not merely live — it observes and remembers every spell cast within its shadow.”\n\n**Hint:**\nIn this biome, mana regenerates faster, but some spells may behave unpredictably. Be cautious when using destructive magic.\n\n> **Player tip:**\n> Search for rare resources at night — during this time, magical currents become more concentrated, making hidden entities and anomalies easier to detect."
     },
+    "image": "/images/locations_magical-forest_1781192409643.png",
     "tags": [],
     "category": "locations",
-    "updatedAt": "2026-06-11T15:15:01.439Z",
-    "type": "zone"
+    "updatedAt": "2026-06-11T15:40:09.724Z"
   }
 ]

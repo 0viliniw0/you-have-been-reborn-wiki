@@ -14,5 +14,37 @@
     "tags": [],
     "category": "materials",
     "updatedAt": "2026-06-11T13:06:49.523Z"
+  },
+  {
+    "id": "f93e4b2a-55c4-4d8e-8835-454f959d3b31",
+    "slug": "deer-horn",
+    "name": {
+      "ru": "Рог оленя",
+      "en": "Deer horn"
+    },
+    "description": {
+      "ru": " Прочный природой рог, пропитанный силой древних лесов. Используется в ремесле как редкий материал для создания инструментов, оружия, амулетов и усиления предметов. \n\n**Источник получения:**\n\n* Добывается с существа: Олень.\n\n> Подсказка: Рог особенно полезен для создания рукоятей оружия, магических амулетов и усиления ремесленных предметов, связанных с природной магией. ",
+      "en": "A naturally hardened horn, imbued with the power of ancient forests. It is used in crafting as a rare material for creating tools, weapons, amulets, and enhancing items.\n\n**Source of obtaining:**\n\n* Dropped from the creature: Deer.\n\n> Tip: The horn is especially useful for crafting weapon handles, magical amulets, and enhancing crafted items connected to nature magic."
+    },
+    "image": "/images/skills_new-1781183978248_1781183983439.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-11T14:32:19.561Z"
+  },
+  {
+    "id": "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+    "slug": "holy-deer-hide",
+    "name": {
+      "ru": "Шкура святого оленя",
+      "en": "Holy deer hide"
+    },
+    "description": {
+      "ru": "Шкура, пропитанная священной энергией, оставшейся от редких существ, отмеченных благословением. Из неё создают лёгкие, но прочные плащи одежды и заготовки, усиливающие связь с святой магией и защиту носителя. \n\n**Источник получения:**\n\n* Добывается с существа: **Святой олень**\n\n>**Подсказка:**\n>Все изделия, созданные из этой шкуры, получают усиление урона по нежити и лучше проводят святую магию.\n\n> «Там, где ступает святой зверь, сама земля вспоминает о свете.»",
+      "en": "Sacred energy-soaked hide left from rare creatures marked by blessing. It is used to create light but durable cloaks, clothing, and crafting materials that enhance the wearer’s connection to holy magic and protection.\n\n**Source:**\n\n* Obtained from creature: **Holy Deer**\n\n> **Hint:**\n> All items crafted from this hide gain increased damage against the undead and conduct holy magic more effectively.\n\n> “Where the sacred beast steps, even the earth remembers the light.”"
+    },
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-11T15:05:34.683Z",
+    "image": "/images/materials_new-1781188252520_1781189280928.png"
   }
 ]
