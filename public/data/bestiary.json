@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "id": "45fc5404-9174-4fa2-bec1-45cad50a4adb",
+    "slug": "deer",
+    "name": {
+      "ru": "Олень",
+      "en": "Deer"
+    },
+    "description": {
+      "ru": "Олень  - грациозное лесное существо, обитающее среди древних деревьев и волшебных рощ. По своей природе осторожен и старается избегать опасностей, однако в случае угрозы способен дать достойный отпор.\n\n- Биомы появления: Лес, Магический лес.\n- Шанс появления: 60%.\n- Можно приручить / оседлать: Нет.\n\n>Подходите медленно и осторожно — испуганный олень убежит задолго до того, как вы приблизитесь.\n\n***Символ дикой природы и скрытой в ней магии.***",
+      "en": "\nDeer are graceful forest creatures that roam among ancient trees and enchanted groves. Cautious by nature, they prefer to avoid danger, but when threatened they are capable of putting up a worthy defense.\n\n- Spawn Biomes: Forest, Magic Forest.\n- Spawn Chance: 60%.\n- Can Be Tamed / Ridden: No.\n\n***Move slowly and carefully — a frightened deer will flee long before you get close.***\n\n***A symbol of the wild and the magic hidden within it.***"
+    },
+    "image": "/images/bestiary_deer_1781174349602.png",
+    "tags": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-11T10:37:27.321Z",
+    "behavior": "passive",
+    "drops": [
+      {
+        "id": "39bdd553-9403-41e0-9935-584c4099081b",
+        "chance": 100
+      },
+      {
+        "id": "39bdd553-9403-41e0-9935-584c4099081b",
+        "chance": 80
+      }
+    ]
+  }
+]
