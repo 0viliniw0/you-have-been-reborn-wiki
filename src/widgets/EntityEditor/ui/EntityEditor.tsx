@@ -3,12 +3,8 @@ import {
   Entity,
   Bestiary,
   Recipe,
-  Skill,
   Equipment,
-  Location,
-  Npc,
 } from "../../../shared/types/entities";
-import { ObjectMapInput } from "../../../features/admin/ui/ObjectMapInput";
 import { IngredientsInput } from "../../../features/admin/ui/IngredientsInput";
 import { RelationSelect } from "../../../features/admin/ui/RelationSelect";
 
@@ -109,16 +105,6 @@ export const EntityEditor = ({
                     placeholder="/images/example.png"
                   />
                 </div>
-                <div className="p-6 bg-blue-50/50 dark:bg-blue-900/10 rounded-3xl border border-blue-100 dark:border-blue-900/20">
-                  <p className="text-xs font-medium text-blue-600 dark:text-blue-400 leading-relaxed">
-                    💡 Best images are transparent PNGs (512x512). Uploads are
-                    automatically saved to your local{" "}
-                    <code className="bg-blue-100 dark:bg-blue-900/50 px-1 rounded">
-                      /public/images
-                    </code>{" "}
-                    folder.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -201,7 +187,7 @@ export const EntityEditor = ({
             </h3>
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4 mb-4 flex">
                   Russian Description
                 </label>
                 <textarea
@@ -214,7 +200,7 @@ export const EntityEditor = ({
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4 mb-4 flex">
                   English Description
                 </label>
                 <textarea
@@ -229,69 +215,18 @@ export const EntityEditor = ({
             </div>
           </div>
 
-          {/* Category Specific Sections */}
+          {/* Connections Sections */}
           <div className="p-12 bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
             <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-4">
-              Technical Details
+              Structural Connections
             </h3>
-            {selectedEntity.category === "skills" && (
-              <div className="space-y-8">
-                <div className="grid grid-cols-2 gap-8">
-                  <div className="col-span-1">
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-                      Mana Cost
-                    </label>
-                    <input
-                      type="number"
-                      className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-black text-blue-600 outline-none"
-                      value={(selectedEntity as Skill).manaCost || 0}
-                      onChange={(e) =>
-                        updateField("manaCost", Number(e.target.value))
-                      }
-                    />
-                  </div>
-                  <div className="col-span-1">
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-                      Cooldown (s)
-                    </label>
-                    <input
-                      type="number"
-                      className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-black text-blue-600 outline-none"
-                      value={(selectedEntity as Skill).cooldown || 0}
-                      onChange={(e) =>
-                        updateField("cooldown", Number(e.target.value))
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800">
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-4">
-                    Requirements
-                  </label>
-                  <div className="grid grid-cols-2 gap-4">
-                    <input
-                      type="number"
-                      placeholder="Level Required"
-                      className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl text-sm font-bold"
-                      value={(selectedEntity as Skill).requirements?.level || 1}
-                      onChange={(e) =>
-                        updateField("requirements", {
-                          ...(selectedEntity as Skill).requirements,
-                          level: Number(e.target.value),
-                        })
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
 
             {selectedEntity.category === "equipment" && (
               <div className="space-y-8">
                 <div className="grid grid-cols-2 gap-8">
                   <div>
                     <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-                      Type
+                      Equipment Type
                     </label>
                     <select
                       className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold"
@@ -303,36 +238,6 @@ export const EntityEditor = ({
                       <option value="accessory">Accessory</option>
                     </select>
                   </div>
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-                      Slot
-                    </label>
-                    <input
-                      placeholder="e.g. main-hand, chest"
-                      className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold"
-                      value={(selectedEntity as Equipment).slot || ""}
-                      onChange={(e) => updateField("slot", e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800">
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-4">
-                    Requirements
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="Level Required"
-                    className="w-48 p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl text-sm font-bold"
-                    value={
-                      (selectedEntity as Equipment).requirements?.level || 1
-                    }
-                    onChange={(e) =>
-                      updateField("requirements", {
-                        ...(selectedEntity as Equipment).requirements,
-                        level: Number(e.target.value),
-                      })
-                    }
-                  />
                 </div>
                 <RelationSelect
                   label="Inherent Skills"
@@ -342,12 +247,6 @@ export const EntityEditor = ({
                   selectedEntity={selectedEntity}
                   allEntities={allEntities}
                   currentLang={currentLang}
-                  updateField={updateField}
-                />
-                <ObjectMapInput
-                  label="Combat Stats"
-                  field="stats"
-                  entity={selectedEntity}
                   updateField={updateField}
                 />
               </div>
@@ -373,19 +272,6 @@ export const EntityEditor = ({
                       <option value="peaceful">Peaceful</option>
                     </select>
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">
-                      Level
-                    </label>
-                    <input
-                      type="number"
-                      className="w-full px-6 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all"
-                      value={(selectedEntity as Bestiary).level || 0}
-                      onChange={(e) =>
-                        updateField("level", parseInt(e.target.value))
-                      }
-                    />
-                  </div>
                 </div>
                 <RelationSelect
                   label="Habitat Locations"
@@ -395,12 +281,6 @@ export const EntityEditor = ({
                   selectedEntity={selectedEntity}
                   allEntities={allEntities}
                   currentLang={currentLang}
-                  updateField={updateField}
-                />
-                <ObjectMapInput
-                  label="Combat Stats"
-                  field="stats"
-                  entity={selectedEntity}
                   updateField={updateField}
                 />
                 <div className="mb-6 p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800">
@@ -433,7 +313,8 @@ export const EntityEditor = ({
                               )
                               .map((x) => (
                                 <option key={x.id} value={x.id}>
-                                  [{x.category.toUpperCase()}] {x.name[currentLang] || x.name["ru"]}
+                                  [{x.category.toUpperCase()}]{" "}
+                                  {x.name[currentLang] || x.name["ru"]}
                                 </option>
                               ))}
                           </select>
@@ -457,9 +338,9 @@ export const EntityEditor = ({
                             onClick={() =>
                               updateField(
                                 "drops",
-                                ((selectedEntity as Bestiary).drops || []).filter(
-                                  (_, i) => i !== idx,
-                                ),
+                                (
+                                  (selectedEntity as Bestiary).drops || []
+                                ).filter((_, i) => i !== idx),
                               )
                             }
                             className="p-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-colors"
@@ -485,84 +366,17 @@ export const EntityEditor = ({
               </div>
             )}
 
-            {selectedEntity.category === "locations" && (
-              <div className="space-y-8">
-                <div className="grid grid-cols-2 gap-8">
-                  <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
-                      Type
-                    </label>
-                    <select
-                      className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold"
-                      value={(selectedEntity as Location).type}
-                      onChange={(e) => updateField("type", e.target.value)}
-                    >
-                      <option value="city">City</option>
-                      <option value="zone">Zone</option>
-                      <option value="dungeon">Dungeon</option>
-                      <option value="raid">Raid</option>
-                    </select>
-                  </div>
-                </div>
-                <RelationSelect
-                  label="Parent Zone"
-                  field="parentLocationId"
-                  categories={["locations"]}
-                  selectedEntity={selectedEntity}
-                  allEntities={allEntities}
-                  currentLang={currentLang}
-                  updateField={updateField}
-                />
-              </div>
-            )}
-
             {selectedEntity.category === "npcs" && (
-              <div className="space-y-8">
-                <div className="grid grid-cols-2 gap-8">
-                  <div className="col-span-1">
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 ml-4">
-                      Role (RU)
-                    </label>
-                    <input
-                      className="w-full px-8 py-5 bg-slate-50 dark:bg-slate-800 border-none rounded-[2rem] text-sm font-bold shadow-inner outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                      value={(selectedEntity as Npc).role?.ru || ""}
-                      onChange={(e) => {
-                        const current = (selectedEntity as Npc).role || {
-                          ru: "",
-                          en: "",
-                        };
-                        updateField("role", { ...current, ru: e.target.value });
-                      }}
-                    />
-                  </div>
-                  <div className="col-span-1">
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 ml-4">
-                      Role (EN)
-                    </label>
-                    <input
-                      className="w-full px-8 py-5 bg-slate-50 dark:bg-slate-800 border-none rounded-[2rem] text-sm font-bold shadow-inner outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
-                      value={(selectedEntity as Npc).role?.en || ""}
-                      onChange={(e) => {
-                        const current = (selectedEntity as Npc).role || {
-                          ru: "",
-                          en: "",
-                        };
-                        updateField("role", { ...current, en: e.target.value });
-                      }}
-                    />
-                  </div>
-                </div>
-                <RelationSelect
-                  label="Spawn Locations"
-                  field="locationIds"
-                  categories={["locations"]}
-                  multiple={true}
-                  selectedEntity={selectedEntity}
-                  allEntities={allEntities}
-                  currentLang={currentLang}
-                  updateField={updateField}
-                />
-              </div>
+              <RelationSelect
+                label="Spawn Locations"
+                field="locationIds"
+                categories={["locations"]}
+                multiple={true}
+                selectedEntity={selectedEntity}
+                allEntities={allEntities}
+                currentLang={currentLang}
+                updateField={updateField}
+              />
             )}
 
             {selectedEntity.category === "recipes" && (
@@ -592,18 +406,6 @@ export const EntityEditor = ({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <RelationSelect
-                    label="Crafting Station (Optional)"
-                    field="stationId"
-                    categories={["locations", "npcs"]}
-                    selectedEntity={selectedEntity}
-                    allEntities={allEntities}
-                    currentLang={currentLang}
-                    updateField={updateField}
-                  />
-                </div>
-
                 <IngredientsInput
                   entity={selectedEntity}
                   allEntities={allEntities}
@@ -615,9 +417,6 @@ export const EntityEditor = ({
 
             {/* Universal Connections */}
             <div className="pt-8 mt-8 border-t border-slate-100 dark:border-slate-800">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6 ml-4">
-                Manual Connections (Arbitrary Links)
-              </h4>
               <RelationSelect
                 label="Related Entities"
                 field="relatedIds"
@@ -662,12 +461,6 @@ export const EntityEditor = ({
                   </div>
                 </div>
               )}
-
-              <p className="text-[10px] text-slate-400 italic mt-4 ml-4">
-                💡 Use this to link entities that don't have direct fields like
-                'location' or 'drops' (e.g., link a hidden item to its
-                location).
-              </p>
             </div>
           </div>
 

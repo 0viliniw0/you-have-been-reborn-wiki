@@ -34,7 +34,7 @@ export const RelationSelect = ({
         <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-4">
           {label}
         </label>
-        <div className="flex flex-wrap gap-2 mb-4 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800">
+        <div className="flex flex-wrap gap-2 mb-4 px-6 py-4 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800">
           {selectedIds.length === 0 && (
             <span className="text-[10px] font-bold text-slate-400 uppercase p-2">
               None Selected

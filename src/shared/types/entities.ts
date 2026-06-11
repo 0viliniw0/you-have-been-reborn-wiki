@@ -32,26 +32,15 @@ export const BaseEntitySchema = z.object({
 
 export const SkillSchema = BaseEntitySchema.extend({
   category: z.literal("skills"),
-  manaCost: z.number().optional(),
-  cooldown: z.number().optional(),
-  requirements: z
-    .object({
-      level: z.number().optional(),
-    })
-    .optional(),
 });
+
+export const EquipmentType = z.enum(["weapon", "armor", "accessory"]);
+export type EquipmentType = z.infer<typeof EquipmentType>;
 
 export const EquipmentSchema = BaseEntitySchema.extend({
   category: z.literal("equipment"),
-  type: z.enum(["weapon", "armor", "accessory"]),
-  slot: z.string().optional(),
-  stats: z.record(z.string(), z.number()).optional(),
+  type: EquipmentType.default("weapon"),
   skillIds: z.array(z.string()).default([]),
-  requirements: z
-    .object({
-      level: z.number().optional(),
-    })
-    .optional(),
 });
 
 export const ConsumableSchema = BaseEntitySchema.extend({
@@ -68,20 +57,17 @@ export const EntityBehavior = z.enum([
   "passive",
   "peaceful",
 ]);
-
 export type EntityBehavior = z.infer<typeof EntityBehavior>;
 
 export const BestiarySchema = BaseEntitySchema.extend({
   category: z.literal("bestiary"),
   behavior: EntityBehavior.default("aggressive"),
-  level: z.number().optional(),
   locationIds: z.array(z.string()).default([]),
-  stats: z.record(z.string(), z.number()).optional(),
   drops: z
     .array(
       z.object({
-        id: z.string(), // ID of equipment, consumable or material
-        chance: z.number(), // 0-100
+        id: z.string(),
+        chance: z.number(),
       }),
     )
     .optional(),
@@ -89,13 +75,10 @@ export const BestiarySchema = BaseEntitySchema.extend({
 
 export const LocationSchema = BaseEntitySchema.extend({
   category: z.literal("locations"),
-  type: z.enum(["city", "zone", "dungeon", "raid"]),
-  parentLocationId: z.string().optional(), // For sub-zones
 });
 
 export const NpcSchema = BaseEntitySchema.extend({
   category: z.literal("npcs"),
-  role: LocalizedStringSchema.optional(),
   locationIds: z.array(z.string()).default([]),
 });
 
@@ -109,7 +92,6 @@ export const RecipeSchema = BaseEntitySchema.extend({
       quantity: z.number(),
     }),
   ),
-  stationId: z.string().optional(), // Can be a location or NPC
 });
 
 export type BaseEntity = z.infer<typeof BaseEntitySchema>;
