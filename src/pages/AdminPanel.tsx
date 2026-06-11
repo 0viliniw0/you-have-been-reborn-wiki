@@ -1,6 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Entity, Bestiary, Recipe } from "../shared/types/entities";
+import {
+  Entity,
+  EntityCategory,
+  BaseEntity,
+  Bestiary,
+  Recipe,
+} from "../shared/types/entities";
 
 import { loadAllEntities } from "../shared/api/dataService";
 import { useTranslation } from "react-i18next";
@@ -9,6 +15,17 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const STORAGE_KEY = "wiki_editor_state";
 
+const ENTITY_DEFAULTS: Record<EntityCategory, Partial<Entity>> = {
+  skills: { manaCost: 0, cooldown: 0, requirements: { level: 1 } },
+  equipment: { type: "weapon", stats: {}, requirements: { level: 1 } },
+  consumables: {},
+  materials: {},
+  bestiary: { behavior: "aggressive", level: 1, stats: {}, drops: [] },
+  locations: { type: "zone" },
+  npcs: { role: { ru: "", en: "" } },
+  recipes: { resultId: "", resultQuantity: 1, ingredients: [] },
+};
+
 export default function AdminPanel() {
   const { i18n } = useTranslation();
   const queryClient = useQueryClient();
@@ -16,7 +33,7 @@ export default function AdminPanel() {
 
   const [draftEntities, setDraftEntities] = useState<Entity[]>([]);
   const [deletedIds, setDeletedIds] = useState<string[]>([]);
-  const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
+  const [selectedEntityId, setSelectedEntityId] = useState<string | null>(null);
   const [dirHandle, setDirHandle] = useState<FileSystemDirectoryHandle | null>(
     null,
   );
@@ -38,9 +55,13 @@ export default function AdminPanel() {
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-      const { drafts = [], deleted = [] } = JSON.parse(saved);
-      setDraftEntities(drafts);
-      setDeletedIds(deleted);
+      try {
+        const { drafts = [], deleted = [] } = JSON.parse(saved);
+        setDraftEntities(drafts);
+        setDeletedIds(deleted);
+      } catch (e) {
+        console.error("Failed to parse editor state", e);
+      }
     }
 
     const restoreHandle = async () => {
@@ -57,7 +78,6 @@ export default function AdminPanel() {
         if (handle) {
           setDirHandle(handle);
           const mode = "readwrite";
-          // @ts-expect-error - File System Access API
           if ((await handle.queryPermission({ mode })) === "granted") {
             setIsAuthorized(true);
           }
@@ -71,19 +91,14 @@ export default function AdminPanel() {
 
   const connectToFolder = async () => {
     try {
-      let handle = dirHandle;
       const mode = "readwrite";
-      // @ts-expect-error - File System Access API
-      if (!handle) handle = await window.showDirectoryPicker();
+      const handle = await window.showDirectoryPicker();
       if (!handle) return;
 
-      // @ts-expect-error - File System Access API
       if ((await handle.queryPermission({ mode })) !== "granted") {
-        // @ts-expect-error - File System Access API
         await handle.requestPermission({ mode });
       }
 
-      // @ts-expect-error - File System Access API
       if ((await handle.queryPermission({ mode })) === "granted") {
         const db = await getDB();
         const tx = db.transaction("handles", "readwrite");
@@ -97,21 +112,54 @@ export default function AdminPanel() {
     }
   };
 
+  const { data: dbEntities } = useQuery({
+    queryKey: ["entities", "all"],
+    queryFn: loadAllEntities,
+  });
+
+  const allAvailableEntities = useMemo(() => {
+    const map = new Map<string, Entity>();
+    dbEntities?.forEach((e) => map.set(e.id, e));
+    draftEntities.forEach((e) => map.set(e.id, e));
+    deletedIds.forEach((id) => map.delete(id));
+    return Array.from(map.values());
+  }, [dbEntities, draftEntities, deletedIds]);
+
+  const selectedEntity = useMemo(
+    () => allAvailableEntities.find((e) => e.id === selectedEntityId) || null,
+    [allAvailableEntities, selectedEntityId],
+  );
+
   const updateField = (field: string, value: unknown) => {
     if (!selectedEntity) return;
-    const updated = {
-      ...selectedEntity,
-      [field]: value,
-      updatedAt: new Date().toISOString(), // ← добавить
-    } as Entity;
-    setSelectedEntity(updated);
-    const index = draftEntities.findIndex((e) => e.id === updated.id);
-    let newDrafts: Entity[];
-    if (index > -1) {
-      newDrafts = draftEntities.map((e) => (e.id === updated.id ? updated : e));
+
+    let updated: Entity;
+
+    if (field === "category") {
+      const newCat = value as EntityCategory;
+      const baseInfo: BaseEntity = {
+        id: selectedEntity.id,
+        slug: selectedEntity.slug,
+        name: selectedEntity.name,
+        description: selectedEntity.description,
+        image: selectedEntity.image,
+        tags: selectedEntity.tags,
+        category: newCat,
+        updatedAt: new Date().toISOString(),
+      };
+      updated = { ...baseInfo, ...ENTITY_DEFAULTS[newCat] } as Entity;
     } else {
-      newDrafts = [...draftEntities, updated];
+      updated = {
+        ...selectedEntity,
+        [field]: value,
+        updatedAt: new Date().toISOString(),
+      } as Entity;
     }
+
+    const newDrafts = draftEntities.some((e) => e.id === updated.id)
+      ? draftEntities.map((e) => (e.id === updated.id ? updated : e))
+      : [...draftEntities, updated];
+
     setDraftEntities(newDrafts);
     localStorage.setItem(
       STORAGE_KEY,
@@ -146,6 +194,7 @@ export default function AdminPanel() {
       updateField("image", `/images/${fileName}`);
     } catch (err) {
       console.error(err);
+      alert("Failed to upload image");
     }
   };
 
@@ -159,10 +208,9 @@ export default function AdminPanel() {
         groups[e.category].push(e);
       });
 
-      // ИСПРАВЛЕНИЕ 3: deletions ищем в allAvailableEntities, а не только в dbEntities
       const deletionsByCategory: Record<string, string[]> = {};
       deletedIds.forEach((id) => {
-        const entity = allAvailableEntities.find((e) => e.id === id);
+        const entity = (dbEntities || []).find((e) => e.id === id);
         if (entity) {
           if (!deletionsByCategory[entity.category])
             deletionsByCategory[entity.category] = [];
@@ -176,7 +224,6 @@ export default function AdminPanel() {
       ]);
 
       for (const cat of allCats) {
-        // ИСПРАВЛЕНИЕ 2: не используем create:true при чтении — отдельно пробуем прочитать
         let existingData: Entity[] = [];
         try {
           const handle = await dataDir.getFileHandle(`${cat}.json`);
@@ -184,7 +231,7 @@ export default function AdminPanel() {
           const text = await file.text();
           if (text.trim()) existingData = JSON.parse(text) as Entity[];
         } catch {
-          // Файл не существует — начинаем с пустого массива, это нормально
+          // File doesn't exist yet
         }
 
         const currentDeletions = deletionsByCategory[cat] || [];
@@ -199,7 +246,6 @@ export default function AdminPanel() {
           else updated.push(e);
         });
 
-        // Создаём/перезаписываем только при записи
         const writeHandle = await dataDir.getFileHandle(`${cat}.json`, {
           create: true,
         });
@@ -208,32 +254,38 @@ export default function AdminPanel() {
         await writable.close();
       }
 
-      // Сбрасываем состояние
       setDraftEntities([]);
       setDeletedIds([]);
       localStorage.removeItem(STORAGE_KEY);
-      setSelectedEntity(null);
+      setSelectedEntityId(null);
       await queryClient.invalidateQueries({ queryKey: ["entities"] });
 
-      alert("Saved!");
+      setTimeout(() => alert("Saved!"), 100);
     } catch (err) {
       alert(err instanceof Error ? err.message : String(err));
     }
   };
 
-  const { data: dbEntities } = useQuery({
-    queryKey: ["entities", "all"],
-    queryFn: loadAllEntities,
-  });
+  const createNewEntity = () => {
+    const ent: Entity = {
+      id: crypto.randomUUID(),
+      slug: "new-" + Date.now(),
+      name: { ru: "Новая сущность", en: "New Entity" },
+      description: { ru: "", en: "" },
+      category: "skills",
+      tags: [],
+      updatedAt: new Date().toISOString(),
+      ...ENTITY_DEFAULTS["skills"],
+    } as Entity;
 
-  // Create a combined list where drafts override DB entities
-  const allAvailableEntities = (() => {
-    const map = new Map<string, Entity>();
-    dbEntities?.forEach((e) => map.set(e.id, e));
-    draftEntities.forEach((e) => map.set(e.id, e));
-    deletedIds.forEach((id) => map.delete(id));
-    return Array.from(map.values());
-  })();
+    const newDrafts = [...draftEntities, ent];
+    setDraftEntities(newDrafts);
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ drafts: newDrafts, deleted: deletedIds }),
+    );
+    setSelectedEntityId(ent.id);
+  };
 
   const ObjectMapInput = ({
     label,
@@ -563,29 +615,7 @@ export default function AdminPanel() {
                 Library
               </h2>
               <button
-                onClick={() => {
-                  const ent: Entity = {
-                    id: crypto.randomUUID(),
-                    slug: "new-" + Date.now(),
-                    name: { ru: "Новый", en: "New" },
-                    description: { ru: "", en: "" },
-                    category: "skills",
-                    tags: [],
-                    updatedAt: new Date().toISOString(),
-                    manaCost: 0,
-                    cooldown: 0,
-                    requirements: { level: 1 },
-                  } as Entity;
-
-                  // Сразу добавляем в drafts — не через updateField
-                  const newDrafts = [...draftEntities, ent];
-                  setDraftEntities(newDrafts);
-                  localStorage.setItem(
-                    STORAGE_KEY,
-                    JSON.stringify({ drafts: newDrafts, deleted: deletedIds }),
-                  );
-                  setSelectedEntity(ent);
-                }}
+                onClick={createNewEntity}
                 className="bg-blue-600 text-white px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform"
               >
                 + Create New
@@ -648,11 +678,11 @@ export default function AdminPanel() {
               })
               .map((e) => {
                 const isDraft = draftEntities.some((d) => d.id === e.id);
-                const isActive = selectedEntity?.id === e.id;
+                const isActive = selectedEntityId === e.id;
                 return (
                   <button
                     key={e.id}
-                    onClick={() => setSelectedEntity(e)}
+                    onClick={() => setSelectedEntityId(e.id)}
                     className={`w-full p-5 rounded-[1.8rem] text-left transition-all border group relative ${
                       isActive
                         ? "bg-blue-600 border-blue-500 shadow-2xl shadow-blue-500/20 translate-x-1"
@@ -1118,7 +1148,6 @@ export default function AdminPanel() {
                         </div>
                       )}
 
-
                       {selectedEntity.category === "locations" && (
                         <RelationSelect
                           label="Parent Zone"
@@ -1197,7 +1226,7 @@ export default function AdminPanel() {
                                 deleted: newDeleted,
                               }),
                             );
-                            setSelectedEntity(null);
+                            setSelectedEntityId(null);
                           }
                         }}
                         className="w-full py-4 bg-red-50 dark:bg-red-950/20 text-red-600 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-red-100 transition-colors"
