@@ -35,14 +35,15 @@ export const IngredientsInput = ({
   };
 
   return (
-    <div className="p-10 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border border-slate-200 dark:border-slate-800">
-      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-8 ml-4">
-        Ingredients Required
+    <div className="space-y-4">
+      <h4 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">
+        Recipe Ingredients
       </h4>
-      <div className="space-y-3 mb-8">
+      
+      <div className="space-y-1">
         {ingredients.length === 0 && (
-          <div className="text-center py-8 text-slate-400 text-xs font-bold uppercase tracking-widest bg-white dark:bg-slate-950 rounded-3xl border-2 border-dashed border-slate-100 dark:border-slate-800/50">
-            No Ingredients Added
+          <div className="py-6 text-center bg-slate-50/50 dark:bg-slate-950/20 rounded-xl border-2 border-dashed border-slate-100 dark:border-slate-800 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+            No ingredients
           </div>
         )}
         {ingredients.map((ing) => {
@@ -50,36 +51,30 @@ export const IngredientsInput = ({
           return (
             <div
               key={ing.id}
-              className="flex items-center justify-between p-5 bg-white dark:bg-slate-950 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm group"
+              className="flex items-center gap-3 p-2 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl shadow-sm group"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
-                  {item?.image ? (
-                    <img
-                      src={
-                        item.image.startsWith("http")
-                          ? item.image
-                          : `.${item.image}`
-                      }
-                      className="w-full h-full object-contain p-2"
-                      alt=""
-                    />
-                  ) : (
-                    <span className="opacity-20 text-xs">📦</span>
-                  )}
+              <div className="w-8 h-8 rounded-lg bg-slate-50 dark:bg-slate-800 flex items-center justify-center p-1.5 flex-shrink-0">
+                {item?.image ? (
+                  <img
+                    src={item.image.startsWith("http") ? item.image : `.${item.image}`}
+                    className="w-full h-full object-contain"
+                    alt=""
+                  />
+                ) : (
+                  <span className="text-[10px]">📦</span>
+                )}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[11px] font-black truncate leading-tight">
+                  {item?.name[currentLang] || item?.name["ru"] || ing.id}
                 </div>
-                <div>
-                  <div className="text-sm font-black">
-                    {item?.name[currentLang] || item?.name["ru"] || ing.id}
-                  </div>
-                  <div className="text-[10px] text-blue-600 uppercase font-black tracking-widest">
-                    Quantity: {ing.quantity}
-                  </div>
+                <div className="text-[9px] text-blue-600 font-bold uppercase tracking-tight">
+                  Qty: {ing.quantity}
                 </div>
               </div>
               <button
                 onClick={() => removeIngredient(ing.id)}
-                className="p-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-all hover:scale-110 active:scale-90"
+                className="w-7 h-7 flex items-center justify-center text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-lg transition-all"
               >
                 ✕
               </button>
@@ -87,33 +82,31 @@ export const IngredientsInput = ({
           );
         })}
       </div>
-      <div className="flex gap-3">
+
+      <div className="flex gap-2">
         <select
-          className="flex-1 px-6 py-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold appearance-none focus:ring-2 focus:ring-blue-500/20 outline-none"
+          className="flex-1 h-10 px-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-medium outline-none"
           value={selectedId}
           onChange={(e) => setSelectedId(e.target.value)}
         >
-          <option value="">Select Item...</option>
+          <option value="">Select item...</option>
           {allEntities
-            .filter((e) =>
-              ["materials", "equipment", "consumables"].includes(e.category)
-            )
+            .filter((e) => ["materials", "equipment", "consumables"].includes(e.category))
             .map((e) => (
               <option key={e.id} value={e.id}>
-                [{e.category.toUpperCase()}]{" "}
-                {e.name[currentLang] || e.name["ru"]}
+                [{e.category.toUpperCase()}] {e.name[currentLang] || e.name["ru"]}
               </option>
             ))}
         </select>
         <input
           type="number"
-          className="w-24 px-6 py-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-black text-center focus:ring-2 focus:ring-blue-500/20 outline-none"
+          className="w-16 h-10 px-2 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-black text-center"
           value={quantity}
           onChange={(e) => setQuantity(parseInt(e.target.value))}
         />
         <button
           onClick={addIngredient}
-          className="px-8 bg-blue-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:scale-105 active:scale-95 transition-all"
+          className="px-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-[10px] uppercase tracking-wider"
         >
           Add
         </button>

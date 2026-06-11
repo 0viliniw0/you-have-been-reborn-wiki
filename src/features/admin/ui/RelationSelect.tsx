@@ -30,33 +30,26 @@ export const RelationSelect = ({
   if (multiple) {
     const selectedIds = (value as string[]) || [];
     return (
-      <div className="mb-8">
-        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-4">
+      <div className="space-y-2">
+        <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">
           {label}
         </label>
-        <div className="flex flex-wrap gap-2 mb-4 px-6 py-4 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800">
+        <div className="p-3 bg-slate-50/50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800/50 min-h-[44px] flex flex-wrap gap-1.5">
           {selectedIds.length === 0 && (
-            <span className="text-[10px] font-bold text-slate-400 uppercase p-2">
-              None Selected
-            </span>
+            <span className="text-[10px] text-slate-400 italic py-1 px-2">None linked...</span>
           )}
           {selectedIds.map((id: string) => {
             const e = allEntities.find((x) => x.id === id);
             return (
               <span
                 key={id}
-                className="bg-blue-600 text-white pl-4 pr-2 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                className="bg-white dark:bg-slate-800 pl-2 pr-1 py-1 rounded-lg text-[10px] font-bold border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 shadow-sm"
               >
-                <span className="opacity-50 mr-1">[{e?.category.toUpperCase()}]</span>
-                {e?.name[currentLang] || e?.name["ru"] || id}
+                <span className="opacity-40 text-[8px]">{e?.category.slice(0,3).toUpperCase()}</span>
+                <span className="truncate max-w-[120px]">{e?.name[currentLang] || id}</span>
                 <button
-                  onClick={() =>
-                    updateField(
-                      field,
-                      selectedIds.filter((x: string) => x !== id)
-                    )
-                  }
-                  className="w-5 h-5 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-red-500 transition-colors ml-2"
+                  onClick={() => updateField(field, selectedIds.filter((x) => x !== id))}
+                  className="w-4 h-4 flex items-center justify-center hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-400 hover:text-red-500 rounded transition-colors"
                 >
                   ✕
                 </button>
@@ -65,7 +58,7 @@ export const RelationSelect = ({
           })}
         </div>
         <select
-          className="w-full px-8 py-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] text-sm font-bold appearance-none outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+          className="w-full h-10 px-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-medium outline-none focus:ring-2 focus:ring-blue-500/10 transition-all appearance-none cursor-pointer"
           onChange={(e) => {
             if (e.target.value && !selectedIds.includes(e.target.value)) {
               updateField(field, [...selectedIds, e.target.value]);
@@ -73,7 +66,7 @@ export const RelationSelect = ({
           }}
           value=""
         >
-          <option value="">Add to {label}...</option>
+          <option value="">+ Link {label.toLowerCase()}...</option>
           {options.map((o) => (
             <option key={o.id} value={o.id}>
               [{o.category.toUpperCase()}] {o.name[currentLang] || o.name["ru"]}
@@ -85,16 +78,16 @@ export const RelationSelect = ({
   }
 
   return (
-    <div className="mb-8">
-      <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-4">
+    <div className="space-y-2">
+      <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 ml-1">
         {label}
       </label>
       <select
-        className="w-full px-8 py-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] text-sm font-bold appearance-none outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+        className="w-full h-10 px-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold outline-none focus:ring-2 focus:ring-blue-500/10 transition-all appearance-none cursor-pointer"
         value={(value as string) || ""}
         onChange={(e) => updateField(field, e.target.value)}
       >
-        <option value="">Select {label}...</option>
+        <option value="">Select {label.toLowerCase()}...</option>
         {options.map((o) => (
           <option key={o.id} value={o.id}>
              [{o.category.toUpperCase()}] {o.name[currentLang] || o.name["ru"]}

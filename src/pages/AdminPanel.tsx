@@ -89,57 +89,36 @@ export default function AdminPanel() {
       <AdminSidebar
         allEntities={allAvailableEntities}
         draftEntities={draftEntities}
+        deletedIds={deletedIds}
         selectedEntityId={selectedEntityId}
         setSelectedEntityId={setSelectedEntityId}
         createNewEntity={createNewEntity}
+        handleSave={handleSave}
         currentLang={currentLang}
       />
 
-      <div className="flex-1 flex flex-col bg-slate-100 dark:bg-slate-950 overflow-hidden relative">
-          <AnimatePresence mode="wait">
-            {selectedEntity ? (
-              <EntityEditor
-                selectedEntity={selectedEntity}
-                allEntities={allAvailableEntities}
-                currentLang={currentLang}
-                updateField={updateField}
-                updateLocalizedField={updateLocalizedField}
-                uploadImage={handleImageUpload}
-                deleteEntity={deleteEntity}
-              />
-            ) : (
-              <div className="flex-1 flex flex-col items-center justify-center p-12 text-center">
-                <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center text-3xl mb-6">
-                  📂
-                </div>
-                <h3 className="text-2xl font-black mb-2 italic">No Selection</h3>
-                <p className="text-slate-400 font-medium max-w-xs mx-auto">
-                  Select an entity from the sidebar to begin editing or create a new one.
-                </p>
+      <div className="flex-1 flex flex-col bg-white dark:bg-slate-950 overflow-hidden relative">
+        <AnimatePresence mode="wait">
+          {selectedEntity ? (
+            <EntityEditor
+              selectedEntity={selectedEntity}
+              allEntities={allAvailableEntities}
+              currentLang={currentLang}
+              updateField={updateField}
+              updateLocalizedField={updateLocalizedField}
+              uploadImage={handleImageUpload}
+              deleteEntity={deleteEntity}
+            />
+          ) : (
+            <div className="flex-1 flex flex-col items-center justify-center p-12 text-center opacity-20">
+              <div className="w-16 h-16 bg-slate-100 dark:bg-slate-900 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                📂
               </div>
-            )}
-          </AnimatePresence>
-
-          <AnimatePresence>
-            {(draftEntities.length > 0 || deletedIds.length > 0) && (
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                className="absolute bottom-8 right-8 z-30"
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={handleSave}
-                  className="px-10 py-5 bg-blue-600 text-white rounded-[2rem] font-black text-lg shadow-2xl shadow-blue-500/50 flex items-center gap-4"
-                >
-                  <span>Push {draftEntities.length + deletedIds.length} Changes to Disk</span>
-                </motion.button>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+              <h3 className="text-sm font-black uppercase tracking-widest italic">Select Entity</h3>
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

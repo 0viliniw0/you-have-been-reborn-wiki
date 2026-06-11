@@ -4,18 +4,22 @@ import { Entity } from "../../../shared/types/entities";
 interface AdminSidebarProps {
   allEntities: Entity[];
   draftEntities: Entity[];
+  deletedIds: string[];
   selectedEntityId: string | null;
   setSelectedEntityId: (id: string | null) => void;
   createNewEntity: () => void;
+  handleSave: () => void;
   currentLang: "ru" | "en";
 }
 
 export const AdminSidebar = ({
   allEntities,
   draftEntities,
+  deletedIds,
   selectedEntityId,
   setSelectedEntityId,
   createNewEntity,
+  handleSave,
   currentLang,
 }: AdminSidebarProps) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -41,40 +45,52 @@ export const AdminSidebar = ({
     return matchesSearch && matchesCat;
   });
 
+  const totalChanges = draftEntities.length + deletedIds.length;
+
   return (
-    <div className="w-96 flex-shrink-0 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col h-full">
-      <div className="p-8 border-b border-slate-200 dark:border-slate-800">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-black tracking-tighter italic">Library</h2>
+    <div className="w-80 flex-shrink-0 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col h-full">
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-black tracking-tight italic">Library</h2>
           <button
             onClick={createNewEntity}
-            className="bg-blue-600 text-white px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform"
+            className="w-8 h-8 flex items-center justify-center bg-blue-600 text-white rounded-lg shadow-lg shadow-blue-500/20 hover:scale-105 transition-transform"
           >
-            + Create New
+            +
           </button>
         </div>
 
-        <div className="space-y-4">
+        {/* Global Save Button */}
+        {totalChanges > 0 && (
+          <button
+            onClick={handleSave}
+            className="w-full py-3 bg-blue-600 text-white rounded-xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
+          >
+            <span>Push {totalChanges} Changes</span>
+          </button>
+        )}
+
+        <div className="space-y-3">
           <div className="relative">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs">🔍</span>
             <input
               type="text"
-              placeholder="Search entities..."
+              placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-sm font-medium focus:ring-2 focus:ring-blue-500/20 outline-none"
+              className="w-full pl-9 pr-3 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-medium outline-none focus:ring-2 focus:ring-blue-500/10"
             />
           </div>
 
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide no-scrollbar">
+          <div className="flex gap-1.5 overflow-x-auto pb-2 no-scrollbar">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-[8px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
                   selectedCategory === cat
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700"
+                    ? "bg-blue-600 text-white"
+                    : "bg-white dark:bg-slate-800 text-slate-400 border border-slate-200 dark:border-slate-700"
                 }`}
               >
                 {cat}
@@ -84,58 +100,61 @@ export const AdminSidebar = ({
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-2">
+      <div className="flex-1 overflow-y-auto px-3 py-2 space-y-0.5">
         {filteredEntities.map((e) => {
           const isDraft = draftEntities.some((d) => d.id === e.id);
+          const isDeleted = deletedIds.includes(e.id);
           const isActive = selectedEntityId === e.id;
+          
           return (
             <button
               key={e.id}
               onClick={() => setSelectedEntityId(e.id)}
-              className={`w-full p-5 rounded-[1.8rem] text-left transition-all border group relative ${
+              className={`w-full p-2 rounded-lg text-left transition-all border flex items-center gap-3 group relative ${
                 isActive
-                  ? "bg-blue-600 border-blue-500 shadow-2xl shadow-blue-500/20 translate-x-1"
-                  : "bg-transparent border-transparent hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                  ? "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 shadow-sm"
+                  : "bg-transparent border-transparent hover:bg-slate-100 dark:hover:bg-slate-800/50"
               }`}
             >
-              <div className="flex items-start gap-4">
-                <div
-                  className={`w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-xl shadow-inner ${
-                    isActive ? "bg-blue-500" : "bg-slate-100 dark:bg-slate-800"
-                  }`}
-                >
-                  {e.image ? (
-                    <img
-                      src={e.image.startsWith("http") ? e.image : `.${e.image}`}
-                      className="w-full h-full object-cover rounded-2xl"
-                      alt=""
-                    />
-                  ) : (
-                    <span className="opacity-30">🖼️</span>
-                  )}
-                </div>
-                <div className="flex-1 min-w-0">
+              {/* Active Indicator */}
+              {isActive && (
+                <div className="absolute left-0 top-2 bottom-2 w-1 bg-blue-600 rounded-r-full" />
+              )}
+
+              <div
+                className={`w-9 h-9 rounded-md flex-shrink-0 flex items-center justify-center text-lg shadow-inner overflow-hidden ${
+                  isActive ? "bg-slate-50 dark:bg-slate-900" : "bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700"
+                }`}
+              >
+                {e.image ? (
+                  <img
+                    src={e.image.startsWith("http") ? e.image : `.${e.image}`}
+                    className="w-full h-full object-contain p-1"
+                    alt=""
+                  />
+                ) : (
+                  <span className="opacity-20 text-[10px]">📦</span>
+                )}
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
                   <div
-                    className={`font-black text-sm mb-1 truncate ${
-                      isActive ? "text-white" : "text-slate-900 dark:text-slate-100"
+                    className={`font-bold text-[11px] truncate ${
+                      isActive ? "text-blue-600 dark:text-blue-400" : "text-slate-700 dark:text-slate-200"
                     }`}
                   >
                     {e.name[currentLang] || e.name.ru}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div
-                      className={`text-[9px] uppercase font-black tracking-widest ${
-                        isActive ? "text-blue-200" : "text-slate-400"
-                      }`}
-                    >
-                      {e.category}
-                    </div>
-                    {isDraft && (
-                      <span className="px-2 py-0.5 bg-amber-500 text-[8px] font-black text-white rounded-full uppercase tracking-tighter">
-                        Draft
-                      </span>
-                    )}
-                  </div>
+                  {isDraft && (
+                    <div className="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0" title="Unsaved changes" />
+                  )}
+                  {isDeleted && (
+                    <div className="w-1.5 h-1.5 bg-red-500 rounded-full flex-shrink-0" title="Marked for deletion" />
+                  )}
+                </div>
+                <div className="text-[8px] uppercase font-black tracking-widest text-slate-400 mt-0.5">
+                  {e.category.slice(0, 10)}
                 </div>
               </div>
             </button>
