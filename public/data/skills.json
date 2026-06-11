@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": "67e70607-dd8c-4693-88a4-416a6f2a0cac",
+    "slug": "new-1781190968037",
+    "name": {
+      "ru": "Новая сущность",
+      "en": "New Entity"
+    },
+    "description": {
+      "ru": "",
+      "en": ""
+    },
+    "category": "skills",
+    "tags": [],
+    "updatedAt": "2026-06-11T15:16:08.037Z",
+    "manaCost": 0,
+    "cooldown": 0,
+    "requirements": {
+      "level": 1
+    }
+  }
+]

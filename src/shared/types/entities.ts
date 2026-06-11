@@ -25,6 +25,7 @@ export const BaseEntitySchema = z.object({
   description: LocalizedStringSchema,
   image: z.string().optional(),
   tags: z.array(z.string()).default([]),
+  relatedIds: z.array(z.string()).default([]),
   category: EntityCategory,
   updatedAt: z.string(),
 });
@@ -45,6 +46,7 @@ export const EquipmentSchema = BaseEntitySchema.extend({
   type: z.enum(["weapon", "armor", "accessory"]),
   slot: z.string().optional(),
   stats: z.record(z.string(), z.number()).optional(),
+  skillIds: z.array(z.string()).default([]),
   requirements: z
     .object({
       level: z.number().optional(),
@@ -73,7 +75,7 @@ export const BestiarySchema = BaseEntitySchema.extend({
   category: z.literal("bestiary"),
   behavior: EntityBehavior.default("aggressive"),
   level: z.number().optional(),
-  locationId: z.string().optional(),
+  locationIds: z.array(z.string()).default([]),
   stats: z.record(z.string(), z.number()).optional(),
   drops: z
     .array(
@@ -94,7 +96,7 @@ export const LocationSchema = BaseEntitySchema.extend({
 export const NpcSchema = BaseEntitySchema.extend({
   category: z.literal("npcs"),
   role: LocalizedStringSchema.optional(),
-  locationId: z.string().optional(),
+  locationIds: z.array(z.string()).default([]),
 });
 
 export const RecipeSchema = BaseEntitySchema.extend({

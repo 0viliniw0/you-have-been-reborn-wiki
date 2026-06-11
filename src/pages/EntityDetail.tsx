@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { RecipeInfo } from "../entities/Entity/ui/RecipeInfo";
 import { EntityRelations } from "../entities/Entity/ui/EntityRelations";
 import { EntityInfobox } from "../entities/Entity/ui/EntityInfobox";
+import { LootTable } from "../entities/Entity/ui/LootTable";
 
 export default function EntityDetail() {
   const { category, slug } = useParams();
@@ -103,17 +104,21 @@ export default function EntityDetail() {
               </ReactMarkdown>
             </div>
           </section>
+{entity.category === "recipes" && (
+  <RecipeInfo recipe={entity} allEntities={entities || []} />
+)}
 
-          {entity.category === "recipes" && (
-            <RecipeInfo recipe={entity} allEntities={entities || []} />
-          )}
+<LootTable entity={entity} allEntities={entities || []} />
+</div>
 
-          {/* Relations (Drops, Locations, etc.) */}
-          <EntityRelations entity={entity} entities={entities || []} />
-        </div>
+{/* Infobox Sidebar */}
 
-        {/* Infobox Sidebar */}
         <EntityInfobox entity={entity} />
+      </div>
+
+      {/* Relations (Drops, Locations, etc.) - Moved to bottom for full width */}
+      <div className="mt-20">
+        <EntityRelations entity={entity} entities={entities || []} />
       </div>
     </div>
   );

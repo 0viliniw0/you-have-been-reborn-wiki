@@ -12,9 +12,16 @@
     },
     "image": "/images/bestiary_deer_1781174349602.png",
     "tags": [],
+    "relatedIds": [
+      "39bdd553-9403-41e0-9935-584c4099081b",
+      "7dca7e66-2d69-4d39-a6c6-9363bbf01e27"
+    ],
     "category": "bestiary",
-    "updatedAt": "2026-06-11T13:08:38.282Z",
+    "updatedAt": "2026-06-11T15:15:30.425Z",
     "behavior": "passive",
+    "locationIds": [
+      "eb24d594-56c3-4e70-8183-bba8ff5bd3d7"
+    ],
     "drops": [
       {
         "id": "39bdd553-9403-41e0-9935-584c4099081b",

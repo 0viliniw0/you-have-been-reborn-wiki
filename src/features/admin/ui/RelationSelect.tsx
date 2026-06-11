@@ -1,9 +1,9 @@
-import { Entity } from "../../../shared/types/entities";
+import { Entity, EntityCategory } from "../../../shared/types/entities";
 
 interface RelationSelectProps {
   label: string;
   field: string;
-  category: string;
+  categories: EntityCategory[];
   multiple?: boolean;
   selectedEntity: Entity | null;
   allEntities: Entity[];
@@ -14,7 +14,7 @@ interface RelationSelectProps {
 export const RelationSelect = ({
   label,
   field,
-  category,
+  categories,
   multiple = false,
   selectedEntity,
   allEntities,
@@ -24,7 +24,8 @@ export const RelationSelect = ({
   const value = selectedEntity
     ? (selectedEntity as Record<string, unknown>)[field]
     : undefined;
-  const options = allEntities.filter((e) => e.category === category);
+    
+  const options = allEntities.filter((e) => categories.includes(e.category));
 
   if (multiple) {
     const selectedIds = (value as string[]) || [];
@@ -46,7 +47,8 @@ export const RelationSelect = ({
                 key={id}
                 className="bg-blue-600 text-white pl-4 pr-2 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2 shadow-lg shadow-blue-500/20"
               >
-                {e?.name[currentLang] || id}
+                <span className="opacity-50 mr-1">[{e?.category.toUpperCase()}]</span>
+                {e?.name[currentLang] || e?.name["ru"] || id}
                 <button
                   onClick={() =>
                     updateField(
@@ -54,7 +56,7 @@ export const RelationSelect = ({
                       selectedIds.filter((x: string) => x !== id)
                     )
                   }
-                  className="w-5 h-5 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-red-500 transition-colors"
+                  className="w-5 h-5 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-red-500 transition-colors ml-2"
                 >
                   ✕
                 </button>
@@ -74,7 +76,7 @@ export const RelationSelect = ({
           <option value="">Add to {label}...</option>
           {options.map((o) => (
             <option key={o.id} value={o.id}>
-              {o.name[currentLang]}
+              [{o.category.toUpperCase()}] {o.name[currentLang] || o.name["ru"]}
             </option>
           ))}
         </select>
@@ -95,7 +97,7 @@ export const RelationSelect = ({
         <option value="">Select {label}...</option>
         {options.map((o) => (
           <option key={o.id} value={o.id}>
-            {o.name[currentLang]}
+             [{o.category.toUpperCase()}] {o.name[currentLang] || o.name["ru"]}
           </option>
         ))}
       </select>

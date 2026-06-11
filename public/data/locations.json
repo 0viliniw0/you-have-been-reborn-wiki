@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "eb24d594-56c3-4e70-8183-bba8ff5bd3d7",
+    "slug": "new-1781190897454",
+    "name": {
+      "ru": "Новая сущность",
+      "en": "New Entity"
+    },
+    "description": {
+      "ru": "",
+      "en": ""
+    },
+    "tags": [],
+    "category": "locations",
+    "updatedAt": "2026-06-11T15:15:01.439Z",
+    "type": "zone"
+  }
+]
