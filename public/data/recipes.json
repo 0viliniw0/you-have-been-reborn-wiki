@@ -1,0 +1,29 @@
+[
+  {
+    "id": "recipes_steel_sword_1781100000000",
+    "slug": "steel-sword-recipe",
+    "name": {
+      "ru": "Рецепт: Стальной меч",
+      "en": "Recipe: Steel Sword"
+    },
+    "description": {
+      "ru": "Чертеж для ковки стандартного стального меча.",
+      "en": "Blueprints for forging a standard steel sword."
+    },
+    "tags": [
+      "crafting",
+      "weapon",
+      "blacksmithing"
+    ],
+    "category": "recipes",
+    "updatedAt": "2024-03-20T12:00:00Z",
+    "resultId": "eq-rusty-sword",
+    "resultQuantity": 1,
+    "ingredients": [
+      {
+        "id": "mat-iron-ore",
+        "quantity": 1
+      }
+    ]
+  }
+]

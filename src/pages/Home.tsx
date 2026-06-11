@@ -11,11 +11,11 @@ const CATEGORY_ICONS: Record<string, string> = {
   bestiary: '🐲',
   locations: '🗺️',
   npcs: '👤',
-  quests: '📜',
+  recipes: '🛠️',
 };
 
 const CATEGORIES = [
-  'skills', 'equipment', 'consumables', 'materials', 'bestiary', 'locations', 'npcs', 'quests'
+  'skills', 'equipment', 'consumables', 'materials', 'bestiary', 'locations', 'npcs', 'recipes'
 ];
 
 export default function Home() {

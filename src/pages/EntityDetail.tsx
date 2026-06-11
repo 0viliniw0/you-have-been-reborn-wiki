@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { loadAllEntities } from "../shared/api/dataService";
 import { useTranslation } from "react-i18next";
-import { Entity } from "../shared/types/entities";
+import { Entity, Recipe } from "../shared/types/entities";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 
@@ -123,6 +123,10 @@ export default function EntityDetail() {
             </section>
           )}
 
+          {entity.category === "recipes" && (
+            <RecipeInfo recipe={entity} allEntities={entities || []} />
+          )}
+
           {/* Relations (Drops, Locations, etc.) */}
           <Relations entity={entity} entities={entities || []} />
         </div>
@@ -213,6 +217,87 @@ export default function EntityDetail() {
           </motion.div>
         </aside>
       </div>
+    </div>
+  );
+}
+
+function RecipeInfo({ recipe, allEntities }: { recipe: Recipe, allEntities: Entity[] }) {
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language.split("-")[0] as "ru" | "en";
+  const resultItem = allEntities.find(e => e.id === recipe.resultId);
+  const station = allEntities.find(e => e.id === recipe.stationId);
+
+  return (
+    <div className="space-y-8">
+      <section className="p-8 bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/30 rounded-[2.5rem]">
+        <h3 className="text-xs font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+          <span>🛠️</span> Crafting Recipe
+        </h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Ingredients */}
+          <div className="space-y-3">
+             <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 ml-1">
+                Ingredients Required
+             </div>
+             {recipe.ingredients.map(ing => {
+               const item = allEntities.find(e => e.id === ing.id);
+               return (
+                 <Link 
+                   key={ing.id}
+                   to={`/${item?.category || 'materials'}/${item?.slug || ing.id}`}
+                   className="flex items-center justify-between p-4 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl hover:border-blue-500/50 transition-colors group"
+                 >
+                   <div className="flex items-center gap-3">
+                     <span className="text-xl opacity-40 group-hover:opacity-100 transition-opacity">
+                        {item?.category === 'materials' ? '💎' : '⚔️'}
+                     </span>
+                     <span className="font-bold text-sm text-slate-700 dark:text-slate-300">
+                        {item?.name[currentLang] || item?.name['ru'] || ing.id}
+                     </span>
+                   </div>
+                   <span className="font-black text-blue-600">x{ing.quantity}</span>
+                 </Link>
+               );
+             })}
+          </div>
+
+          {/* Result Arrow & Item */}
+          <div className="flex flex-col items-center gap-4 py-8 md:py-0">
+             <div className="text-4xl text-slate-200 dark:text-slate-800 rotate-90 md:rotate-0">→</div>
+             <div className="text-center">
+               <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">
+                  Resulting Product
+               </div>
+               {resultItem && (
+                 <Link 
+                   to={`/${resultItem.category}/${resultItem.slug}`}
+                   className="inline-block p-6 bg-white dark:bg-slate-900 border-2 border-blue-500/20 rounded-[2rem] hover:border-blue-500 transition-all group"
+                 >
+                    <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">🎁</div>
+                    <div className="font-black text-lg text-slate-900 dark:text-white">
+                      {resultItem.name[currentLang] || resultItem.name['ru']}
+                    </div>
+                    {recipe.resultQuantity > 1 && (
+                      <div className="text-blue-600 font-black">x{recipe.resultQuantity}</div>
+                    )}
+                 </Link>
+               )}
+             </div>
+          </div>
+        </div>
+
+        {station && (
+           <div className="mt-8 pt-8 border-t border-blue-100 dark:border-blue-900/30">
+              <div className="flex flex-col">
+                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Crafting Station</span>
+                <Link to={`/locations/${station.slug}`} className="font-black text-blue-600 hover:underline">
+                  {station.name[currentLang] || station.name['ru']}
+                </Link>
+              </div>
+           </div>
+        )}
+      </section>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export const EntityCategory = z.enum([
   'bestiary',
   'locations',
   'npcs',
-  'quests',
+  'recipes',
 ]);
 
 export type EntityCategory = z.infer<typeof EntityCategory>;
@@ -92,16 +92,15 @@ export const NpcSchema = BaseEntitySchema.extend({
   locationId: z.string().optional(),
 });
 
-export const QuestSchema = BaseEntitySchema.extend({
-  category: z.literal('quests'),
-  giverNpcId: z.string().optional(),
-  minLevel: z.number().optional(),
-  rewards: z.object({
-    exp: z.number().optional(),
-    gold: z.number().optional(),
-    items: z.array(z.string()).optional(), // IDs
-  }).optional(),
-  chainParentId: z.string().optional(),
+export const RecipeSchema = BaseEntitySchema.extend({
+  category: z.literal('recipes'),
+  resultId: z.string(),
+  resultQuantity: z.number().default(1),
+  ingredients: z.array(z.object({
+    id: z.string(),
+    quantity: z.number(),
+  })),
+  stationId: z.string().optional(), // Can be a location or NPC
 });
 
 export type BaseEntity = z.infer<typeof BaseEntitySchema>;
@@ -112,7 +111,7 @@ export type Material = z.infer<typeof MaterialSchema>;
 export type Bestiary = z.infer<typeof BestiarySchema>;
 export type Location = z.infer<typeof LocationSchema>;
 export type Npc = z.infer<typeof NpcSchema>;
-export type Quest = z.infer<typeof QuestSchema>;
+export type Recipe = z.infer<typeof RecipeSchema>;
 
 export type Entity = 
   | Skill 
@@ -122,4 +121,4 @@ export type Entity =
   | Bestiary 
   | Location 
   | Npc 
-  | Quest;
+  | Recipe;

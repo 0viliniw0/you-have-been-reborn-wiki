@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Entity, Bestiary, Material } from "../shared/types/entities";
+import { Entity, Bestiary, Material, Recipe } from "../shared/types/entities";
+
 import { loadAllEntities } from "../shared/api/dataService";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../shared/ui/LanguageSwitcher";
@@ -287,6 +288,95 @@ export default function AdminPanel() {
             className="bg-blue-600 text-white px-6 rounded-xl font-black"
           >
             +
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const IngredientsInput = ({ entity }: { entity: Entity }) => {
+    const recipe = entity as Recipe;
+    const ingredients = recipe.ingredients || [];
+    const [selectedId, setSelectedId] = useState("");
+    const [quantity, setQuantity] = useState(1);
+
+    const addIngredient = () => {
+      if (!selectedId) return;
+      if (ingredients.find((i) => i.id === selectedId)) return;
+      updateField("ingredients", [...ingredients, { id: selectedId, quantity }]);
+      setSelectedId("");
+      setQuantity(1);
+    };
+
+    const removeIngredient = (id: string) => {
+      updateField(
+        "ingredients",
+        ingredients.filter((i) => i.id !== id),
+      );
+    };
+
+    return (
+      <div className="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border border-slate-200 dark:border-slate-800">
+        <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6">
+          Ingredients Required
+        </h4>
+        <div className="space-y-3 mb-6">
+          {ingredients.map((ing) => {
+            const item = allAvailableEntities.find((e) => e.id === ing.id);
+            return (
+              <div
+                key={ing.id}
+                className="flex items-center justify-between p-4 bg-white dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-8 rounded-lg bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-xs">
+                    📦
+                  </span>
+                  <div>
+                    <div className="text-sm font-bold">
+                      {item?.name[currentLang] || item?.name["ru"] || ing.id}
+                    </div>
+                    <div className="text-[10px] text-slate-400 uppercase font-black">
+                      Quantity: {ing.quantity}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => removeIngredient(ing.id)}
+                  className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex gap-2">
+          <select
+            className="flex-1 px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm"
+            value={selectedId}
+            onChange={(e) => setSelectedId(e.target.value)}
+          >
+            <option value="">Select Item...</option>
+            {allAvailableEntities
+              .filter((e) => ["materials", "equipment", "consumables"].includes(e.category))
+              .map((e) => (
+                <option key={e.id} value={e.id}>
+                  [{e.category}] {e.name[currentLang] || e.name["ru"]}
+                </option>
+              ))}
+          </select>
+          <input
+            type="number"
+            className="w-20 px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm"
+            value={quantity}
+            onChange={(e) => setQuantity(parseInt(e.target.value))}
+          />
+          <button
+            onClick={addIngredient}
+            className="px-6 bg-blue-600 text-white rounded-xl font-black text-xs uppercase tracking-widest"
+          >
+            Add
           </button>
         </div>
       </div>
@@ -802,18 +892,38 @@ export default function AdminPanel() {
                         />
                       )}
 
-                      {selectedEntity.category === "quests" && (
+                      {selectedEntity.category === "recipes" && (
                         <div className="space-y-8">
-                          <RelationSelect
-                            label="Quest Giver"
-                            field="giverNpcId"
-                            category="npcs"
-                          />
-                          <RelationSelect
-                            label="Prerequisite Quest"
-                            field="chainParentId"
-                            category="quests"
-                          />
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <RelationSelect
+                              label="Resulting Item"
+                              field="resultId"
+                              category="equipment" // Could be multiple, but usually equipment/consumables
+                            />
+                            <div className="space-y-2">
+                              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">
+                                Result Quantity
+                              </label>
+                              <input
+                                type="number"
+                                className="w-full px-6 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all"
+                                value={(selectedEntity as Recipe).resultQuantity || 1}
+                                onChange={(e) =>
+                                  updateField("resultQuantity", parseInt(e.target.value))
+                                }
+                              />
+                            </div>
+                          </div>
+                          
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <RelationSelect
+                              label="Crafting Station (Optional)"
+                              field="stationId"
+                              category="locations"
+                            />
+                          </div>
+
+                          <IngredientsInput entity={selectedEntity} />
                         </div>
                       )}
                     </div>

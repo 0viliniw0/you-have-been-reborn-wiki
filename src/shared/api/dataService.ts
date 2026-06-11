@@ -2,14 +2,14 @@ import {
   Entity,
   EntityCategory as EntityType, 
   NpcSchema, 
-  QuestSchema, 
   BaseEntitySchema,
   SkillSchema,
   BestiarySchema,
   ConsumableSchema,
   EquipmentSchema,
   LocationSchema,
-  MaterialSchema
+  MaterialSchema,
+  RecipeSchema
 } from "../types/entities";
 import { z } from 'zod';
 
@@ -21,7 +21,7 @@ const SchemaMap: Record<string, z.ZodSchema> = {
   locations: LocationSchema,
   materials: MaterialSchema,
   npcs: NpcSchema,
-  quests: QuestSchema,
+  recipes: RecipeSchema,
 };
 
 // Metadata file that tracks all data files for automatic discovery
