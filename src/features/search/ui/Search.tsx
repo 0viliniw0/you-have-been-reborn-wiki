@@ -8,11 +8,7 @@ import { initSearchIndex, searchEntities } from "../searchEngine";
 import { Entity } from "../../../shared/types/entities";
 import { EntityCard } from "../../../entities/Entity/ui/EntityCard";
 
-interface SearchProps {
-  variant?: "hero" | "compact";
-}
-
-export const Search = ({ variant = "compact" }: SearchProps) => {
+export const Search = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const [query, setQuery] = useState("");
@@ -59,19 +55,10 @@ export const Search = ({ variant = "compact" }: SearchProps) => {
     setQuery("");
   }, [location.pathname]);
 
-  const isHero = variant === "hero";
-
   return (
-    <div
-      ref={containerRef}
-      className={`relative w-full ${isHero ? "max-w-2xl mx-auto" : "max-w-xs hidden md:block"}`}
-    >
-      <div
-        className={`relative group transition-all duration-300 ${isHero ? "" : "focus-within:max-w-md"}`}
-      >
-        {isHero && (
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-focus-within:opacity-50 transition-opacity"></div>
-        )}
+    <div ref={containerRef} className={`relative w-full max-w-2xl mx-auto`}>
+      <div className={`relative group transition-all duration-300`}>
+        <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-25 group-focus-within:opacity-50 transition-opacity"></div>
         <div className="relative flex items-center">
           <span className="absolute left-4 text-slate-400">🔍</span>
           <input
@@ -81,11 +68,7 @@ export const Search = ({ variant = "compact" }: SearchProps) => {
             placeholder={t("search.placeholder")}
             className={`
               w-full pl-11 pr-4 rounded-2xl border transition-all outline-none
-              ${
-                isHero
-                  ? "p-5 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-lg shadow-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500"
-                  : "h-10 bg-slate-100 dark:bg-slate-900 border-transparent focus:bg-white dark:focus:bg-slate-800 focus:border-blue-500/50 text-sm"
-              }
+              p-5 bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-lg shadow-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500
             `}
           />
         </div>

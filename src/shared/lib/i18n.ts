@@ -29,7 +29,15 @@ i18n
             bestiary: "Bestiary",
             locations: "Locations",
             npcs: "NPCs",
-            quests: "Quests"
+            quests: "Quests",
+            recipes: "Recipes"
+          },
+          recipe: {
+            title: "Crafting Recipe",
+            ingredients: "Ingredients Required",
+            result: "Resulting Product",
+            station: "Crafting Station",
+            quantity: "Quantity"
           },
           admin: {
             panel: "Admin Panel",
@@ -75,7 +83,15 @@ i18n
             bestiary: "Бестиарий",
             locations: "Локации",
             npcs: "NPC",
-            quests: "Квесты"
+            quests: "Квесты",
+            recipes: "Рецепты"
+          },
+          recipe: {
+            title: "Рецепт крафта",
+            ingredients: "Необходимые ингредиенты",
+            result: "Результат крафта",
+            station: "Станция крафта",
+            quantity: "Количество"
           },
           admin: {
             panel: "Админ-панель",

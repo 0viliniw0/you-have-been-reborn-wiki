@@ -50,7 +50,6 @@ export const EquipmentSchema = BaseEntitySchema.extend({
 
 export const ConsumableSchema = BaseEntitySchema.extend({
   category: z.literal('consumables'),
-  effect: LocalizedStringSchema.optional(),
   duration: z.number().optional(), // in seconds
 });
 

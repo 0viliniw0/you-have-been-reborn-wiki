@@ -19,6 +19,8 @@ export default function AdminPanel() {
     null,
   );
   const [isAuthorized, setIsAuthorized] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   // Helper to save/load handle from IndexedDB
   const getDB = (): Promise<IDBDatabase> => {
@@ -233,23 +235,25 @@ export default function AdminPanel() {
     const [newVal, setNewVal] = useState("");
 
     return (
-      <div className="mb-6 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-[2rem] border border-slate-200 dark:border-slate-800">
-        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">
+      <div className="mb-6 p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800">
+        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6 ml-4">
           {label}
         </label>
-        <div className="space-y-2 mb-4">
+        <div className="space-y-3 mb-6">
           {Object.entries(value).map(([k, v]) => (
-            <div key={k} className="flex gap-2">
-              <input
-                readOnly
-                value={k}
-                className="flex-1 p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-mono"
-              />
-              <input
-                readOnly
-                value={String(v)}
-                className="w-24 p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-black text-blue-600"
-              />
+            <div key={k} className="flex gap-3 items-center">
+              <div className="flex-1 flex gap-2">
+                <input
+                  readOnly
+                  value={k}
+                  className="flex-1 px-5 py-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-xs font-mono"
+                />
+                <input
+                  readOnly
+                  value={String(v)}
+                  className="w-24 px-5 py-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl text-xs font-black text-blue-600 text-center"
+                />
+              </div>
               <button
                 onClick={() => {
                   const next = { ...value };
@@ -265,17 +269,17 @@ export default function AdminPanel() {
         </div>
         <div className="flex gap-2">
           <input
-            placeholder="Key"
+            placeholder="Property Name"
             value={newKey}
             onChange={(e) => setNewKey(e.target.value)}
-            className="flex-1 p-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm"
+            className="flex-1 px-5 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs"
           />
           <input
-            placeholder="Val"
+            placeholder="Value"
             type="number"
             value={newVal}
             onChange={(e) => setNewVal(e.target.value)}
-            className="w-24 p-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm"
+            className="w-24 px-5 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-xs"
           />
           <button
             onClick={() => {
@@ -285,9 +289,9 @@ export default function AdminPanel() {
                 setNewVal("");
               }
             }}
-            className="bg-blue-600 text-white px-6 rounded-xl font-black"
+            className="bg-blue-600 text-white px-6 rounded-xl font-black text-xs uppercase"
           >
-            +
+            Add
           </button>
         </div>
       </div>
@@ -316,34 +320,43 @@ export default function AdminPanel() {
     };
 
     return (
-      <div className="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border border-slate-200 dark:border-slate-800">
-        <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-6">
+      <div className="p-10 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border border-slate-200 dark:border-slate-800">
+        <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-8 ml-4">
           Ingredients Required
         </h4>
-        <div className="space-y-3 mb-6">
+        <div className="space-y-3 mb-8">
+          {ingredients.length === 0 && (
+             <div className="text-center py-8 text-slate-400 text-xs font-bold uppercase tracking-widest bg-white dark:bg-slate-950 rounded-3xl border-2 border-dashed border-slate-100 dark:border-slate-800/50">
+                No Ingredients Added
+             </div>
+          )}
           {ingredients.map((ing) => {
             const item = allAvailableEntities.find((e) => e.id === ing.id);
             return (
               <div
                 key={ing.id}
-                className="flex items-center justify-between p-4 bg-white dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800"
+                className="flex items-center justify-between p-5 bg-white dark:bg-slate-950 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm group"
               >
-                <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-lg bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-xs">
-                    📦
-                  </span>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
+                    {item?.image ? (
+                       <img src={item.image.startsWith('http') ? item.image : `.${item.image}`} className="w-full h-full object-contain p-2" alt="" />
+                    ) : (
+                       <span className="opacity-20 text-xs">📦</span>
+                    )}
+                  </div>
                   <div>
-                    <div className="text-sm font-bold">
+                    <div className="text-sm font-black">
                       {item?.name[currentLang] || item?.name["ru"] || ing.id}
                     </div>
-                    <div className="text-[10px] text-slate-400 uppercase font-black">
+                    <div className="text-[10px] text-blue-600 uppercase font-black tracking-widest">
                       Quantity: {ing.quantity}
                     </div>
                   </div>
                 </div>
                 <button
                   onClick={() => removeIngredient(ing.id)}
-                  className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                  className="p-3 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl transition-all hover:scale-110 active:scale-90"
                 >
                   ✕
                 </button>
@@ -351,9 +364,9 @@ export default function AdminPanel() {
             );
           })}
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <select
-            className="flex-1 px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm"
+            className="flex-1 px-6 py-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold appearance-none focus:ring-2 focus:ring-blue-500/20 outline-none"
             value={selectedId}
             onChange={(e) => setSelectedId(e.target.value)}
           >
@@ -362,19 +375,19 @@ export default function AdminPanel() {
               .filter((e) => ["materials", "equipment", "consumables"].includes(e.category))
               .map((e) => (
                 <option key={e.id} value={e.id}>
-                  [{e.category}] {e.name[currentLang] || e.name["ru"]}
+                  [{e.category.toUpperCase()}] {e.name[currentLang] || e.name["ru"]}
                 </option>
               ))}
           </select>
           <input
             type="number"
-            className="w-20 px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm"
+            className="w-24 px-6 py-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-black text-center focus:ring-2 focus:ring-blue-500/20 outline-none"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value))}
           />
           <button
             onClick={addIngredient}
-            className="px-6 bg-blue-600 text-white rounded-xl font-black text-xs uppercase tracking-widest"
+            className="px-8 bg-blue-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:scale-105 active:scale-95 transition-all"
           >
             Add
           </button>
@@ -402,17 +415,18 @@ export default function AdminPanel() {
     if (multiple) {
       const selectedIds = (value as string[]) || [];
       return (
-        <div className="mb-6">
-          <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+        <div className="mb-8">
+          <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-4">
             {label}
           </label>
-          <div className="flex flex-wrap gap-2 mb-3">
+          <div className="flex flex-wrap gap-2 mb-4 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800">
+            {selectedIds.length === 0 && <span className="text-[10px] font-bold text-slate-400 uppercase p-2">None Selected</span>}
             {selectedIds.map((id: string) => {
               const e = allAvailableEntities.find((x) => x.id === id);
               return (
                 <span
                   key={id}
-                  className="bg-blue-50 dark:bg-blue-900/20 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 border border-blue-100 dark:border-blue-800/50"
+                  className="bg-blue-600 text-white pl-4 pr-2 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2 shadow-lg shadow-blue-500/20"
                 >
                   {e?.name[currentLang] || id}
                   <button
@@ -422,6 +436,7 @@ export default function AdminPanel() {
                         selectedIds.filter((x: string) => x !== id),
                       )
                     }
+                    className="w-5 h-5 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-red-500 transition-colors"
                   >
                     ✕
                   </button>
@@ -430,7 +445,7 @@ export default function AdminPanel() {
             })}
           </div>
           <select
-            className="w-full p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold appearance-none outline-none focus:border-blue-500 transition-colors"
+            className="w-full px-8 py-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] text-sm font-bold appearance-none outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
             onChange={(e) => {
               if (e.target.value && !selectedIds.includes(e.target.value)) {
                 updateField(field, [...selectedIds, e.target.value]);
@@ -438,7 +453,7 @@ export default function AdminPanel() {
             }}
             value=""
           >
-            <option value="">Add {label}...</option>
+            <option value="">Add to {label}...</option>
             {options.map((o) => (
               <option key={o.id} value={o.id}>
                 {o.name[currentLang]}
@@ -450,16 +465,16 @@ export default function AdminPanel() {
     }
 
     return (
-      <div className="mb-6">
-        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+      <div className="mb-8">
+        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 ml-4">
           {label}
         </label>
         <select
-          className="w-full p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold appearance-none outline-none focus:border-blue-500 transition-colors"
+          className="w-full px-8 py-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] text-sm font-bold appearance-none outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
           value={(value as string) || ""}
           onChange={(e) => updateField(field, e.target.value)}
         >
-          <option value="">None</option>
+          <option value="">Select {label}...</option>
           {options.map((o) => (
             <option key={o.id} value={o.id}>
               {o.name[currentLang]}
@@ -507,60 +522,117 @@ export default function AdminPanel() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col font-sans">
       <div className="flex-1 flex overflow-hidden h-screen">
         {/* Sidebar */}
-        <div className="w-80 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
-            <h2 className="text-xl font-black tracking-tight">Library</h2>
-            <button
-              onClick={() => {
-                const ent: Entity = {
-                  id: crypto.randomUUID(),
-                  slug: "new",
-                  name: { ru: "Новый", en: "New" },
-                  description: { ru: "", en: "" },
-                  category: "skills",
-                  tags: [],
-                  updatedAt: new Date().toISOString(),
-                  manaCost: 0,
-                  cooldown: 0,
-                  requirements: { level: 1 },
-                };
-                updateField("id", ent.id);
-                setSelectedEntity(ent);
-              }}
-              className="bg-blue-600 text-white p-2 rounded-xl text-xs font-black shadow-lg shadow-blue-500/20"
-            >
-              + NEW
-            </button>
+        <div className="w-96 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col">
+          <div className="p-8 border-b border-slate-200 dark:border-slate-800">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl font-black tracking-tighter italic">Library</h2>
+              <button
+                onClick={() => {
+                  const ent: Entity = {
+                    id: crypto.randomUUID(),
+                    slug: "new",
+                    name: { ru: "Новый", en: "New" },
+                    description: { ru: "", en: "" },
+                    category: "skills",
+                    tags: [],
+                    updatedAt: new Date().toISOString(),
+                    manaCost: 0,
+                    cooldown: 0,
+                    requirements: { level: 1 },
+                  } as Entity;
+                  updateField("id", ent.id);
+                  setSelectedEntity(ent);
+                }}
+                className="bg-blue-600 text-white px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform"
+              >
+                + Create New
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+                <input
+                  type="text"
+                  placeholder="Search entities..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-none rounded-2xl text-sm font-medium focus:ring-2 focus:ring-blue-500/20 outline-none"
+                />
+              </div>
+
+              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide no-scrollbar">
+                {["all", "skills", "equipment", "consumables", "materials", "bestiary", "locations", "npcs", "recipes"].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${
+                      selectedCategory === cat 
+                        ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900" 
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-2">
-            {allAvailableEntities.map((e) => {
-              const isDraft = draftEntities.some((d) => d.id === e.id);
-              const isActive = selectedEntity?.id === e.id;
-              return (
-                <button
-                  key={e.id}
-                  onClick={() => setSelectedEntity(e)}
-                  className={`w-full p-4 rounded-2xl text-left transition-all border ${isActive ? "bg-blue-600 border-blue-500 shadow-xl shadow-blue-500/10" : "bg-transparent border-transparent hover:bg-slate-50 dark:hover:bg-slate-800/50"}`}
-                >
-                  <div
-                    className={`font-black text-sm mb-1 ${isActive ? "text-white" : "text-slate-900 dark:text-slate-100"}`}
+            {allAvailableEntities
+              .filter((e) => {
+                const matchesSearch = e.name[currentLang]?.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                                     e.slug.toLowerCase().includes(searchTerm.toLowerCase());
+                const matchesCat = selectedCategory === "all" || e.category === selectedCategory;
+                return matchesSearch && matchesCat;
+              })
+              .map((e) => {
+                const isDraft = draftEntities.some((d) => d.id === e.id);
+                const isActive = selectedEntity?.id === e.id;
+                return (
+                  <button
+                    key={e.id}
+                    onClick={() => setSelectedEntity(e)}
+                    className={`w-full p-5 rounded-[1.8rem] text-left transition-all border group relative ${
+                      isActive 
+                        ? "bg-blue-600 border-blue-500 shadow-2xl shadow-blue-500/20 translate-x-1" 
+                        : "bg-transparent border-transparent hover:bg-slate-50 dark:hover:bg-slate-800/50"
+                    }`}
                   >
-                    {e.name[currentLang] || e.name.ru}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div
-                      className={`text-[10px] uppercase font-black ${isActive ? "text-blue-200" : "text-slate-400"}`}
-                    >
-                      {e.category}
+                    <div className="flex items-start gap-4">
+                       <div className={`w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-xl shadow-inner ${
+                         isActive ? "bg-blue-500" : "bg-slate-100 dark:bg-slate-800"
+                       }`}>
+                          {e.image ? (
+                             <img src={e.image.startsWith('http') ? e.image : `.${e.image}`} className="w-full h-full object-cover rounded-2xl" alt="" />
+                          ) : (
+                             <span className="opacity-30">🖼️</span>
+                          )}
+                       </div>
+                       <div className="flex-1 min-w-0">
+                          <div
+                            className={`font-black text-sm mb-1 truncate ${isActive ? "text-white" : "text-slate-900 dark:text-slate-100"}`}
+                          >
+                            {e.name[currentLang] || e.name.ru}
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <div
+                              className={`text-[9px] uppercase font-black tracking-widest ${isActive ? "text-blue-200" : "text-slate-400"}`}
+                            >
+                              {e.category}
+                            </div>
+                            {isDraft && (
+                              <span className="px-2 py-0.5 bg-amber-500 text-[8px] font-black text-white rounded-full uppercase tracking-tighter">
+                                Draft
+                              </span>
+                            )}
+                          </div>
+                       </div>
                     </div>
-                    {isDraft && (
-                      <span className="w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.5)]"></span>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
+                  </button>
+                );
+              })}
           </div>
 
           <div className="p-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
@@ -579,151 +651,183 @@ export default function AdminPanel() {
                 exit={{ opacity: 0, y: -10 }}
                 className="flex-1 overflow-y-auto p-12"
               >
-                <div className="max-w-3xl mx-auto pb-32">
-                  <header className="mb-12">
-                    <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-4 block">
-                      Editing Mode
-                    </span>
-                    <h2 className="text-5xl font-black tracking-tighter mb-2 italic">
-                      {selectedEntity.name[currentLang]}
-                    </h2>
-                    <p className="text-slate-400 font-medium font-mono text-xs">
-                      {selectedEntity.id}
-                    </p>
+                <div className="max-w-4xl mx-auto pb-32">
+                  <header className="mb-12 flex justify-between items-start">
+                    <div>
+                      <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-4 block">
+                        Content Editor
+                      </span>
+                      <h2 className="text-6xl font-black tracking-tighter mb-4 italic">
+                        {selectedEntity.name[currentLang]}
+                      </h2>
+                      <div className="flex items-center gap-4">
+                        <span className="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-500">
+                          ID: {selectedEntity.id}
+                        </span>
+                        <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-[10px] font-black uppercase tracking-widest text-blue-600">
+                          {selectedEntity.category}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex gap-3">
+                       <button
+                         onClick={saveToFiles}
+                         disabled={draftEntities.length === 0}
+                         className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-xs font-black uppercase tracking-widest shadow-2xl disabled:opacity-30 transition-all hover:scale-105 active:scale-95"
+                       >
+                         Push to Disk
+                       </button>
+                    </div>
                   </header>
 
                   <div className="space-y-12">
-                    {/* General Section */}
-                    <div className="grid grid-cols-2 gap-8">
-                      <div className="col-span-2">
-                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
-                          Category
-                        </label>
-                        <select
-                          className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500 transition-colors"
-                          value={selectedEntity.category}
-                          onChange={(e) =>
-                            updateField("category", e.target.value)
-                          }
-                        >
-                          {[
-                            "skills",
-                            "equipment",
-                            "consumables",
-                            "materials",
-                            "bestiary",
-                            "locations",
-                            "npcs",
-                            "quests",
-                          ].map((c) => (
-                            <option key={c} value={c}>
-                              {c}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div className="col-span-1">
-                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">
-                          Name (RU)
-                        </label>
-                        <input
-                          className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500"
-                          value={selectedEntity.name.ru}
-                          onChange={(e) =>
-                            updateLocalizedField("name", "ru", e.target.value)
-                          }
-                        />
-                      </div>
-                      <div className="col-span-1">
-                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
-                          Name (EN)
-                        </label>
-                        <input
-                          className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500"
-                          value={selectedEntity.name.en}
-                          onChange={(e) =>
-                            updateLocalizedField("name", "en", e.target.value)
-                          }
-                        />
-                      </div>
-
-                      <div className="col-span-2">
-                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
-                          Slug (Unique ID)
-                        </label>
-                        <input
-                          className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-mono shadow-sm outline-none focus:border-blue-500"
-                          value={selectedEntity.slug}
-                          onChange={(e) => updateField("slug", e.target.value)}
-                        />
-                      </div>
+                    {/* Visuals Section */}
+                    <div className="p-8 bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-200 dark:border-slate-800 shadow-sm">
+                       <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-8 ml-4">Entity Appearance</h3>
+                       <div className="flex flex-col md:flex-row gap-12 items-center">
+                          <div className="w-64 h-64 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 overflow-hidden flex items-center justify-center relative group">
+                             {selectedEntity.image ? (
+                               <img src={selectedEntity.image.startsWith('http') ? selectedEntity.image : `.${selectedEntity.image}`} className="w-full h-full object-contain p-8" alt="" />
+                             ) : (
+                               <span className="text-6xl grayscale opacity-10">🖼️</span>
+                             )}
+                             <label className="absolute inset-0 bg-blue-600/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center cursor-pointer text-white">
+                                <span className="text-2xl mb-2">📤</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest">Change Image</span>
+                                <input type="file" className="hidden" onChange={uploadImage} accept="image/*" />
+                             </label>
+                          </div>
+                          <div className="flex-1 space-y-6 w-full">
+                             <div className="space-y-2">
+                                <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Image Path</label>
+                                <input 
+                                  className="w-full px-6 py-4 bg-slate-50 dark:bg-slate-800 border border-transparent rounded-3xl text-sm font-mono focus:ring-2 focus:ring-blue-500/20 outline-none"
+                                  value={selectedEntity.image || ''}
+                                  onChange={(e) => updateField('image', e.target.value)}
+                                  placeholder="/images/example.png"
+                                />
+                             </div>
+                             <div className="p-6 bg-blue-50/50 dark:bg-blue-900/10 rounded-3xl border border-blue-100 dark:border-blue-900/20">
+                                <p className="text-xs font-medium text-blue-600 dark:text-blue-400 leading-relaxed">
+                                   💡 Best images are transparent PNGs (512x512). Uploads are automatically saved to your local <code className="bg-blue-100 dark:bg-blue-900/50 px-1 rounded">/public/images</code> folder.
+                                </p>
+                             </div>
+                          </div>
+                       </div>
                     </div>
 
-                    {/* Image Section */}
-                    <div>
-                      <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
-                        Entity Media
-                      </label>
-                      <div className="flex gap-6 items-center p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] shadow-sm">
-                        <div className="w-20 h-20 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden">
-                          {selectedEntity.image && (
-                            <img
-                              src={
-                                selectedEntity.image.startsWith("http")
-                                  ? selectedEntity.image
-                                  : `.${selectedEntity.image}`
-                              }
-                              alt=""
-                              className="w-full h-full object-cover"
-                            />
-                          )}
+                    {/* Basic Info Section */}
+                    <div className="p-12 bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
+                       <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Basic Information</h3>
+                       
+                       <div className="grid grid-cols-2 gap-8">
+                        <div className="col-span-2">
+                          <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 ml-4">
+                            Category
+                          </label>
+                          <select
+                            className="w-full px-8 py-5 bg-slate-50 dark:bg-slate-800 border-none rounded-[2rem] text-sm font-bold shadow-inner outline-none focus:ring-2 focus:ring-blue-500/20 transition-all appearance-none"
+                            value={selectedEntity.category}
+                            onChange={(e) =>
+                              updateField("category", e.target.value)
+                            }
+                          >
+                            {[
+                              "skills",
+                              "equipment",
+                              "consumables",
+                              "materials",
+                              "bestiary",
+                              "locations",
+                              "npcs",
+                              "recipes",
+                            ].map((c) => (
+                              <option key={c} value={c}>
+                                {c.toUpperCase()}
+                              </option>
+                            ))}
+                          </select>
                         </div>
-                        <div className="flex-1">
+
+                        <div className="col-span-1">
+                          <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 ml-4">
+                            Name (RU)
+                          </label>
                           <input
-                            type="file"
-                            onChange={uploadImage}
-                            className="text-xs font-bold text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100 transition-all cursor-pointer"
+                            className="w-full px-8 py-5 bg-slate-50 dark:bg-slate-800 border-none rounded-[2rem] text-sm font-bold shadow-inner outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+                            value={selectedEntity.name.ru}
+                            onChange={(e) =>
+                              updateLocalizedField("name", "ru", e.target.value)
+                            }
+                          />
+                        </div>
+                        <div className="col-span-1">
+                          <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 ml-4">
+                            Name (EN)
+                          </label>
+                          <input
+                            className="w-full px-8 py-5 bg-slate-50 dark:bg-slate-800 border-none rounded-[2rem] text-sm font-bold shadow-inner outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+                            value={selectedEntity.name.en}
+                            onChange={(e) =>
+                              updateLocalizedField("name", "en", e.target.value)
+                            }
+                          />
+                        </div>
+
+                        <div className="col-span-2">
+                          <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 ml-4">
+                            Slug (Unique URL)
+                          </label>
+                          <input
+                            className="w-full px-8 py-5 bg-slate-50 dark:bg-slate-800 border-none rounded-[2rem] text-sm font-mono shadow-inner outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+                            value={selectedEntity.slug}
+                            onChange={(e) => updateField("slug", e.target.value)}
                           />
                         </div>
                       </div>
                     </div>
 
                     {/* Description Section */}
-                    <div>
-                      <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
-                        Description Content
-                      </label>
-                      <div className="space-y-4">
-                        <textarea
-                          className="w-full p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] h-48 text-sm leading-relaxed shadow-sm outline-none focus:border-blue-500"
-                          value={selectedEntity.description.ru}
-                          onChange={(e) =>
-                            updateLocalizedField(
-                              "description",
-                              "ru",
-                              e.target.value,
-                            )
-                          }
-                          placeholder="Описание (RU)"
-                        />
-                        <textarea
-                          className="w-full p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] h-48 text-sm leading-relaxed shadow-sm outline-none focus:border-blue-500"
-                          value={selectedEntity.description.en}
-                          onChange={(e) =>
-                            updateLocalizedField(
-                              "description",
-                              "en",
-                              e.target.value,
-                            )
-                          }
-                          placeholder="Description (EN)"
-                        />
+                    <div className="p-12 bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
+                      <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Description Content</h3>
+                      <div className="space-y-6">
+                        <div className="space-y-2">
+                           <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">Russian Description</label>
+                           <textarea
+                            className="w-full p-8 bg-slate-50 dark:bg-slate-800 border-none rounded-[2.5rem] h-64 text-sm leading-relaxed shadow-inner outline-none focus:ring-2 focus:ring-blue-500/20"
+                            value={selectedEntity.description.ru}
+                            onChange={(e) =>
+                              updateLocalizedField(
+                                "description",
+                                "ru",
+                                e.target.value,
+                              )
+                            }
+                            placeholder="Markdown supported..."
+                          />
+                        </div>
+                        <div className="space-y-2">
+                           <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">English Description</label>
+                           <textarea
+                            className="w-full p-8 bg-slate-50 dark:bg-slate-800 border-none rounded-[2.5rem] h-64 text-sm leading-relaxed shadow-inner outline-none focus:ring-2 focus:ring-blue-500/20"
+                            value={selectedEntity.description.en}
+                            onChange={(e) =>
+                              updateLocalizedField(
+                                "description",
+                                "en",
+                                e.target.value,
+                              )
+                            }
+                            placeholder="Markdown supported..."
+                          />
+                        </div>
                       </div>
                     </div>
 
                     {/* Category Specific Sections */}
-                    <div className="border-t border-slate-200 dark:border-slate-800 pt-12 space-y-12">
+                    <div className="p-12 bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-200 dark:border-slate-800 shadow-sm space-y-8">
+                       <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Technical Details</h3>
                       {selectedEntity.category === "skills" && (
                         <div className="grid grid-cols-2 gap-8">
                           <div className="col-span-1">

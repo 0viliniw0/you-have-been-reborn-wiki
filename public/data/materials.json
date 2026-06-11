@@ -2,19 +2,39 @@
   {
     "id": "mat-iron-ore",
     "slug": "iron-ore",
-    "name": { "ru": "Железная руда", "en": "Iron Ore" },
-    "description": { "ru": "Обычный металл для ковки.", "en": "Common metal for forging." },
+    "name": {
+      "ru": "Железная руда",
+      "en": "Iron Ore"
+    },
+    "description": {
+      "ru": "Обычный металл для ковки.",
+      "en": "Common metal for forging."
+    },
+    "tags": [],
     "category": "materials",
-    "source": { "ru": "Шахты, Скалы", "en": "Mines, Rocks" },
-    "updatedAt": "2024-01-01T00:00:00.000Z"
+    "updatedAt": "2024-01-01T00:00:00.000Z",
+    "source": {
+      "ru": "Шахты, Скалы",
+      "en": "Mines, Rocks"
+    },
+    "image": "/images/materials_iron-ore_1781170342828.png"
   },
   {
     "id": "mat-dragon-scale",
     "slug": "dragon-scale",
-    "name": { "ru": "Чешуя дракона", "en": "Dragon Scale" },
-    "description": { "ru": "Невероятно прочный материал.", "en": "Incredibly durable material." },
+    "name": {
+      "ru": "Чешуя дракона",
+      "en": "Dragon Scale"
+    },
+    "description": {
+      "ru": "Невероятно прочный материал.",
+      "en": "Incredibly durable material."
+    },
     "category": "materials",
-    "source": { "ru": "Драконы", "en": "Dragons" },
+    "source": {
+      "ru": "Драконы",
+      "en": "Dragons"
+    },
     "updatedAt": "2024-01-01T00:00:00.000Z"
   }
 ]
