@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Entity } from "../shared/types/entities";
+import { Entity, Bestiary, Material } from "../shared/types/entities";
 import { loadAllEntities } from "../shared/api/dataService";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../shared/ui/LanguageSwitcher";
@@ -14,14 +14,17 @@ export default function AdminPanel() {
   const [draftEntities, setDraftEntities] = useState<Entity[]>([]);
   const [deletedIds, setDeletedIds] = useState<string[]>([]);
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
-  const [dirHandle, setDirHandle] = useState<FileSystemDirectoryHandle | null>(null);
+  const [dirHandle, setDirHandle] = useState<FileSystemDirectoryHandle | null>(
+    null,
+  );
   const [isAuthorized, setIsAuthorized] = useState(false);
 
   // Helper to save/load handle from IndexedDB
   const getDB = (): Promise<IDBDatabase> => {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open("WikiEditorDB", 1);
-      request.onupgradeneeded = () => request.result.createObjectStore("handles");
+      request.onupgradeneeded = () =>
+        request.result.createObjectStore("handles");
       request.onsuccess = () => resolve(request.result);
       request.onerror = () => reject(request.error);
     });
@@ -38,10 +41,12 @@ export default function AdminPanel() {
       try {
         const db = await getDB();
         const tx = db.transaction("handles", "readonly");
-        const handle = await new Promise<FileSystemDirectoryHandle | undefined>((res) => {
-          const req = tx.objectStore("handles").get("publicFolder");
-          req.onsuccess = () => res(req.result);
-        });
+        const handle = await new Promise<FileSystemDirectoryHandle | undefined>(
+          (res) => {
+            const req = tx.objectStore("handles").get("publicFolder");
+            req.onsuccess = () => res(req.result);
+          },
+        );
 
         if (handle) {
           setDirHandle(handle);
@@ -65,13 +70,13 @@ export default function AdminPanel() {
       // @ts-expect-error - File System Access API
       if (!handle) handle = await window.showDirectoryPicker();
       if (!handle) return;
-      
+
       // @ts-expect-error - File System Access API
       if ((await handle.queryPermission({ mode })) !== "granted") {
         // @ts-expect-error - File System Access API
         await handle.requestPermission({ mode });
       }
-      
+
       // @ts-expect-error - File System Access API
       if ((await handle.queryPermission({ mode })) === "granted") {
         const db = await getDB();
@@ -172,7 +177,7 @@ export default function AdminPanel() {
         const filteredData = data.filter(
           (e) => !currentDeletions.includes(e.id),
         );
-        
+
         const updated = [...filteredData];
         (groups[cat] || []).forEach((e) => {
           const idx = updated.findIndex((ex) => ex.id === e.id);
@@ -180,7 +185,6 @@ export default function AdminPanel() {
           else updated.push(e);
         });
 
-        // @ts-expect-error - File System Access API
         const writable = await handle.createWritable();
         await writable.write(JSON.stringify(updated, null, 2));
         await writable.close();
@@ -221,7 +225,9 @@ export default function AdminPanel() {
     field: string;
     entity: Entity;
   }) => {
-    const value = (entity as unknown as Record<string, Record<string, number>>)[field] || {};
+    const value =
+      ((entity as Record<string, unknown>)[field] as Record<string, number>) ||
+      {};
     const [newKey, setNewKey] = useState("");
     const [newVal, setNewVal] = useState("");
 
@@ -298,14 +304,18 @@ export default function AdminPanel() {
     category: string;
     multiple?: boolean;
   }) => {
-    const value = (selectedEntity as unknown as Record<string, string | string[]>)?.[field];
+    const value = selectedEntity
+      ? (selectedEntity as Record<string, unknown>)[field]
+      : undefined;
     const options = allAvailableEntities.filter((e) => e.category === category);
 
     if (multiple) {
       const selectedIds = (value as string[]) || [];
       return (
         <div className="mb-6">
-          <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{label}</label>
+          <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+            {label}
+          </label>
           <div className="flex flex-wrap gap-2 mb-3">
             {selectedIds.map((id: string) => {
               const e = allAvailableEntities.find((x) => x.id === id);
@@ -351,7 +361,9 @@ export default function AdminPanel() {
 
     return (
       <div className="mb-6">
-        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">{label}</label>
+        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+          {label}
+        </label>
         <select
           className="w-full p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold appearance-none outline-none focus:border-blue-500 transition-colors"
           value={(value as string) || ""}
@@ -372,17 +384,22 @@ export default function AdminPanel() {
     return (
       <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-600/5 blur-[100px] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="max-w-md w-full text-center space-y-12 relative z-10"
         >
-          <div className="w-24 h-24 bg-blue-600 rounded-[2.5rem] flex items-center justify-center text-4xl font-black mx-auto shadow-2xl shadow-blue-500/50">W</div>
+          <div className="w-24 h-24 bg-blue-600 rounded-[2.5rem] flex items-center justify-center text-4xl font-black mx-auto shadow-2xl shadow-blue-500/50">
+            W
+          </div>
           <div>
-             <h1 className="text-5xl font-black tracking-tighter mb-4">
-               Content Editor
-             </h1>
-             <p className="text-slate-400 font-medium">Connect your local /public folder to start editing Wiki content directly from your browser.</p>
+            <h1 className="text-5xl font-black tracking-tighter mb-4">
+              Content Editor
+            </h1>
+            <p className="text-slate-400 font-medium">
+              Connect your local /public folder to start editing Wiki content
+              directly from your browser.
+            </p>
           </div>
           <motion.button
             whileHover={{ scale: 1.02 }}
@@ -415,7 +432,7 @@ export default function AdminPanel() {
                   updatedAt: new Date().toISOString(),
                   manaCost: 0,
                   cooldown: 0,
-                  requirements: { level: 1 }
+                  requirements: { level: 1 },
                 };
                 updateField("id", ent.id);
                 setSelectedEntity(ent);
@@ -436,16 +453,20 @@ export default function AdminPanel() {
                   onClick={() => setSelectedEntity(e)}
                   className={`w-full p-4 rounded-2xl text-left transition-all border ${isActive ? "bg-blue-600 border-blue-500 shadow-xl shadow-blue-500/10" : "bg-transparent border-transparent hover:bg-slate-50 dark:hover:bg-slate-800/50"}`}
                 >
-                  <div className={`font-black text-sm mb-1 ${isActive ? "text-white" : "text-slate-900 dark:text-slate-100"}`}>
+                  <div
+                    className={`font-black text-sm mb-1 ${isActive ? "text-white" : "text-slate-900 dark:text-slate-100"}`}
+                  >
                     {e.name[currentLang] || e.name.ru}
                   </div>
                   <div className="flex items-center justify-between">
-                     <div className={`text-[10px] uppercase font-black ${isActive ? "text-blue-200" : "text-slate-400"}`}>
-                       {e.category}
-                     </div>
-                     {isDraft && (
-                       <span className="w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.5)]"></span>
-                     )}
+                    <div
+                      className={`text-[10px] uppercase font-black ${isActive ? "text-blue-200" : "text-slate-400"}`}
+                    >
+                      {e.category}
+                    </div>
+                    {isDraft && (
+                      <span className="w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.5)]"></span>
+                    )}
                   </div>
                 </button>
               );
@@ -453,7 +474,7 @@ export default function AdminPanel() {
           </div>
 
           <div className="p-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-             <LanguageSwitcher />
+            <LanguageSwitcher />
           </div>
         </div>
 
@@ -461,7 +482,7 @@ export default function AdminPanel() {
         <div className="flex-1 flex flex-col bg-slate-100 dark:bg-slate-950 overflow-hidden relative">
           <AnimatePresence mode="wait">
             {selectedEntity ? (
-              <motion.div 
+              <motion.div
                 key={selectedEntity.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -470,61 +491,144 @@ export default function AdminPanel() {
               >
                 <div className="max-w-3xl mx-auto pb-32">
                   <header className="mb-12">
-                    <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-4 block">Editing Mode</span>
+                    <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] mb-4 block">
+                      Editing Mode
+                    </span>
                     <h2 className="text-5xl font-black tracking-tighter mb-2 italic">
                       {selectedEntity.name[currentLang]}
                     </h2>
-                    <p className="text-slate-400 font-medium font-mono text-xs">{selectedEntity.id}</p>
+                    <p className="text-slate-400 font-medium font-mono text-xs">
+                      {selectedEntity.id}
+                    </p>
                   </header>
 
                   <div className="space-y-12">
                     {/* General Section */}
                     <div className="grid grid-cols-2 gap-8">
-                       <div className="col-span-2">
-                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Category</label>
+                      <div className="col-span-2">
+                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+                          Category
+                        </label>
                         <select
                           className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500 transition-colors"
                           value={selectedEntity.category}
-                          onChange={(e) => updateField("category", e.target.value)}
+                          onChange={(e) =>
+                            updateField("category", e.target.value)
+                          }
                         >
-                          {["skills","equipment","consumables","materials","bestiary","locations","npcs","quests"].map(c => <option key={c} value={c}>{c}</option>)}
+                          {[
+                            "skills",
+                            "equipment",
+                            "consumables",
+                            "materials",
+                            "bestiary",
+                            "locations",
+                            "npcs",
+                            "quests",
+                          ].map((c) => (
+                            <option key={c} value={c}>
+                              {c}
+                            </option>
+                          ))}
                         </select>
-                       </div>
-                       
-                       <div className="col-span-1">
-                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">Name (RU)</label>
-                        <input className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500" value={selectedEntity.name.ru} onChange={e => updateLocalizedField("name", "ru", e.target.value)} />
-                       </div>
-                       <div className="col-span-1">
-                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Name (EN)</label>
-                        <input className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500" value={selectedEntity.name.en} onChange={e => updateLocalizedField("name", "en", e.target.value)} />
-                       </div>
-                       
-                       <div className="col-span-2">
-                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Slug (Unique ID)</label>
-                        <input className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-mono shadow-sm outline-none focus:border-blue-500" value={selectedEntity.slug} onChange={e => updateField("slug", e.target.value)} />
-                       </div>
+                      </div>
+
+                      <div className="col-span-1">
+                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">
+                          Name (RU)
+                        </label>
+                        <input
+                          className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500"
+                          value={selectedEntity.name.ru}
+                          onChange={(e) =>
+                            updateLocalizedField("name", "ru", e.target.value)
+                          }
+                        />
+                      </div>
+                      <div className="col-span-1">
+                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+                          Name (EN)
+                        </label>
+                        <input
+                          className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500"
+                          value={selectedEntity.name.en}
+                          onChange={(e) =>
+                            updateLocalizedField("name", "en", e.target.value)
+                          }
+                        />
+                      </div>
+
+                      <div className="col-span-2">
+                        <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+                          Slug (Unique ID)
+                        </label>
+                        <input
+                          className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-mono shadow-sm outline-none focus:border-blue-500"
+                          value={selectedEntity.slug}
+                          onChange={(e) => updateField("slug", e.target.value)}
+                        />
+                      </div>
                     </div>
 
                     {/* Image Section */}
                     <div>
-                      <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Entity Media</label>
+                      <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+                        Entity Media
+                      </label>
                       <div className="flex gap-6 items-center p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] shadow-sm">
-                         <div className="w-20 h-20 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden">
-                           {selectedEntity.image && <img src={selectedEntity.image.startsWith('http') ? selectedEntity.image : `.${selectedEntity.image}`} alt="" className="w-full h-full object-cover" />}
-                         </div>
-                         <div className="flex-1">
-                            <input type="file" onChange={uploadImage} className="text-xs font-bold text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100 transition-all cursor-pointer" />
-                         </div>
+                        <div className="w-20 h-20 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden">
+                          {selectedEntity.image && (
+                            <img
+                              src={
+                                selectedEntity.image.startsWith("http")
+                                  ? selectedEntity.image
+                                  : `.${selectedEntity.image}`
+                              }
+                              alt=""
+                              className="w-full h-full object-cover"
+                            />
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          <input
+                            type="file"
+                            onChange={uploadImage}
+                            className="text-xs font-bold text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-black file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100 transition-all cursor-pointer"
+                          />
+                        </div>
                       </div>
                     </div>
 
                     {/* Description Section */}
                     <div>
-                      <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Description Content</label>
+                      <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+                        Description Content
+                      </label>
                       <div className="space-y-4">
-                        <textarea className="w-full p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] h-48 text-sm leading-relaxed shadow-sm outline-none focus:border-blue-500" value={selectedEntity.description.ru} onChange={e => updateLocalizedField("description", "ru", e.target.value)} placeholder="Описание (RU)" />
-                        <textarea className="w-full p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] h-48 text-sm leading-relaxed shadow-sm outline-none focus:border-blue-500" value={selectedEntity.description.en} onChange={e => updateLocalizedField("description", "en", e.target.value)} placeholder="Description (EN)" />
+                        <textarea
+                          className="w-full p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] h-48 text-sm leading-relaxed shadow-sm outline-none focus:border-blue-500"
+                          value={selectedEntity.description.ru}
+                          onChange={(e) =>
+                            updateLocalizedField(
+                              "description",
+                              "ru",
+                              e.target.value,
+                            )
+                          }
+                          placeholder="Описание (RU)"
+                        />
+                        <textarea
+                          className="w-full p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] h-48 text-sm leading-relaxed shadow-sm outline-none focus:border-blue-500"
+                          value={selectedEntity.description.en}
+                          onChange={(e) =>
+                            updateLocalizedField(
+                              "description",
+                              "en",
+                              e.target.value,
+                            )
+                          }
+                          placeholder="Description (EN)"
+                        />
                       </div>
                     </div>
 
@@ -533,96 +637,219 @@ export default function AdminPanel() {
                       {selectedEntity.category === "skills" && (
                         <div className="grid grid-cols-2 gap-8">
                           <div className="col-span-1">
-                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Mana Cost</label>
-                            <input type="number" className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-black text-blue-600 outline-none" value={selectedEntity.manaCost || 0} onChange={e => updateField("manaCost", Number(e.target.value))} />
+                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                              Mana Cost
+                            </label>
+                            <input
+                              type="number"
+                              className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-black text-blue-600 outline-none"
+                              value={selectedEntity.manaCost || 0}
+                              onChange={(e) =>
+                                updateField("manaCost", Number(e.target.value))
+                              }
+                            />
                           </div>
                           <div className="col-span-1">
-                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Cooldown (s)</label>
-                            <input type="number" className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-black text-blue-600 outline-none" value={selectedEntity.cooldown || 0} onChange={e => updateField("cooldown", Number(e.target.value))} />
+                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                              Cooldown (s)
+                            </label>
+                            <input
+                              type="number"
+                              className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-black text-blue-600 outline-none"
+                              value={selectedEntity.cooldown || 0}
+                              onChange={(e) =>
+                                updateField("cooldown", Number(e.target.value))
+                              }
+                            />
                           </div>
                         </div>
                       )}
 
                       {selectedEntity.category === "equipment" && (
                         <div className="space-y-8">
-                           <div className="grid grid-cols-2 gap-8">
-                              <div>
-                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Type</label>
-                                <select className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold" value={selectedEntity.type} onChange={e => updateField("type", e.target.value)}>
-                                  <option value="weapon">Weapon</option><option value="armor">Armor</option><option value="accessory">Accessory</option>
-                                </select>
-                              </div>
-                              <div>
-                                <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Rarity</label>
-                                <select className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold" value={selectedEntity.rarity} onChange={e => updateField("rarity", e.target.value)}>
-                                  <option value="common">Common</option><option value="uncommon">Uncommon</option><option value="rare">Rare</option><option value="epic">Epic</option><option value="legendary">Legendary</option><option value="artifact">Artifact</option>
-                                </select>
-                              </div>
-                           </div>
-                           <ObjectMapInput label="Combat Stats" field="stats" entity={selectedEntity} />
+                          <div className="grid grid-cols-2 gap-8">
+                            <div>
+                              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                                Type
+                              </label>
+                              <select
+                                className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold"
+                                value={selectedEntity.type}
+                                onChange={(e) =>
+                                  updateField("type", e.target.value)
+                                }
+                              >
+                                <option value="weapon">Weapon</option>
+                                <option value="armor">Armor</option>
+                                <option value="accessory">Accessory</option>
+                              </select>
+                            </div>
+                          </div>
+                          <ObjectMapInput
+                            label="Combat Stats"
+                            field="stats"
+                            entity={selectedEntity}
+                          />
                         </div>
                       )}
 
                       {selectedEntity.category === "bestiary" && (
                         <div className="space-y-8">
-                          <div className="flex items-center gap-4 p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl">
-                            <input type="checkbox" className="w-6 h-6 rounded-lg text-red-600" checked={selectedEntity.isBoss} onChange={e => updateField("isBoss", e.target.checked)} />
-                            <label className="text-sm font-black uppercase tracking-widest">Mark as BOSS Creature</label>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">
+                                Creature Behavior
+                              </label>
+                              <select
+                                className="w-full px-6 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all appearance-none"
+                                value={
+                                  (selectedEntity as Bestiary).behavior ||
+                                  "aggressive"
+                                }
+                                onChange={(e) =>
+                                  updateField("behavior", e.target.value)
+                                }
+                              >
+                                <option value="aggressive">Aggressive</option>
+                                <option value="boss">Boss</option>
+                                <option value="passive">Passive</option>
+                                <option value="peaceful">Peaceful</option>
+                              </select>
+                            </div>
+                            <div className="space-y-2">
+                              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-4">
+                                Level
+                              </label>
+                              <input
+                                type="number"
+                                className="w-full px-6 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl text-sm font-bold focus:ring-2 focus:ring-blue-500 transition-all"
+                                value={(selectedEntity as Bestiary).level || 0}
+                                onChange={(e) =>
+                                  updateField("level", parseInt(e.target.value))
+                                }
+                              />
+                            </div>
                           </div>
-                          <RelationSelect label="Habitat Location" field="locationId" category="locations" />
-                          <ObjectMapInput label="Combat Stats" field="stats" entity={selectedEntity} />
+                          <RelationSelect
+                            label="Habitat Location"
+                            field="locationId"
+                            category="locations"
+                          />
+                          <ObjectMapInput
+                            label="Combat Stats"
+                            field="stats"
+                            entity={selectedEntity}
+                          />
                         </div>
                       )}
 
                       {selectedEntity.category === "materials" && (
                         <div className="space-y-8">
-                           <div className="col-span-1">
-                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">Source (RU)</label>
-                            <input className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500" value={(selectedEntity as unknown as {source: {ru: string}}).source?.ru || ""} onChange={e => {
-                               const current = (selectedEntity as unknown as {source: {ru: string, en: string}}).source || {ru: "", en: ""};
-                               updateField("source", { ...current, ru: e.target.value });
-                            }} />
-                           </div>
-                           <div className="col-span-1">
-                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">Source (EN)</label>
-                            <input className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500" value={(selectedEntity as unknown as {source: {en: string}}).source?.en || ""} onChange={e => {
-                               const current = (selectedEntity as unknown as {source: {ru: string, en: string}}).source || {ru: "", en: ""};
-                               updateField("source", { ...current, en: e.target.value });
-                            }} />
-                           </div>
+                          <div className="col-span-1">
+                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">
+                              Source (RU)
+                            </label>
+                            <input
+                              className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500"
+                              value={
+                                (selectedEntity as Material).source?.ru || ""
+                              }
+                              onChange={(e) => {
+                                const current = (selectedEntity as Material)
+                                  .source || { ru: "", en: "" };
+                                updateField("source", {
+                                  ...current,
+                                  ru: e.target.value,
+                                });
+                              }}
+                            />
+                          </div>
+                          <div className="col-span-1">
+                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">
+                              Source (EN)
+                            </label>
+                            <input
+                              className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500"
+                              value={
+                                (selectedEntity as Material).source?.en || ""
+                              }
+                              onChange={(e) => {
+                                const current = (selectedEntity as Material)
+                                  .source || { ru: "", en: "" };
+                                updateField("source", {
+                                  ...current,
+                                  en: e.target.value,
+                                });
+                              }}
+                            />
+                          </div>
                         </div>
                       )}
 
                       {selectedEntity.category === "locations" && (
-                        <RelationSelect label="Parent Zone" field="parentLocationId" category="locations" />
+                        <RelationSelect
+                          label="Parent Zone"
+                          field="parentLocationId"
+                          category="locations"
+                        />
                       )}
 
                       {selectedEntity.category === "npcs" && (
-                        <RelationSelect label="Spawn Location" field="locationId" category="locations" />
+                        <RelationSelect
+                          label="Spawn Location"
+                          field="locationId"
+                          category="locations"
+                        />
                       )}
 
                       {selectedEntity.category === "quests" && (
                         <div className="space-y-8">
-                           <RelationSelect label="Quest Giver" field="giverNpcId" category="npcs" />
-                           <RelationSelect label="Prerequisite Quest" field="chainParentId" category="quests" />
+                          <RelationSelect
+                            label="Quest Giver"
+                            field="giverNpcId"
+                            category="npcs"
+                          />
+                          <RelationSelect
+                            label="Prerequisite Quest"
+                            field="chainParentId"
+                            category="quests"
+                          />
                         </div>
                       )}
                     </div>
 
                     {/* Actions */}
                     <div className="border-t border-slate-200 dark:border-slate-800 pt-12">
-                       <button onClick={() => {
-                        if (confirm("Permanently delete this entity?")) {
-                          if (dbEntities?.find(x => x.id === selectedEntity.id)) {
-                            setDeletedIds([...deletedIds, selectedEntity.id]);
-                            localStorage.setItem("wiki_deleted_ids", JSON.stringify([...deletedIds, selectedEntity.id]));
+                      <button
+                        onClick={() => {
+                          if (confirm("Permanently delete this entity?")) {
+                            if (
+                              dbEntities?.find(
+                                (x) => x.id === selectedEntity.id,
+                              )
+                            ) {
+                              setDeletedIds([...deletedIds, selectedEntity.id]);
+                              localStorage.setItem(
+                                "wiki_deleted_ids",
+                                JSON.stringify([
+                                  ...deletedIds,
+                                  selectedEntity.id,
+                                ]),
+                              );
+                            }
+                            const next = draftEntities.filter(
+                              (x) => x.id !== selectedEntity.id,
+                            );
+                            setDraftEntities(next);
+                            localStorage.setItem(
+                              "wiki_draft_entities",
+                              JSON.stringify(next),
+                            );
+                            setSelectedEntity(null);
                           }
-                          const next = draftEntities.filter(x => x.id !== selectedEntity.id);
-                          setDraftEntities(next);
-                          localStorage.setItem("wiki_draft_entities", JSON.stringify(next));
-                          setSelectedEntity(null);
-                        }
-                      }} className="w-full py-4 bg-red-50 dark:bg-red-950/20 text-red-600 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-red-100 transition-colors">
+                        }}
+                        className="w-full py-4 bg-red-50 dark:bg-red-950/20 text-red-600 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-red-100 transition-colors"
+                      >
                         Delete Entity from Database
                       </button>
                     </div>
@@ -631,9 +858,16 @@ export default function AdminPanel() {
               </motion.div>
             ) : (
               <div className="flex-1 flex flex-col items-center justify-center p-12 text-center">
-                <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center text-3xl mb-6">📂</div>
-                <h3 className="text-2xl font-black mb-2 italic">No Selection</h3>
-                <p className="text-slate-400 font-medium max-w-xs mx-auto">Select an entity from the sidebar to begin editing or create a new one.</p>
+                <div className="w-20 h-20 bg-slate-100 dark:bg-slate-900 rounded-[2rem] flex items-center justify-center text-3xl mb-6">
+                  📂
+                </div>
+                <h3 className="text-2xl font-black mb-2 italic">
+                  No Selection
+                </h3>
+                <p className="text-slate-400 font-medium max-w-xs mx-auto">
+                  Select an entity from the sidebar to begin editing or create a
+                  new one.
+                </p>
               </div>
             )}
           </AnimatePresence>
@@ -641,20 +875,25 @@ export default function AdminPanel() {
           {/* Floating Save Button */}
           <AnimatePresence>
             {(draftEntities.length > 0 || deletedIds.length > 0) && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 50 }}
                 className="absolute bottom-8 right-8 z-30"
               >
-                <motion.button 
+                <motion.button
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={saveToFiles}
                   className="px-10 py-5 bg-blue-600 text-white rounded-[2rem] font-black text-lg shadow-2xl shadow-blue-500/50 flex items-center gap-4"
                 >
-                  <span>Push {draftEntities.length + deletedIds.length} Changes to Disk</span>
-                  <span className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm italic">S</span>
+                  <span>
+                    Push {draftEntities.length + deletedIds.length} Changes to
+                    Disk
+                  </span>
+                  <span className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm italic">
+                    S
+                  </span>
                 </motion.button>
               </motion.div>
             )}

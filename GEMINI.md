@@ -21,7 +21,8 @@ Designed to handle thousands of entities (items, mobs, quests) using a serverles
 
 1. **NO BACKEND**: Zero server-side logic. All logic is client-side.
 2. **NO DATABASES**: All data lives in `/public/data/*.json`.
-3. **FLAT DATA STRUCTURE**: Strictly one JSON file per category in the root of the data folder. No nested folders.
+3. **NO 'any' TYPE**: Usage of `any` is strictly forbidden. Use proper TypeScript interfaces, unions, or `unknown` with type guards.
+4. **FLAT DATA STRUCTURE**: Strictly one JSON file per category in the root of the data folder. No nested folders.
 4. **FEATURE-SLICED DESIGN (FSD)**: Adhere strictly to the layers (`app`, `pages`, `widgets`, `features`, `entities`, `shared`).
 5. **ASSET MANAGEMENT**: All static assets (images, svgs) must live in `/public/`. Use `/public/assets/` for app icons and `/public/images/` for game entities.
 

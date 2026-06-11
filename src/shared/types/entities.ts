@@ -42,7 +42,6 @@ export const EquipmentSchema = BaseEntitySchema.extend({
   category: z.literal('equipment'),
   type: z.enum(['weapon', 'armor', 'accessory']),
   slot: z.string().optional(),
-  rarity: z.enum(['common', 'uncommon', 'rare', 'epic', 'legendary', 'artifact']),
   stats: z.record(z.string(), z.number()).optional(),
   requirements: z.object({
     level: z.number().optional(),
@@ -60,9 +59,18 @@ export const MaterialSchema = BaseEntitySchema.extend({
   source: LocalizedStringSchema.optional(),
 });
 
+export const EntityBehavior = z.enum([
+  'boss',
+  'aggressive',
+  'passive',
+  'peaceful',
+]);
+
+export type EntityBehavior = z.infer<typeof EntityBehavior>;
+
 export const BestiarySchema = BaseEntitySchema.extend({
   category: z.literal('bestiary'),
-  isBoss: z.boolean().default(false),
+  behavior: EntityBehavior.default('aggressive'),
   level: z.number().optional(),
   locationId: z.string().optional(),
   stats: z.record(z.string(), z.number()).optional(),

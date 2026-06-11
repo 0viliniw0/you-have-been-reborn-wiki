@@ -6,7 +6,6 @@
     "description": { "ru": "Старый, зазубренный меч.", "en": "An old, notched sword." },
     "category": "equipment",
     "type": "weapon",
-    "rarity": "common",
     "stats": { "physical_damage": 5 },
     "requirements": { "level": 1 },
     "updatedAt": "2024-01-01T00:00:00.000Z"
@@ -18,7 +17,6 @@
     "description": { "ru": "Доспехи из чешуи древнего змея.", "en": "Armor made from the scales of an ancient serpent." },
     "category": "equipment",
     "type": "armor",
-    "rarity": "legendary",
     "stats": { "defense": 100, "fire_resistance": 50 },
     "requirements": { "level": 50 },
     "updatedAt": "2024-01-01T00:00:00.000Z"

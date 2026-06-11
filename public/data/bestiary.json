@@ -1,61 +1,75 @@
 [
   {
-    "id": "mob-wolf",
-    "slug": "gray-wolf",
+    "id": "bestiary_wolf_1781100000000",
+    "slug": "wolf",
     "name": {
-      "ru": "Серый волк",
-      "en": "Gray Wolf"
+      "ru": "Волк",
+      "en": "Wolf"
     },
     "description": {
-      "ru": "Дикий зверь, охотящийся в лесах.",
-      "en": "A wild beast hunting in the forests."
+      "ru": "Лесной хищник, охотящийся стаями.",
+      "en": "A forest predator that hunts in packs."
     },
-    "tags": [],
+    "tags": [
+      "beast",
+      "common"
+    ],
     "category": "bestiary",
-    "updatedAt": "2024-01-01T00:00:00.000Z",
-    "isBoss": false,
-    "level": 3,
-    "locationId": "loc-dark-forest",
+    "updatedAt": "2024-03-20T10:00:00Z",
+    "behavior": "aggressive",
+    "level": 5,
+    "locationId": "locations_whispering_woods",
     "stats": {
-      "hp": 50,
-      "attack": 10
+      "HP": 120,
+      "Attack": 15,
+      "Defense": 5
     },
     "drops": [
       {
-        "id": "mat-iron-ore",
-        "chance": 10
+        "id": "materials_wolf_pelt",
+        "chance": 40
+      },
+      {
+        "id": "materials_sharp_claw",
+        "chance": 15
       }
     ]
   },
   {
-    "id": "mob-ancient-dragon",
-    "slug": "ancient-dragon",
+    "id": "bestiary_fenrir_1781100000001",
+    "slug": "fenrir-shadow",
     "name": {
-      "ru": "Древний дракон",
-      "en": "Ancient Dragon"
+      "ru": "Тень Фенрира",
+      "en": "Shadow of Fenrir"
     },
     "description": {
-      "ru": "Огромный крылатый змей, повелитель пламени.",
-      "en": "A massive winged serpent, lord of the flame."
+      "ru": "Легендарный ледяной волк, охраняющий вход в подземелье.",
+      "en": "A legendary ice wolf guarding the dungeon entrance."
     },
+    "tags": [
+      "beast",
+      "boss",
+      "ice"
+    ],
     "category": "bestiary",
-    "isBoss": true,
-    "level": 60,
-    "locationId": "loc-dark-forest",
+    "updatedAt": "2024-03-20T11:00:00Z",
+    "behavior": "aggressive",
+    "level": 15,
+    "locationId": "locations_whispering_woods",
     "stats": {
-      "hp": 10000,
-      "attack": 500
+      "HP": 1500,
+      "Attack": 85,
+      "Defense": 40
     },
     "drops": [
       {
-        "id": "mat-dragon-scale",
-        "chance": 100
+        "id": "equipment_wolf_fang_dagger",
+        "chance": 10
       },
       {
-        "id": "eq-dragon-armor",
-        "chance": 5
+        "id": "materials_ice_crystal",
+        "chance": 100
       }
-    ],
-    "updatedAt": "2024-01-01T00:00:00.000Z"
+    ]
   }
 ]

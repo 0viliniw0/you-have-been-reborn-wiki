@@ -1,5 +1,5 @@
 import { 
-  BaseEntity, 
+  Entity,
   EntityCategory as EntityType, 
   NpcSchema, 
   QuestSchema, 
@@ -35,7 +35,7 @@ export const fetchRegistry = async (): Promise<DataRegistry> => {
 
 export const fetchEntitiesBatch = async (
   categoryOrFileName: string,
-): Promise<BaseEntity[]> => {
+): Promise<Entity[]> => {
   const fileName = categoryOrFileName.endsWith(".json") 
     ? categoryOrFileName 
     : `${categoryOrFileName}.json`;
@@ -51,13 +51,13 @@ export const fetchEntitiesBatch = async (
 
   if (!result.success) {
     console.error(`Validation error in ${fileName}:`, result.error);
-    return data as BaseEntity[]; 
+    return data as Entity[]; 
   }
 
-  return result.data as BaseEntity[];
+  return result.data as Entity[];
 };
 
-export const loadAllEntities = async (): Promise<BaseEntity[]> => {
+export const loadAllEntities = async (): Promise<Entity[]> => {
   const registry = await fetchRegistry();
   const allPromises = registry.map(file => fetchEntitiesBatch(file));
   const results = await Promise.all(allPromises);
