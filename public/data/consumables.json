@@ -1,41 +1,23 @@
-[{
-  "id": "39bdd553-9403-41e0-9935-584c4099081b",
-  "slug": "venison",
-  "name": {
-    "ru": "Оленина",
-    "en": "Venison"
-  },
-  "description": {
-    "ru": "Сочное и питательное мясо дичи, наполненное ароматом лесов и свежего воздуха. Подходит как для приготовления сытных блюд, так и для простой обжарки на костре, способной утолить голод даже после долгого путешествия. Ценится охотниками и торговцами за свои превосходные вкусовые качества.\n\n**Источник получения:**\n\n*  Добывается с существа **Олень**.\n\n> 🔥 Можно приготовить на костре и насладиться насыщенным вкусом свежей дичи.\n\n\n\n\n\n",
-    "en": "Juicy and nutritious wild game meat infused with the essence of the forest. Perfect for crafting hearty meals or simply roasting over a campfire to satisfy hunger during long journeys. Highly valued by hunters and traders for its rich flavor.\n\n**Obtained from:**\n\n*  Harvested from **Deer**.\n\n> 🔥 Can be roasted over a campfire to enjoy the rich taste of fresh game meat.\n"
-  },
-  "category": "consumables",
-  "tags": [],
-  "updatedAt": "2026-06-11T11:35:03.251Z",
-  "manaCost": 0,
-  "cooldown": 0,
-  "requirements": {
-    "level": 1
-  },
-  "image": "/images/skills_new_1781177807764.png"
-},{
-  "id": "7dca7e66-2d69-4d39-a6c6-9363bbf01e27",
-  "slug": "deer-hide",
-  "name": {
-    "ru": "Шкура оленя",
-    "en": "Deer hide"
-  },
-  "description": {
-    "ru": "Прочная и гибкая шкура дикого оленя, сохраняющая тепло и защищающая от ветра и холода. Используется в ремесле для создания одежды, заготовок и других полезных предметов. Ценится охотниками и мастерами за свою прочность и естественную текстуру. \n\n**Источник получения:**\n\n* Добывается с существа Олень.\n\n> Хорошая шкура — это не просто трофей. Это тепло, которое ты носишь с собой в самые холодные ночи. ",
-    "en": "Durable and flexible wild deer hide that retains warmth and protects against wind and cold. Used in crafting to create clothing, materials, and other useful items. Highly valued by hunters and artisans for its strength and natural texture.\n\n**Source of obtaining:**\n\n* Dropped from the Deer creature.\n\n> A good hide is not just a trophy. It is warmth you carry with you on the coldest nights.\n"
-  },
-  "category": "materials",
-  "tags": [],
-  "updatedAt": "2026-06-11T12:13:52.963Z",
-  "manaCost": 0,
-  "cooldown": 0,
-  "requirements": {
-    "level": 1
-  },
-  "image": "/images/skills_new_1781180041585.png"
-}]
+[
+  {
+    "id": "39bdd553-9403-41e0-9935-584c4099081b",
+    "slug": "venison",
+    "name": {
+      "ru": "Оленина",
+      "en": "Venison"
+    },
+    "description": {
+      "ru": "Сочное и питательное мясо дичи, наполненное ароматом лесов и свежего воздуха. Подходит как для приготовления сытных блюд, так и для простой обжарки на костре, способной утолить голод даже после долгого путешествия. Ценится охотниками и торговцами за свои превосходные вкусовые качества.\n\n**Источник получения:**\n\n*  Добывается с существа **Олень**.\n\n> 🔥 Можно приготовить на костре и насладиться насыщенным вкусом свежей дичи.\n\n\n\n\n\n",
+      "en": "Juicy and nutritious wild game meat infused with the essence of the forest. Perfect for crafting hearty meals or simply roasting over a campfire to satisfy hunger during long journeys. Highly valued by hunters and traders for its rich flavor.\n\n**Obtained from:**\n\n*  Harvested from **Deer**.\n\n> 🔥 Can be roasted over a campfire to enjoy the rich taste of fresh game meat.\n"
+    },
+    "category": "consumables",
+    "tags": [],
+    "updatedAt": "2026-06-11T11:35:03.251Z",
+    "manaCost": 0,
+    "cooldown": 0,
+    "requirements": {
+      "level": 1
+    },
+    "image": "/images/skills_new_1781177807764.png"
+  }
+]

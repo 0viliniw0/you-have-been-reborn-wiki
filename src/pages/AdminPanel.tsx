@@ -740,16 +740,6 @@ export default function AdminPanel() {
                         </span>
                       </div>
                     </div>
-
-                    <div className="flex gap-3">
-                      <button
-                        onClick={saveToFiles}
-                        disabled={draftEntities.length === 0}
-                        className="px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl text-xs font-black uppercase tracking-widest shadow-2xl disabled:opacity-30 transition-all hover:scale-105 active:scale-95"
-                      >
-                        Push to Disk
-                      </button>
-                    </div>
                   </header>
 
                   <div className="space-y-12">
