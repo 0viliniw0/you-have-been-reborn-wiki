@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const LocalizedStringSchema = z.object({
   ru: z.string(),
@@ -6,14 +6,14 @@ export const LocalizedStringSchema = z.object({
 });
 
 export const EntityCategory = z.enum([
-  'skills',
-  'equipment',
-  'consumables',
-  'materials',
-  'bestiary',
-  'locations',
-  'npcs',
-  'recipes',
+  "skills",
+  "equipment",
+  "consumables",
+  "materials",
+  "bestiary",
+  "locations",
+  "npcs",
+  "recipes",
 ]);
 
 export type EntityCategory = z.infer<typeof EntityCategory>;
@@ -30,75 +30,83 @@ export const BaseEntitySchema = z.object({
 });
 
 export const SkillSchema = BaseEntitySchema.extend({
-  category: z.literal('skills'),
+  category: z.literal("skills"),
   manaCost: z.number().optional(),
   cooldown: z.number().optional(),
-  requirements: z.object({
-    level: z.number().optional(),
-  }).optional(),
+  requirements: z
+    .object({
+      level: z.number().optional(),
+    })
+    .optional(),
 });
 
 export const EquipmentSchema = BaseEntitySchema.extend({
-  category: z.literal('equipment'),
-  type: z.enum(['weapon', 'armor', 'accessory']),
+  category: z.literal("equipment"),
+  type: z.enum(["weapon", "armor", "accessory"]),
   slot: z.string().optional(),
   stats: z.record(z.string(), z.number()).optional(),
-  requirements: z.object({
-    level: z.number().optional(),
-  }).optional(),
+  requirements: z
+    .object({
+      level: z.number().optional(),
+    })
+    .optional(),
 });
 
 export const ConsumableSchema = BaseEntitySchema.extend({
-  category: z.literal('consumables'),
-  duration: z.number().optional(), // in seconds
+  category: z.literal("consumables"),
 });
 
 export const MaterialSchema = BaseEntitySchema.extend({
-  category: z.literal('materials'),
-  source: LocalizedStringSchema.optional(),
+  category: z.literal("materials"),
 });
 
 export const EntityBehavior = z.enum([
-  'boss',
-  'aggressive',
-  'passive',
-  'peaceful',
+  "boss",
+  "aggressive",
+  "passive",
+  "peaceful",
 ]);
 
 export type EntityBehavior = z.infer<typeof EntityBehavior>;
 
 export const BestiarySchema = BaseEntitySchema.extend({
-  category: z.literal('bestiary'),
-  behavior: EntityBehavior.default('aggressive'),
+  category: z.literal("bestiary"),
+  behavior: EntityBehavior.default("aggressive"),
   level: z.number().optional(),
   locationId: z.string().optional(),
   stats: z.record(z.string(), z.number()).optional(),
-  drops: z.array(z.object({
-    id: z.string(), // ID of equipment, consumable or material
-    chance: z.number(), // 0-100
-  })).optional(),
+  drops: z
+    .array(
+      z.object({
+        id: z.string(), // ID of equipment, consumable or material
+        chance: z.number(), // 0-100
+      }),
+    )
+    .optional(),
 });
 
 export const LocationSchema = BaseEntitySchema.extend({
-  category: z.literal('locations'),
-  type: z.enum(['city', 'zone', 'dungeon', 'raid']),
+  category: z.literal("locations"),
+  type: z.enum(["city", "zone", "dungeon", "raid"]),
   parentLocationId: z.string().optional(), // For sub-zones
 });
 
 export const NpcSchema = BaseEntitySchema.extend({
-  category: z.literal('npcs'),
+  category: z.literal("npcs"),
   role: LocalizedStringSchema.optional(),
   locationId: z.string().optional(),
 });
 
 export const RecipeSchema = BaseEntitySchema.extend({
-  category: z.literal('recipes'),
+  category: z.literal("recipes"),
   resultId: z.string(),
   resultQuantity: z.number().default(1),
-  ingredients: z.array(z.object({
-    id: z.string(),
-    quantity: z.number(),
-  })),
+  ingredients: z.array(
+    z.object({
+      id: z.string(),
+      quantity: z.number(),
+    }),
+  ),
   stationId: z.string().optional(), // Can be a location or NPC
 });
 
@@ -112,12 +120,12 @@ export type Location = z.infer<typeof LocationSchema>;
 export type Npc = z.infer<typeof NpcSchema>;
 export type Recipe = z.infer<typeof RecipeSchema>;
 
-export type Entity = 
-  | Skill 
-  | Equipment 
-  | Consumable 
-  | Material 
-  | Bestiary 
-  | Location 
-  | Npc 
+export type Entity =
+  | Skill
+  | Equipment
+  | Consumable
+  | Material
+  | Bestiary
+  | Location
+  | Npc
   | Recipe;

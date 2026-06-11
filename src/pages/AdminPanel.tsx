@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Entity, Bestiary, Material, Recipe } from "../shared/types/entities";
+import { Entity, Bestiary, Recipe } from "../shared/types/entities";
 
 import { loadAllEntities } from "../shared/api/dataService";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "../shared/ui/LanguageSwitcher";
 import { motion, AnimatePresence } from "framer-motion";
+
+const STORAGE_KEY = "wiki_editor_state";
 
 export default function AdminPanel() {
   const { i18n } = useTranslation();
@@ -34,11 +36,12 @@ export default function AdminPanel() {
   };
 
   useEffect(() => {
-    const savedDrafts = localStorage.getItem("wiki_draft_entities");
-    if (savedDrafts) setDraftEntities(JSON.parse(savedDrafts));
-
-    const savedDeleted = localStorage.getItem("wiki_deleted_ids");
-    if (savedDeleted) setDeletedIds(JSON.parse(savedDeleted));
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const { drafts = [], deleted = [] } = JSON.parse(saved);
+      setDraftEntities(drafts);
+      setDeletedIds(deleted);
+    }
 
     const restoreHandle = async () => {
       try {
@@ -96,7 +99,11 @@ export default function AdminPanel() {
 
   const updateField = (field: string, value: unknown) => {
     if (!selectedEntity) return;
-    const updated = { ...selectedEntity, [field]: value } as Entity;
+    const updated = {
+      ...selectedEntity,
+      [field]: value,
+      updatedAt: new Date().toISOString(), // ← добавить
+    } as Entity;
     setSelectedEntity(updated);
     const index = draftEntities.findIndex((e) => e.id === updated.id);
     let newDrafts: Entity[];
@@ -106,7 +113,10 @@ export default function AdminPanel() {
       newDrafts = [...draftEntities, updated];
     }
     setDraftEntities(newDrafts);
-    localStorage.setItem("wiki_draft_entities", JSON.stringify(newDrafts));
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ drafts: newDrafts, deleted: deletedIds }),
+    );
   };
 
   const updateLocalizedField = (
@@ -149,9 +159,10 @@ export default function AdminPanel() {
         groups[e.category].push(e);
       });
 
+      // ИСПРАВЛЕНИЕ 3: deletions ищем в allAvailableEntities, а не только в dbEntities
       const deletionsByCategory: Record<string, string[]> = {};
       deletedIds.forEach((id) => {
-        const entity = dbEntities?.find((e) => e.id === id);
+        const entity = allAvailableEntities.find((e) => e.id === id);
         if (entity) {
           if (!deletionsByCategory[entity.category])
             deletionsByCategory[entity.category] = [];
@@ -163,43 +174,48 @@ export default function AdminPanel() {
         ...Object.keys(groups),
         ...Object.keys(deletionsByCategory),
       ]);
+
       for (const cat of allCats) {
-        const handle = await dataDir.getFileHandle(`${cat}.json`, {
-          create: true,
-        });
-        let data: Entity[] = [];
+        // ИСПРАВЛЕНИЕ 2: не используем create:true при чтении — отдельно пробуем прочитать
+        let existingData: Entity[] = [];
         try {
+          const handle = await dataDir.getFileHandle(`${cat}.json`);
           const file = await handle.getFile();
           const text = await file.text();
-          if (text) data = JSON.parse(text) as Entity[];
+          if (text.trim()) existingData = JSON.parse(text) as Entity[];
         } catch {
-          // File might not exist yet
+          // Файл не существует — начинаем с пустого массива, это нормально
         }
 
         const currentDeletions = deletionsByCategory[cat] || [];
-        const filteredData = data.filter(
+        const filtered = existingData.filter(
           (e) => !currentDeletions.includes(e.id),
         );
 
-        const updated = [...filteredData];
+        const updated = [...filtered];
         (groups[cat] || []).forEach((e) => {
           const idx = updated.findIndex((ex) => ex.id === e.id);
           if (idx > -1) updated[idx] = e;
           else updated.push(e);
         });
 
-        const writable = await handle.createWritable();
+        // Создаём/перезаписываем только при записи
+        const writeHandle = await dataDir.getFileHandle(`${cat}.json`, {
+          create: true,
+        });
+        const writable = await writeHandle.createWritable();
         await writable.write(JSON.stringify(updated, null, 2));
         await writable.close();
       }
 
-      alert("Saved!");
+      // Сбрасываем состояние
       setDraftEntities([]);
       setDeletedIds([]);
-      localStorage.removeItem("wiki_draft_entities");
-      localStorage.removeItem("wiki_deleted_ids");
+      localStorage.removeItem(STORAGE_KEY);
       setSelectedEntity(null);
       await queryClient.invalidateQueries({ queryKey: ["entities"] });
+
+      alert("Saved!");
     } catch (err) {
       alert(err instanceof Error ? err.message : String(err));
     }
@@ -550,7 +566,7 @@ export default function AdminPanel() {
                 onClick={() => {
                   const ent: Entity = {
                     id: crypto.randomUUID(),
-                    slug: "new",
+                    slug: "new-" + Date.now(),
                     name: { ru: "Новый", en: "New" },
                     description: { ru: "", en: "" },
                     category: "skills",
@@ -560,7 +576,14 @@ export default function AdminPanel() {
                     cooldown: 0,
                     requirements: { level: 1 },
                   } as Entity;
-                  updateField("id", ent.id);
+
+                  // Сразу добавляем в drafts — не через updateField
+                  const newDrafts = [...draftEntities, ent];
+                  setDraftEntities(newDrafts);
+                  localStorage.setItem(
+                    STORAGE_KEY,
+                    JSON.stringify({ drafts: newDrafts, deleted: deletedIds }),
+                  );
                   setSelectedEntity(ent);
                 }}
                 className="bg-blue-600 text-white px-5 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-blue-500/20 hover:scale-105 transition-transform"
@@ -1105,48 +1128,6 @@ export default function AdminPanel() {
                         </div>
                       )}
 
-                      {selectedEntity.category === "materials" && (
-                        <div className="space-y-8">
-                          <div className="col-span-1">
-                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">
-                              Source (RU)
-                            </label>
-                            <input
-                              className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500"
-                              value={
-                                (selectedEntity as Material).source?.ru || ""
-                              }
-                              onChange={(e) => {
-                                const current = (selectedEntity as Material)
-                                  .source || { ru: "", en: "" };
-                                updateField("source", {
-                                  ...current,
-                                  ru: e.target.value,
-                                });
-                              }}
-                            />
-                          </div>
-                          <div className="col-span-1">
-                            <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 text-slate-400">
-                              Source (EN)
-                            </label>
-                            <input
-                              className="w-full p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold shadow-sm outline-none focus:border-blue-500"
-                              value={
-                                (selectedEntity as Material).source?.en || ""
-                              }
-                              onChange={(e) => {
-                                const current = (selectedEntity as Material)
-                                  .source || { ru: "", en: "" };
-                                updateField("source", {
-                                  ...current,
-                                  en: e.target.value,
-                                });
-                              }}
-                            />
-                          </div>
-                        </div>
-                      )}
 
                       {selectedEntity.category === "locations" && (
                         <RelationSelect
@@ -1210,27 +1191,21 @@ export default function AdminPanel() {
                       <button
                         onClick={() => {
                           if (confirm("Permanently delete this entity?")) {
-                            if (
-                              dbEntities?.find(
-                                (x) => x.id === selectedEntity.id,
-                              )
-                            ) {
-                              setDeletedIds([...deletedIds, selectedEntity.id]);
-                              localStorage.setItem(
-                                "wiki_deleted_ids",
-                                JSON.stringify([
-                                  ...deletedIds,
-                                  selectedEntity.id,
-                                ]),
-                              );
-                            }
-                            const next = draftEntities.filter(
+                            const newDeleted = [
+                              ...deletedIds,
+                              selectedEntity.id,
+                            ];
+                            const newDrafts = draftEntities.filter(
                               (x) => x.id !== selectedEntity.id,
                             );
-                            setDraftEntities(next);
+                            setDeletedIds(newDeleted);
+                            setDraftEntities(newDrafts);
                             localStorage.setItem(
-                              "wiki_draft_entities",
-                              JSON.stringify(next),
+                              STORAGE_KEY,
+                              JSON.stringify({
+                                drafts: newDrafts,
+                                deleted: newDeleted,
+                              }),
                             );
                             setSelectedEntity(null);
                           }
