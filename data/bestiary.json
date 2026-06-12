@@ -1,0 +1,218 @@
+[
+  {
+    "id": "45fc5404-9174-4fa2-bec1-45cad50a4adb",
+    "slug": "deer",
+    "name": {
+      "ru": "Олень",
+      "en": "Deer"
+    },
+    "description": {
+      "ru": "Олень  - грациозное лесное существо, обитающее среди древних деревьев и волшебных рощ. По своей природе осторожен и старается избегать опасностей, однако в случае угрозы способен дать достойный отпор.\n\n- Биомы появления: Лес, Магический лес.\n- Шанс появления: 60%.\n- Можно приручить / оседлать: Нет.\n\n>Подходите медленно и осторожно — испуганный олень убежит задолго до того, как вы приблизитесь.\n\n***Символ дикой природы и скрытой в ней магии.***",
+      "en": "\nDeer are graceful forest creatures that roam among ancient trees and enchanted groves. Cautious by nature, they prefer to avoid danger, but when threatened they are capable of putting up a worthy defense.\n\n- Spawn Biomes: Forest, Magic Forest.\n- Spawn Chance: 60%.\n- Can Be Tamed / Ridden: No.\n\n***Move slowly and carefully — a frightened deer will flee long before you get close.***\n\n***A symbol of the wild and the magic hidden within it.***"
+    },
+    "image": "/images/bestiary_deer_1781174349602.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-11T16:25:51.114Z",
+    "behavior": "passive",
+    "locationIds": [
+      "a389641f-aa7c-43e8-a7e1-4fed76aabe89",
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a"
+    ],
+    "drops": [
+      {
+        "id": "39bdd553-9403-41e0-9935-584c4099081b",
+        "chance": 100
+      },
+      {
+        "id": "7dca7e66-2d69-4d39-a6c6-9363bbf01e27",
+        "chance": 80
+      },
+      {
+        "id": "f93e4b2a-55c4-4d8e-8835-454f959d3b31",
+        "chance": 30
+      },
+      {
+        "id": "f491a6a1-5e2c-4eba-9df6-ee58e0f27129",
+        "chance": 25
+      }
+    ]
+  },
+  {
+    "id": "eb2bbf93-80a0-4547-a284-d4547b8f9b1a",
+    "slug": "holy-deer",
+    "name": {
+      "ru": "Святой олень",
+      "en": "Holy deer"
+    },
+    "description": {
+      "ru": "Святой олень — редкое благословлённое существо, появляющееся в местах сильной природной и духовной магии. Его тело окружено мягким светом, а следы, оставленные им, будто очищают землю от скверны. Считается проводником между миром живых и священными потоками маны.\n\n* Процент спавна: 8%\n* Можно оседлать/приручить: **да**\n* Биом спавна: **Магический лес, Лес**\n\n> «Тот, кто увидел святого оленя в тишине леса, уже не идёт по миру прежним путём.»\n\n>**Подсказка:**\n>Святой олень не атакует первым, исчезает при агрессии. Лучше наблюдать или преследовать осторожно — он появляется чаще рядом с аномалиями маны.\n\n**Особенность:**\nСущество усиливает святую магию поблизости и может оставлять после себя редкие ресурсы, связанные с благословением.\n",
+      "en": "The Sacred Deer is a rare blessed creature that appears in places rich with natural and spiritual magic. Its body is surrounded by a gentle glow, and the tracks it leaves behind seem to cleanse the land of corruption. It is believed to serve as a bridge between the world of the living and the sacred currents of mana.\n\n* Spawn Rate: 8%\n* Can be ridden/tamed: **Yes**\n* Spawn Biomes: **Magical Forest, Forest**\n\n> “Those who behold a Sacred Deer in the silence of the forest never walk the world the same way again.”\n\n> **Hint:**\n> The Sacred Deer does not attack first and will vanish if threatened. It is best observed or followed with caution, as it appears more frequently near mana anomalies.\n\n**Special Ability:**\nThe creature enhances holy magic in its vicinity and may leave behind rare blessed resources.\n"
+    },
+    "image": "/images/bestiary_holy-deer_1781193928383.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-11T16:49:10.283Z",
+    "behavior": "peaceful",
+    "locationIds": [
+      "a389641f-aa7c-43e8-a7e1-4fed76aabe89",
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a"
+    ],
+    "drops": [
+      {
+        "id": "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+        "chance": 30
+      },
+      {
+        "id": "89946de8-9d41-4906-a0a6-b84fbcb9e4d5",
+        "chance": 15
+      },
+      {
+        "id": "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+        "chance": 20
+      },
+      {
+        "id": "7ab868aa-75a4-4b49-9d5b-4ba14a1c9f41",
+        "chance": 100
+      }
+    ]
+  },
+  {
+    "id": "54da7a59-f08a-432d-818c-82fe4a1b6a92",
+    "slug": "boar",
+    "name": {
+      "ru": "Кабан",
+      "en": "Boar"
+    },
+    "description": {
+      "ru": "Кабан — распространённое дикое животное, известное своей выносливостью и свирепым нравом. Большую часть времени он проводит в поисках пищи, однако при угрозе способен стремительно атаковать обидчика своими острыми бивнями. Кабаны ценятся охотниками за мясо, шкуру и прочные бивни, используемые в ремесле.\n\n* Процент спавна: 65%\n* Можно оседлать: **нет**\n* Приручить: **да (только детёнышей)**\n* Биом спавна: **Лес, Степь**\n* Размер группы: **1–5 особей**\n* Особенность спавна: **При групповом появлении (больше 3-х особей) вместе со взрослыми кабанами могут появляться детёныши.**\n\n> «Не каждый зверь ищет битвы, но кабан никогда не отступает от неё.»\n\n> **Подсказка:**\n> Взрослые кабаны агрессивны при защите своей группы. Если рядом находятся детёныши, они становятся значительно опаснее. Если вы хотите получить животное для хозяйства, ищите группы кабанов с молодняком.\n\n**Особенность:**\nКабаны часто перемещаются небольшими стадами и могут быстро атаковать цель на короткой дистанции. В группе они отлично координируют свои действия, окружая угрозу и защищая более слабых членов стада. Особенно опасны кабаны становятся на защиту детёнышей — в такие моменты вся группа действует сообща и без колебаний атакует любого нарушителя.",
+      "en": "Boar — a common wild animal known for its endurance and fierce temperament. It spends most of its time searching for food, but when threatened, it can rapidly attack an enemy using its sharp tusks. Boars are valued by hunters for their meat, hide, and strong tusks used in crafting.\n\n* Spawn rate: 65%\n* Can be ridden: **no**\n* Can be tamed: **yes (young only)**\n* Spawn biomes: **Forest, Steppe**\n* Group size: **1–5 individuals**\n* Spawn feature: **When spawning in groups (more than 3 individuals), piglets may appear alongside adult boars.**\n\n> “Not every beast seeks battle, but a boar never retreats from it.”\n\n> **Hint:**\n> Adult boars are aggressive when defending their group. If piglets are present, they become significantly more dangerous. If you want to obtain an animal for farming, look for boar groups with juveniles.\n\n**Special trait:**\nBoars often travel in small herds and can quickly rush targets at close range. In a group, they coordinate their actions well, surrounding threats and protecting weaker members of the herd. They become especially dangerous when defending their young — at such moments the entire group acts together without hesitation, attacking any intruder."
+    },
+    "image": "/images/bestiary_boar_1781272852353.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-12T14:00:52.437Z",
+    "behavior": "passive",
+    "locationIds": [
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a",
+      "4a10f95a-f892-40f3-bb61-980b75a28b95"
+    ],
+    "drops": [
+      {
+        "id": "219cbce3-588d-4abc-9102-eff917a20000",
+        "chance": 100
+      },
+      {
+        "id": "6a5e5bd7-238e-4c58-b8e9-beadd5d95250",
+        "chance": 30
+      },
+      {
+        "id": "4f1db2a9-c72f-4e14-b639-d2246f59990f",
+        "chance": 80
+      },
+      {
+        "id": "fe94b993-95bd-4103-8543-b28cfe16f876",
+        "chance": 30
+      }
+    ]
+  },
+  {
+    "id": "3f7ea44a-3d7a-4518-bb10-9d0adbf352af",
+    "slug": "dire-boar",
+    "name": {
+      "ru": "Люто-Кабан",
+      "en": "Dire Boar"
+    },
+    "description": {
+      "ru": "Люто-кабан — значительно более крупная и агрессивная разновидность обычного кабана. Его массивное тело, усиленные кости и огромные бивни делают его одним из самых опасных хищников леса и степи. Он не просто атакует — он сметает всё на своём пути, пробивая оборону противников мощными рывками. Несмотря на свирепость, люто-кабаны могут быть приручены и использованы как боевые ездовые звери.\n\n* Процент спавна: 30%\n* Можно оседлать: **да**\n* Приручить: **да**\n* Биом спавна: **Лес, Степь**\n* Размер группы: **3-5 особи**\n* Особенность спавна: **Иногда появляются в одиночку или возглавляют небольшие стада кабанов размером от 3-5 существ.**\n\n> «Где проходит люто-кабан, остаются лишь сломанные кости и те, кому повезло выжить, чтобы рассказать об этом.»\n\n> **Подсказка:**\n> Люто-кабан крайне опасен в прямом столкновении. После приручения становится мощным боевым ездовым животным с высокой выносливостью и уроном в рывке.\n\n**Особенность:**\nЛюто-кабан обладает усиленной бронёй тела и способен совершать сокрушительные атаки в лоб. В бою он легко раскидывает группы врагов, делая его ценным боевым маунтом.",
+      "en": "The Dire Boar is a significantly larger and more aggressive variety of the common boar. Its massive body, reinforced bones, and enormous tusks make it one of the most dangerous predators of the forest and steppe. It doesn't simply attack—it sweeps everything in its path, breaking through enemy defenses with powerful charges. Despite their ferocity, Dire Boars can be tamed and used as combat mounts.\n\n* Spawn Rate: 30%\n* Ridgable: **yes**\n* Tamable: **yes**\n* Spawn Biome: **Forest, Steppe**\n* Group Size: **1–3 individuals**\n* Spawn Trait: **Sometimes appear alone or lead small herds of 3–5 boars.**\n\n> \"Where a Dire Boar passes, only broken bones and those lucky enough to live to tell the tale remain.\"\n\n> **Hint:**\n> The Dire Boar is extremely dangerous in direct combat. Once tamed, it becomes a powerful combat mount with high stamina and charge damage.\n\n**Special Feature:**\nThe Dire Boar has enhanced body armor and is capable of devastating frontal attacks. In combat, it easily scatters groups of enemies, making it a valuable combat mount."
+    },
+    "image": "/images/bestiary_dire-boar_1781272828585.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-12T14:00:28.666Z",
+    "behavior": "aggressive",
+    "locationIds": [
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a",
+      "4a10f95a-f892-40f3-bb61-980b75a28b95"
+    ],
+    "drops": [
+      {
+        "id": "36371a0f-dec9-4dee-9659-3ff7cc6f2b5e",
+        "chance": 100
+      },
+      {
+        "id": "efbe5005-bf78-437f-8960-ee54f03728f2",
+        "chance": 50
+      },
+      {
+        "id": "312fb6c8-398f-4fc6-836c-ace4bb8af396",
+        "chance": 20
+      },
+      {
+        "id": "a9b46005-76ad-4048-a853-fb7e1142bc1a",
+        "chance": 30
+      }
+    ]
+  },
+  {
+    "id": "d08d90c5-4111-4721-9cb1-0061b0b3f0cc",
+    "slug": "fire-salamander",
+    "name": {
+      "ru": "Огненная Саламандра",
+      "en": "Fire Salamander"
+    },
+    "description": {
+      "ru": "Огненная саламандра — магическое существо, пропитанное огненной энергией. Её тело покрыто прочными чешуйками. Хоть она и несёт в себе огненную силу, это существо, как и любая саламандра, любит влажные места обитания. Представляет серьёзную опасность даже для опытных путешественников.\n\nНесмотря на агрессивную природу, огненная саламандра может быть использована как источник редких магических материалов, связанных с огненной стихией.\n\n* Процент спавна: **20%**\n* Можно оседлать: **да**\n* Приручить: **да**\n* Биом спавна: **Болото, Магический лес**\n* Особенность спавна: **Появляется в местах скопления маны, чаще вблизи водоёмов**\n\n> «Не советуем даже приближаться к огненной саламандре, если не хотите стать её следующим обедом.»\n\n> **Подсказка:**\n> Огненная саламандра атакует огненной магией и наносит урон по области. Лучше держаться на дистанции и использовать заклинания охлаждения или защиты от огня.\n\n**Особенность:**\nСущество устойчиво к огненным атакам и магии.",
+      "en": "The Fire Salamander is a rare magical creature infused with flame energy. Its body is covered in hot scales, and every movement leaves behind traces of heat and sparks. It inhabits areas with high concentrations of fire mana and poses a serious threat even to experienced travelers.\n\nDespite its aggressive nature, the Fire Salamander can be used as a source of rare magical materials connected to the fire element.\n\n* Spawn rate: 8%\n* Can be ridden: no\n* Can be tamed: rarely (after weakening and magical binding)\n* Spawn biomes: mountainous regions, caves, volcanic zones\n* Group size: 1–2 individuals\n* Spawn feature: sometimes appears near fire mana sources and lava fissures\n\n> “Where fire treads, the salamander has already passed first.”\n\n> **Hint:**\n> The Fire Salamander attacks with fire magic and deals area damage. It is best kept at a distance and countered with frost spells or fire resistance.\n\n**Special trait:**\nThe creature is immune to fire and lava, and its body can be used to craft fire-related artifacts and enhance fire magic spells."
+    },
+    "image": "/images/bestiary_fire-salamander_1781272839051.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-12T16:08:20.666Z",
+    "behavior": "aggressive",
+    "locationIds": [
+      "a389641f-aa7c-43e8-a7e1-4fed76aabe89",
+      "eb7603ab-26d8-4617-8113-3d0d5f0b9ce7"
+    ],
+    "drops": [
+      {
+        "id": "26434401-2acf-4e03-9a79-502c2059f485",
+        "chance": 15
+      },
+      {
+        "id": "3bd9f47a-6802-4f72-8a3a-554833bfae35",
+        "chance": 30
+      },
+      {
+        "id": "518c7868-7039-46c8-8d17-8f1086f40578",
+        "chance": 80
+      },
+      {
+        "id": "1ee07df2-30cd-408d-9138-1249fc5b6443",
+        "chance": 100
+      },
+      {
+        "id": "d89bee7a-42ff-4805-ba01-e43cedd3b5b2",
+        "chance": 10
+      },
+      {
+        "id": "3982a89c-61a0-4f37-b054-6c58f88c66a5",
+        "chance": 15
+      },
+      {
+        "id": "718c08cb-3ed4-47ce-8953-2d7fa6fcf2cb",
+        "chance": 90
+      },
+      {
+        "id": "6b3d2697-760e-4937-9add-3170e18ffba7",
+        "chance": 20
+      }
+    ]
+  }
+]

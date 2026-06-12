@@ -1,0 +1,76 @@
+[
+  {
+    "id": "a389641f-aa7c-43e8-a7e1-4fed76aabe89",
+    "slug": "magical-forest",
+    "name": {
+      "ru": "Магический лес",
+      "en": "Magical forest"
+    },
+    "description": {
+      "ru": "Магический лес — древний биом, пропитанный нестабильной природной магией. Деревья здесь светятся мягким свечением, а воздух насыщен остаточной маной, влияющей на заклинания и поведение существ. В этом месте реальность кажется слегка искажённой, а магия усиливается сама по себе.\n\n**Обитатели биома:**\n\n* Олень, Святой олень, Волк, Лютоволк, Лиса, Большая лиса, Баран, Большерогий Баран, Овца белоснежная, Черная овца\n* Гремлин летун, Люминария Эфирная, Огненная саламандра, Саламандра, Кровавый паук\n* Темный эльф, Гоблин с топором, Гоблин\n\n**Ресурсы биома:**\n\n\n\n**Боссы биома:**\n* Дух цветов\n\n> «Лес не просто живёт — он наблюдает и запоминает каждое заклинание, произнесённое в его тени.»\n\n**Подсказка:**\nВ этом биоме магия восстанавливается быстрее, но некоторые заклинания могут вести себя нестабильно. Будь осторожен при использовании разрушительных чар.\n\n> **Совет игроку:**\n> Ищи редкие ресурсы ночью — в это время магические потоки становятся более концентрированными и легче обнаружить скрытые сущности и аномалии.",
+      "en": "The Magical Forest is an ancient biome saturated with unstable natural magic. The trees here glow with a soft radiance, while the air is filled with residual mana that influences spells and the behavior of creatures. In this place, reality feels slightly distorted, and magic seems to amplify itself.\n\n**Biome inhabitants:**\n\n* Deer, Sacred Deer, Wolf, Dire Wolf, Fox, Large Fox, Ram, Great-Horned Ram, Snow-White Sheep, Black Sheep\n* Flying Gremlin, Ethereal Luminaris, Fire Salamander, Salamander, Blood Spider\n* Dark Elf, Axe Goblin, Goblin\n\n**Biome resources:**\n\n\n\n**Biome bosses:**\n\n* Spirit of Flowers\n\n> “The forest does not merely live — it observes and remembers every spell cast within its shadow.”\n\n**Hint:**\nIn this biome, mana regenerates faster, but some spells may behave unpredictably. Be cautious when using destructive magic.\n\n> **Player tip:**\n> Search for rare resources at night — during this time, magical currents become more concentrated, making hidden entities and anomalies easier to detect."
+    },
+    "image": "/images/locations_magical-forest_1781192409643.png",
+    "tags": [],
+    "category": "locations",
+    "updatedAt": "2026-06-11T15:40:09.724Z"
+  },
+  {
+    "id": "c44edc33-47e4-4bc8-b4fd-63677694af9a",
+    "slug": "new-1781194372439",
+    "name": {
+      "ru": "Лес",
+      "en": "Forest"
+    },
+    "description": {
+      "ru": "Лес — один из самых распространённых природных биомов. Высокие деревья образуют густой полог, укрывающий землю от палящего солнца, а многочисленные животные и монстры находят здесь пищу и убежище. Несмотря на внешнее спокойствие, в глубине леса путешественников подстерегают опасности.\n\n**Обитатели биома:**\n\n* Олень, Святой олень, Волк, Лютоволк, Лиса, Большая лиса, Баран, Большерогий баран, Белоснежная овца, Чёрная овца\n* Гоблин, Гоблин с топором, \n* Кровавый паук\n\n**Ресурсы биома:**\n\n* Древесина, Камень, Руда,  Самоцветы, Ягоды, Грибы, Лекарственные травы\n\n**Боссы биома:**\n\n* Дух цветов\n\n> «Лес хранит множество тайн, но раскрывает их лишь тем, кто готов слушать шелест его листвы.»\n\n**Подсказка:**\nДнём лес относительно безопасен, однако ночью здесь появляется больше хищников и враждебных существ.\n\n> **Совет игроку:**\n> Исследуй чащи и поляны — редкие существа и ценные ресурсы чаще встречаются вдали от протоптанных троп.\n",
+      "en": "The Forest is one of the most common natural biomes. Tall trees form a dense canopy that shields the ground from the blazing sun, while numerous animals and monsters find food and shelter here. Despite its peaceful appearance, dangers lurk deep within the woods.\n\n**Biome Inhabitants:**\n\n* Deer, Sacred Deer, Wolf, Dire Wolf, Fox, Large Fox, Ram, Great-Horned Ram, Snow-White Sheep, Black Sheep\n* Goblin, Axe Goblin\n* Blood Spider\n\n**Biome Resources:**\n\n* Wood, Stone, Ore, Gemstones, Berries, Mushrooms, Medicinal Herbs\n\n**Biome Bosses:**\n\n* Spirit of Flowers\n\n> “The forest holds many secrets, but reveals them only to those willing to listen to the rustling of its leaves.”\n\n**Hint:**\nThe forest is relatively safe during the day, but at night more predators and hostile creatures emerge.\n\n> **Player Tip:**\n> Explore dense groves and clearings — rare creatures and valuable resources are more commonly found away from well-traveled paths.\n"
+    },
+    "image": "/images/locations_new-1781194372439_1781194477792.png",
+    "tags": [],
+    "category": "locations",
+    "updatedAt": "2026-06-11T16:22:45.391Z",
+    "relatedIds": [
+      "45fc5404-9174-4fa2-bec1-45cad50a4adb",
+      "eb2bbf93-80a0-4547-a284-d4547b8f9b1a"
+    ]
+  },
+  {
+    "id": "4a10f95a-f892-40f3-bb61-980b75a28b95",
+    "slug": "steppe",
+    "name": {
+      "ru": "Степь ",
+      "en": "Steppe"
+    },
+    "description": {
+      "ru": "Степь — это обширный биом бескрайних лугов и плодородных земель, где ветер свободно гуляет по открытым просторам. В отличие от пустынных земель, здесь кипит жизнь: травы густо покрывают почву, а стада животных и дикие существа постоянно перемещаются в поисках пищи и воды. Открытая местность делает степь одновременно богатой ресурсами и опасной для путешественников.\n\n**Обитатели биома:**\n\n* Кабан, Лютокабан, Волк, Люто-Волк, Лиса, Баран, Большерогий баран, Заяц, Голем,  Древний Голем\n* Белоснежная овца, Чёрная овца, Скелет Лучник, Скелет Рыцарь\n\n**Ресурсы биома:**\n\n* Трава, дикорастущая пшеница, лекарственные травы, камень, редкие полевые цветы\n\n**Боссы биома:**\n\n* Вожак стаи степных хищников\n* Кочевой шаман\n\n> «Степь не знает тишины — даже ветер здесь звучит как дыхание живого мира.»\n\n**Подсказка:**\nСтепь удобна для передвижения более простой дорогой, но из-за отсутствия укрытий игрок легко становится заметной целью для хищников и разбойников.\n\n> **Совет игроку:**\n> Используй рельеф и высокую траву для скрытного перемещения. Стада животных часто мигрируют — следуй за ними, чтобы найти редкие ресурсы и хищников.",
+      "en": "The steppe is a vast biome of endless grasslands and fertile lands, where the wind sweeps freely across the open spaces. Unlike desert lands, it is teeming with life: grasses thickly cover the soil, and herds of animals and wild creatures constantly move in search of food and water. The open terrain makes the steppe both rich in resources and dangerous for travelers.\n\n**Biome Inhabitants:**\n\n* Boar, Dire Boar, Wolf, Dire Wolf, Fox, Ram, Bighorn Ram, Hare, Golem, Ancient Golem\n* Snow-White Sheep, Black Sheep, Skeleton Archer, Skeleton Knight\n\n**Biome Resources:**\n\n* Grass, Wild Wheat, Medicinal Herbs, Stone, Rare Wildflowers\n\n**Biome Bosses:**\n\n* Steppe Predator Pack Leader\n* Nomadic Shaman\n\n> \"The steppe knows no silence—even the wind here sounds like the breath of a living world.\"\n\n**Hint:**\nThe steppe offers easier travel via a simpler route, but the lack of cover makes the player a visible target for predators and bandits.\n\n> **Player Tip:**\n> Use the terrain and tall grass for stealthy movement. Animal herds often migrate—follow them to find rare resources and predators."
+    },
+    "image": "/images/skills_new-1781263482072_1781263485969.png",
+    "tags": [],
+    "relatedIds": [
+      "54da7a59-f08a-432d-818c-82fe4a1b6a92"
+    ],
+    "category": "locations",
+    "updatedAt": "2026-06-12T11:42:19.042Z"
+  },
+  {
+    "id": "eb7603ab-26d8-4617-8113-3d0d5f0b9ce7",
+    "slug": "swamp",
+    "name": {
+      "ru": "Болото",
+      "en": "Swamp"
+    },
+    "description": {
+      "ru": "Болото — тёмный и сырой биом, наполненный густым туманом, стоячей водой и разложившейся растительностью. Здесь магия природы и тления переплетаются, создавая нестабильную и опасную среду. Воздух тяжёлый, а земля под ногами часто уходит в трясину, скрывая опасности под мутной поверхностью.\n\nНесмотря на враждебность, болото богато редкими алхимическими ингредиентами, ядовитыми растениями и существами, связанными с тёмной и природной магией.\n\n**Обитатели биома:**\n\n* Болотная тварь, Кровавый паук, Гигантская пиявка, Болотный дух, Гоблин-отшельник, Ядовитая жаба, Трясинный змей\n\n**Ресурсы биома:**\n\n* Ядовитые травы, Грибы тления, Болотная слизь, Кости древних существ, Чёрная глина\n\n**Боссы биома:**\n\n* Болотный владыка\n* Дух гниения\n\n> «Болото не охотится за тобой — оно просто ждёт, пока ты сам сделаешь шаг не туда.»\n\n**Подсказка:**\nВ болоте передвижение замедлено, а скрытые участки трясины могут мгновенно затянуть неосторожного путешественника. Ночью активность агрессивных существ значительно возрастает.\n\n> **Совет игроку:**\n> Используй лёгкое снаряжение и зелья защиты от яда. Редкие ресурсы чаще встречаются глубже в болоте, но путь туда всегда самый опасный.",
+      "en": "The Swamp is a dark and damp biome filled with thick fog, stagnant water, and decaying vegetation. Here, nature magic and decay intertwine, creating an unstable and dangerous environment. The air is heavy, and the ground often gives way into deep marshes, hiding dangers beneath the murky surface.\n\nDespite its hostility, the swamp is rich in rare alchemical ingredients, poisonous plants, and creatures tied to dark and natural magic.\n\n**Biome inhabitants:**\n\n* Swamp Creature, Blood Spider, Giant Leech, Swamp Spirit, Hermit Goblin, Poison Frog, Bog Serpent\n\n**Biome resources:**\n\n* Poisonous Herbs, Rot Mushrooms, Swamp Slime, Ancient Bones, Black Clay\n\n**Biome bosses:**\n\n* Swamp Lord\n* Spirit of Decay\n\n> “The swamp does not hunt you — it simply waits for you to take the wrong step.”\n\n**Hint:**\nMovement in the swamp is slowed, and hidden patches of marsh can instantly trap careless travelers. At night, hostile creature activity increases significantly.\n\n> **Player tip:**\n> Use light equipment and poison resistance potions. Rare resources are more common deeper in the swamp, but the path there is always the most dangerous."
+    },
+    "image": "/images/skills_new-1781280414275_1781280419523.png",
+    "tags": [],
+    "category": "locations",
+    "updatedAt": "2026-06-12T16:08:08.804Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
+  }
+]

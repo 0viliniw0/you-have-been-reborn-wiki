@@ -1,0 +1,266 @@
+[
+  {
+    "id": "7dca7e66-2d69-4d39-a6c6-9363bbf01e27",
+    "slug": "deer-hide",
+    "name": {
+      "ru": "Шкура оленя",
+      "en": "Deer hide"
+    },
+    "description": {
+      "ru": "Прочная и гибкая шкура дикого оленя, сохраняющая тепло и защищающая от ветра и холода. Используется в ремесле для создания одежды, заготовок и других полезных предметов. Ценится охотниками и мастерами за свою прочность и естественную текстуру. \n\n**Источник получения:**\n\n* Добывается с существа Олень.\n\n> Хорошая шкура — это не просто трофей. Это тепло, которое ты носишь с собой в самые холодные ночи. ",
+      "en": "Durable and flexible wild deer hide that retains warmth and protects against wind and cold. Used in crafting to create clothing, materials, and other useful items. Highly valued by hunters and artisans for its strength and natural texture.\n\n**Source of obtaining:**\n\n* Dropped from the Deer creature.\n\n> A good hide is not just a trophy. It is warmth you carry with you on the coldest nights.\n"
+    },
+    "image": "/images/skills_new_1781180041585.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-11T13:06:49.523Z"
+  },
+  {
+    "id": "f93e4b2a-55c4-4d8e-8835-454f959d3b31",
+    "slug": "deer-horn",
+    "name": {
+      "ru": "Рог оленя",
+      "en": "Deer horn"
+    },
+    "description": {
+      "ru": " Прочный природой рог, пропитанный силой древних лесов. Используется в ремесле как редкий материал для создания инструментов, оружия, амулетов и усиления предметов. \n\n**Источник получения:**\n\n* Добывается с существа: Олень.\n\n> Подсказка: Рог особенно полезен для создания рукоятей оружия, магических амулетов и усиления ремесленных предметов, связанных с природной магией. ",
+      "en": "A naturally hardened horn, imbued with the power of ancient forests. It is used in crafting as a rare material for creating tools, weapons, amulets, and enhancing items.\n\n**Source of obtaining:**\n\n* Dropped from the creature: Deer.\n\n> Tip: The horn is especially useful for crafting weapon handles, magical amulets, and enhancing crafted items connected to nature magic."
+    },
+    "image": "/images/skills_new-1781183978248_1781183983439.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-11T14:32:19.561Z"
+  },
+  {
+    "id": "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+    "slug": "holy-deer-hide",
+    "name": {
+      "ru": "Шкура святого оленя",
+      "en": "Holy deer hide"
+    },
+    "description": {
+      "ru": "Шкура, пропитанная священной энергией, оставшейся от редких существ, отмеченных благословением. Из неё создают лёгкие, но прочные плащи одежды и заготовки, усиливающие связь с святой магией и защиту носителя. \n\n**Источник получения:**\n\n* Добывается с существа: **Святой олень**\n\n>**Подсказка:**\n>Все изделия, созданные из этой шкуры, получают усиление урона по нежити и лучше проводят святую магию.\n\n> «Там, где ступает святой зверь, сама земля вспоминает о свете.»",
+      "en": "Sacred energy-soaked hide left from rare creatures marked by blessing. It is used to create light but durable cloaks, clothing, and crafting materials that enhance the wearer’s connection to holy magic and protection.\n\n**Source:**\n\n* Obtained from creature: **Holy Deer**\n\n> **Hint:**\n> All items crafted from this hide gain increased damage against the undead and conduct holy magic more effectively.\n\n> “Where the sacred beast steps, even the earth remembers the light.”"
+    },
+    "image": "/images/materials_new-1781188252520_1781189280928.png",
+    "tags": [],
+    "relatedIds": [
+      "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+      "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+      "89946de8-9d41-4906-a0a6-b84fbcb9e4d5",
+      "7ab868aa-75a4-4b49-9d5b-4ba14a1c9f41",
+      "eb2bbf93-80a0-4547-a284-d4547b8f9b1a"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-11T16:48:14.009Z"
+  },
+  {
+    "id": "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+    "slug": "holy-deer-horn",
+    "name": {
+      "ru": "Рог святого оленя",
+      "en": "Holy deer horn"
+    },
+    "description": {
+      "ru": "Рог, наполненный священной силой благословлённого зверя. Даже после отделения от владельца он сохраняет остатки чистой маны и используется для создания оружия, посохов, амулетов святой магии.\n\n**Источник получения:**\n\n* Добывается с существа: **Святой олень**\n\n> **Подсказка:**\n> Изделия, созданные с использованием рога святого оленя, получают усиление святой магии и наносят дополнительный урон нежити.\n\n> «Священный рог не знает тьмы — его свет продолжает сиять даже после гибели хозяина.»",
+      "en": "A horn infused with the sacred power of a blessed beast. Even after being separated from its owner, it retains traces of pure mana and is used to craft weapons, staves, and holy magic amulets.\n\n**Source:**\n\n* Obtained from creature: **Sacred Deer**\n\n> **Hint:**\n> Items crafted using a Sacred Deer Horn gain enhanced holy magic and deal additional damage to the undead.\n\n> “The sacred horn knows no darkness — its light continues to shine even after its master has fallen.”"
+    },
+    "image": "/images/skills_new-1781195566920_1781195571102.png",
+    "tags": [],
+    "relatedIds": [
+      "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+      "eb2bbf93-80a0-4547-a284-d4547b8f9b1a",
+      "7ab868aa-75a4-4b49-9d5b-4ba14a1c9f41",
+      "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+      "89946de8-9d41-4906-a0a6-b84fbcb9e4d5"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-11T16:47:49.970Z"
+  },
+  {
+    "id": "4f1db2a9-c72f-4e14-b639-d2246f59990f",
+    "slug": "boar-hide",
+    "name": {
+      "ru": "Шкура кабана",
+      "en": "Boar hide"
+    },
+    "description": {
+      "ru": "Прочная и грубая шкура дикого кабана, ценящаяся ремесленниками за свою плотность и износостойкость. Хотя щетина кабана имеет невысокую ценность, его кожа широко используется для изготовления брони, одежды, сумок, ремней и других предметов.\n\n**Источник получения:**\n\n* Добывается с существа: **Кабан**\n\n> **Подсказка:**\n> Изделия из шкуры кабана обладают повышенной прочностью и долговечностью. Часто используется как основной материал для создания простой и средней кожаной брони.\n\n> «Там, где охотник видит добычу, мастер видит десятки будущих изделий.»",
+      "en": "A tough and coarse hide from a wild boar, valued by craftsmen for its density and durability. Although boar bristles are of little value, its leather is widely used for crafting armor, clothing, bags, belts, and other items.\n\n**Source:**\n\n* Obtained from creature: **Boar**\n\n> **Hint:**\n> Items crafted from boar hide have increased durability and longevity. It is commonly used as a primary material for creating basic and medium leather armor.\n\n> “Where a hunter sees prey, a craftsman sees dozens of future creations.”"
+    },
+    "image": "/images/skills_new-1781259609936_1781259616583.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T10:27:36.042Z"
+  },
+  {
+    "id": "6a5e5bd7-238e-4c58-b8e9-beadd5d95250",
+    "slug": "boar-tusk",
+    "name": {
+      "ru": "Бивень кабана",
+      "en": "Boar Tusk"
+    },
+    "description": {
+      "ru": "Крепкий и острый бивень взрослого кабана, закалённый многочисленными схватками и годами выживания в дикой природе. Благодаря своей прочности он часто используется для создания оружия, инструментов, украшений и усиленных деталей снаряжения.\n\n**Источник получения:**\n\n* Добывается с существа: **Кабан**\n\n> **Подсказка:**\n> Изделия, созданные с использованием бивня кабана, получают повышенную прочность и могут наносить дополнительный урон зверям и другим существам природного происхождения.\n\n> «Каждая царапина на бивне — память о битве, которую зверь пережил.»",
+      "en": "A strong and sharp tusk from an adult boar, hardened by countless battles and years of survival in the wild. Thanks to its durability, it is commonly used for crafting weapons, tools, jewelry, and reinforced equipment components.\n\n**Source:**\n\n* Obtained from creature: **Boar**\n\n> **Hint:**\n> Items crafted using a Boar Tusk gain increased durability and may deal additional damage to beasts and other creatures of natural origin.\n\n> “Every scratch upon the tusk is a memory of a battle the beast survived.”"
+    },
+    "image": "/images/skills_new-1781260097407_1781260104951.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T10:33:17.281Z"
+  },
+  {
+    "id": "26434401-2acf-4e03-9a79-502c2059f485",
+    "slug": "fire-salamander-hide",
+    "name": {
+      "ru": "Шкура Огненной Саламандры",
+      "en": "Fire Salamander Hide"
+    },
+    "description": {
+      "ru": "Прочная и жаростойкая шкура огненной саламандры, пропитанная остаточной огненной энергией.  Высоко ценится ремесленниками и магами огня за свои уникальные защитные свойства.\n\nИз неё создают огнестойкую броню, магические плащи, защитные перчатки и элементы экипировки, усиливающие огненную магию.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная саламандра**\n\n> **Подсказка:**\n> Изделия, созданные из шкуры огненной саламандры, обладают высокой устойчивостью к огню и лаве, а также усиливают огненные заклинания.\n\n> «Если решите предложить этот товар торговцам — быстро разбогатеете.»",
+      "en": "A durable and heat-resistant hide of a Fire Salamander, infused with residual fire energy. It is highly valued by craftsmen and fire mages for its unique protective properties.\n\nFrom it are crafted fire-resistant armor, magical cloaks, protective gloves, and equipment pieces that enhance fire magic.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n\n> **Hint:**\n> Items crafted from Fire Salamander hide have high resistance to fire and lava, and also enhance fire spells.\n\n> “If you decide to offer this item to merchants, you will quickly become rich.”"
+    },
+    "image": "/images/skills_new-1781270524970_1781270529644.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T13:28:59.639Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
+  },
+  {
+    "id": "a9b46005-76ad-4048-a853-fb7e1142bc1a",
+    "slug": "dire-boar-tusk",
+    "name": {
+      "ru": "Бивень Люто-Кабана",
+      "en": "Dire Boar Tusk"
+    },
+    "description": {
+      "ru": "Огромный и исключительно прочный бивень Люто-Кабана, закалённый бесчисленными схватками. Его плотная структура и высокая твёрдость делают его ценным материалом для создания оружия, усиленных амулетов и компонентов брони.\n\n**Источник получения:**\n\n* Добывается с существа: **Люто-Кабан**\n\n> **Подсказка:**\n> Изделия, созданные с использованием бивня Люто-Кабана, обладают высокой пробивной силой и наносят повышенный урон бронированным целям и крупным существам.\n\n> «Этот материал ценится ремесленниками за редкое сочетание прочности, плотности и долговечности.»",
+      "en": "An enormous and exceptionally durable tusk of a Dire Boar, hardened by countless battles and the constant pressure of its powerful jaw. Its dense structure and destructive force make it a valuable material for crafting weapons and reinforced artifacts.\n\nDue to its size and strength, it is used for heavy weaponry, combat tips, reinforced amulets, and armor components.\n\n**Source:**\n\n* Obtained from creature: **Dire Boar**\n\n> **Hint:**\n> Items crafted using a Dire Boar tusk deal increased damage and have high piercing power, especially against armored targets and large creatures.\n\n> “Every curve of it is a mark of a blow the world could not withstand.”"
+    },
+    "image": "/images/materials_new-1781271575128_1781271590902.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T13:45:49.370Z",
+    "relatedIds": [
+      "3f7ea44a-3d7a-4518-bb10-9d0adbf352af",
+      "36371a0f-dec9-4dee-9659-3ff7cc6f2b5e",
+      "745400e6-3380-4b0a-a7c3-57bbd44676e9"
+    ]
+  },
+  {
+    "id": "efbe5005-bf78-437f-8960-ee54f03728f2",
+    "slug": "dire-boar-hide",
+    "name": {
+      "ru": "Шкура Люто-Кабана",
+      "en": "Dire Boar Hide"
+    },
+    "description": {
+      "ru": "Чрезвычайно плотная и тяжёлая шкура Люто-кабана, значительно превосходящая по прочности обычную кожу диких животных. Её грубая структура и природная защита делают материал особенно ценным для создания усиленной брони и снаряжения.\n\nИз неё изготавливают тяжёлую кожаную броню, укреплённые щиты, ремни, седельные элементы и защитные элементы экипировки, рассчитанные на высокие нагрузки.\n\n**Источник получения:**\n\n* Добывается с существа: **Люто-Кабан**\n\n> **Подсказка:**\n> Изделия из шкуры Люто-кабана обладают повышенной прочностью и устойчивостью к физическому урону. Часто используется для создания усиленной боевой кожаной брони.\n\n> «Лучший материал для вашей будущей одежды и надёжной защиты в суровых землях.»",
+      "en": "An extremely dense and heavy hide of the Dire Boar, far surpassing ordinary wild animal leather in durability. Its rough texture and natural toughness make it especially valuable for crafting reinforced armor and military equipment.\n\nIt is used to create heavy leather armor, reinforced shields, belts, saddle components, and protective gear designed for high physical stress.\n\n**Source:**\n\n* Obtained from creature: **Dire Boar**\n\n> **Hint:**\n> Items crafted from Dire Boar hide have increased durability and resistance to physical damage. It is commonly used for reinforced combat leather armor.\n\n> “Where ordinary leather tears, the Dire Boar’s hide only creaks under pressure.”"
+    },
+    "image": "/images/skills_new-1781272648519_1781272655772.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T13:58:56.840Z",
+    "relatedIds": [
+      "3f7ea44a-3d7a-4518-bb10-9d0adbf352af"
+    ]
+  },
+  {
+    "id": "3bd9f47a-6802-4f72-8a3a-554833bfae35",
+    "slug": "fire-salamander-gland",
+    "name": {
+      "ru": "Железа Огненной Саламандры",
+      "en": "Fire Salamander Gland"
+    },
+    "description": {
+      "ru": "Редкий и ценный материал, извлекаемый из организма огненной саламандры и насыщенный концентрированной огненной энергией. Даже после извлечения железа сохраняет высокую магическую активность, благодаря чему высоко ценится алхимиками, ремесленниками и магами огня.\n\nШироко используется в алхимии для создания зелий огня и сопротивления жару, а также служит важным компонентом при изготовлении артефактов, магических посохов и других предметов, связанных с огненной стихией.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная саламандра**\n\n> **Подсказка:**\n> При правильной обработке может сохранять накопленную энергию длительное время, что делает её отличным катализатором для сложных магических процессов и зачарований.\n\n> «Что бы использовать этот материал нужно иметь достаточно мастерства, не не экономьте на мастере.»",
+      "en": "A rare and valuable material extracted from the body of a Fire Salamander, infused with residual fire energy. Even after being removed, it retains high heat resistance and magical activity, making it indispensable for craftsmen and fire mages.\n\nIt is used to create reinforced magical constructs, fire-resistant mechanisms, artifact components, and equipment related to the fire element.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n\n> **Hint:**\n> Materials crafted using Fire Salamander glands enhance fire magic and have high resistance to heat and lava.\n\n> “Even a part of this creature continues to burn without needing flame.”"
+    },
+    "image": "/images/materials_new-1781273054437_1781273076598.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T14:13:47.236Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
+  },
+  {
+    "id": "518c7868-7039-46c8-8d17-8f1086f40578",
+    "slug": "fire-salamander-scale",
+    "name": {
+      "ru": "Чешуя Огненной Саламандры",
+      "en": "Fire Salamander Scale"
+    },
+    "description": {
+      "ru": "Плотная чешуя со спины огненной саламандры, отличающаяся высокой прочностью и естественной устойчивостью к воздействию высоких температур. Благодаря своим защитным свойствам она особенно ценится кузнецами и ремесленниками, создающими надёжное боевое снаряжение.\n\nИспользуется для изготовления прочной брони, защитных пластин и усиленных элементов экипировки. При применении в доспехах значительно повышает устойчивость к огненным атакам и обеспечивает хорошую общую защиту.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная саламандра**\n\n> **Подсказка:**\n> Чешуя огненной саламандры особенно ценится кузнецами и зачарователями, поскольку позволяет создавать более надёжное снаряжение для путешествий по жарким и опасным регионам.\n\n> «Большинство кузнецов закаляют металл огнём, но эта чешуя сама закаляет кузнецов.»",
+      "en": "A durable and heat-infused scale from a Fire Salamander, saturated with residual fire energy. Even after being removed, it retains warmth and resistance to extreme temperatures for a long time, making it highly valued by fire mages and craftsmen who work with fire-based materials.\n\nIt is used to create fire-resistant armor, reinforced magical plates, artifact casings, and equipment components associated with the fire element.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n\n> **Hint:**\n> Items crafted using Fire Salamander scales have high resistance to fire and lava, and also enhance fire spells.\n\n> “Each scale is a fragment of frozen flame that needs no fire to burn.”"
+    },
+    "image": "/images/skills_new-1781276992931_1781277049062.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T15:23:43.129Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
+  },
+  {
+    "id": "718c08cb-3ed4-47ce-8953-2d7fa6fcf2cb",
+    "slug": "fire-salamander-claw",
+    "name": {
+      "ru": "Коготь Огненной Саламандры",
+      "en": "Fire Salamander Claw"
+    },
+    "description": {
+      "ru": "Острый, как клинок, коготь огненной саламандры, пропитанный силой огненной стихии. Говорят, что даже если такой коготь оставит малейшую царапину, ожог будет мучить вас многие месяцы. Благодаря своей прочности и природной магии он используется для создания оружия, магических фокусирующих элементов, амулетов и компонентов огненных артефактов.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная саламандра**\n\n> **Подсказка:**\n> Изделия, созданные с использованием когтя огненной саламандры, усиливают огненные заклинания и могут наносить дополнительный урон огнём.\n\n> «Редкий трофей, который охотно купят кузнецы, маги и охотники за артефактами.»",
+      "en": "A blade-sharp claw from a Fire Salamander, infused with the power of the fire element. Years of hunting and surviving among heat and lava have made it incredibly durable and resistant to destruction. Even after being removed from the creature, the claw retains residual fire energy that can be felt upon touch.\n\nThanks to its durability and natural magical properties, it is used to craft weapons, magical focusing components, amulets, and parts for fire-based artifacts.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n\n> **Hint:**\n> Items crafted using a Fire Salamander Claw enhance fire spells and may deal additional fire damage.\n\n> “Flame leaves its mark not only upon the earth, but also upon the claws of those born in its embrace.”"
+    },
+    "image": "/images/skills_new-1781277928265_1781277937635.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T15:38:00.688Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
+  },
+  {
+    "id": "d89bee7a-42ff-4805-ba01-e43cedd3b5b2",
+    "slug": "fire-salamander-heart",
+    "name": {
+      "ru": "Сердце огненной саламандры",
+      "en": "Fire Salamander Heart"
+    },
+    "description": {
+      "ru": "Редкий магический орган, сохраняющий в себе огромную концентрацию огненной энергии даже после извлечения из тела существа. Сердце огненной саламандры высоко ценится алхимиками, магами и мастерами артефактов благодаря своей стабильной магической природе и мощному энергетическому потенциалу.\n\nИспользуется в алхимии, магических ритуалах, создании посохов, артефактов и других предметов, связанных со стихией огня.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная саламандра**\n\n> **Подсказка:**\n>  Если бой с саламандрой затянется слишком долго, сердце может потерять свою силу и исчезнуть после гибели существа.\n\n> «Пока сердце саламандры не остыло — в нём всё ещё живёт пламя.»",
+      "en": "A rare magical organ that retains an immense concentration of fire energy even after being removed from the creature's body. The Fire Salamander Heart is highly valued by alchemists, mages, and artifact crafters for its stable magical properties and powerful energy potential.\n\nIt is used in alchemy, magical rituals, the creation of staves, artifacts, and other items associated with the fire element.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n\n> **Hint:**\n> The Fire Salamander Heart is a rare component used in advanced alchemy recipes and the crafting of magical staves. Many craftsmen are willing to pay a high price for this material.\n\n> “As long as the salamander's heart has not grown cold, the flame still lives within it.”\n"
+    },
+    "image": "/images/skills_new-1781278693126_1781278697354.png",
+    "tags": [],
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-12T15:41:32.914Z"
+  },
+  {
+    "id": "3982a89c-61a0-4f37-b054-6c58f88c66a5",
+    "slug": "fire_salamander_blood",
+    "name": {
+      "ru": "Кровь Огненной Саламандры",
+      "en": "Fire Salamander Blood"
+    },
+    "description": {
+      "ru": "Редкий алхимический материал, наполненный чистой огненной энергией. Кровь огненной саламандры сохраняет свою активность. Остаётся нестабильным, но крайне ценным компонентом для создания магических составов и артефактов.\n\nИспользуется в алхимии, создании зелий, усилении оружия и магических ритуалах, связанных со стихией огня.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная саламандра**\n* Для сбора требуется: **бутылочка**\n\n> **Подсказка:**\n> Кровь огненной саламандры обладает огненными свойствами и применяется в создании боевых зелий, усилений оружия и алхимических реакций, связанных с огненной магией.\n\n> «Даже капля этой крови способна разжечь то, что уже давно погасло.»",
+      "en": "A rare alchemical material infused with pure fire energy. Fire Salamander blood retains its activity even after extraction. It remains unstable, but is an extremely valuable component for creating magical mixtures and artifacts.\n\nIt is used in alchemy, potion crafting, weapon enhancement, and magical rituals related to the fire element.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n* Requires for collection: **bottle**\n\n> **Hint:**\n> Fire Salamander blood possesses fire properties and is used in the creation of combat potions, weapon enhancements, and alchemical reactions connected to fire magic.\n\n> “Even a single drop of this blood is enough to ignite what has long been extinguished.”"
+    },
+    "image": "/images/skills_new-1781279778759_1781279783937.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T16:01:53.812Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
+  }
+]
