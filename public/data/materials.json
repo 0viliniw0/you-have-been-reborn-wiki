@@ -42,9 +42,71 @@
       "ru": "Шкура, пропитанная священной энергией, оставшейся от редких существ, отмеченных благословением. Из неё создают лёгкие, но прочные плащи одежды и заготовки, усиливающие связь с святой магией и защиту носителя. \n\n**Источник получения:**\n\n* Добывается с существа: **Святой олень**\n\n>**Подсказка:**\n>Все изделия, созданные из этой шкуры, получают усиление урона по нежити и лучше проводят святую магию.\n\n> «Там, где ступает святой зверь, сама земля вспоминает о свете.»",
       "en": "Sacred energy-soaked hide left from rare creatures marked by blessing. It is used to create light but durable cloaks, clothing, and crafting materials that enhance the wearer’s connection to holy magic and protection.\n\n**Source:**\n\n* Obtained from creature: **Holy Deer**\n\n> **Hint:**\n> All items crafted from this hide gain increased damage against the undead and conduct holy magic more effectively.\n\n> “Where the sacred beast steps, even the earth remembers the light.”"
     },
+    "image": "/images/materials_new-1781188252520_1781189280928.png",
+    "tags": [],
+    "relatedIds": [
+      "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+      "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+      "89946de8-9d41-4906-a0a6-b84fbcb9e4d5",
+      "7ab868aa-75a4-4b49-9d5b-4ba14a1c9f41",
+      "eb2bbf93-80a0-4547-a284-d4547b8f9b1a"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-11T16:48:14.009Z"
+  },
+  {
+    "id": "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+    "slug": "holy-deer-horn",
+    "name": {
+      "ru": "Рог святого оленя",
+      "en": "Holy deer horn"
+    },
+    "description": {
+      "ru": "Рог, наполненный священной силой благословлённого зверя. Даже после отделения от владельца он сохраняет остатки чистой маны и используется для создания оружия, посохов, амулетов святой магии.\n\n**Источник получения:**\n\n* Добывается с существа: **Святой олень**\n\n> **Подсказка:**\n> Изделия, созданные с использованием рога святого оленя, получают усиление святой магии и наносят дополнительный урон нежити.\n\n> «Священный рог не знает тьмы — его свет продолжает сиять даже после гибели хозяина.»",
+      "en": "A horn infused with the sacred power of a blessed beast. Even after being separated from its owner, it retains traces of pure mana and is used to craft weapons, staves, and holy magic amulets.\n\n**Source:**\n\n* Obtained from creature: **Sacred Deer**\n\n> **Hint:**\n> Items crafted using a Sacred Deer Horn gain enhanced holy magic and deal additional damage to the undead.\n\n> “The sacred horn knows no darkness — its light continues to shine even after its master has fallen.”"
+    },
+    "image": "/images/skills_new-1781195566920_1781195571102.png",
+    "tags": [],
+    "relatedIds": [
+      "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+      "eb2bbf93-80a0-4547-a284-d4547b8f9b1a",
+      "7ab868aa-75a4-4b49-9d5b-4ba14a1c9f41",
+      "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+      "89946de8-9d41-4906-a0a6-b84fbcb9e4d5"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-11T16:47:49.970Z"
+  },
+  {
+    "id": "4f1db2a9-c72f-4e14-b639-d2246f59990f",
+    "slug": "boar-hide",
+    "name": {
+      "ru": "Шкура кабана",
+      "en": "Boar hide"
+    },
+    "description": {
+      "ru": "Прочная и грубая шкура дикого кабана, ценящаяся ремесленниками за свою плотность и износостойкость. Хотя щетина кабана имеет невысокую ценность, его кожа широко используется для изготовления брони, одежды, сумок, ремней и других предметов.\n\n**Источник получения:**\n\n* Добывается с существа: **Кабан**\n\n> **Подсказка:**\n> Изделия из шкуры кабана обладают повышенной прочностью и долговечностью. Часто используется как основной материал для создания простой и средней кожаной брони.\n\n> «Там, где охотник видит добычу, мастер видит десятки будущих изделий.»",
+      "en": "A tough and coarse hide from a wild boar, valued by craftsmen for its density and durability. Although boar bristles are of little value, its leather is widely used for crafting armor, clothing, bags, belts, and other items.\n\n**Source:**\n\n* Obtained from creature: **Boar**\n\n> **Hint:**\n> Items crafted from boar hide have increased durability and longevity. It is commonly used as a primary material for creating basic and medium leather armor.\n\n> “Where a hunter sees prey, a craftsman sees dozens of future creations.”"
+    },
+    "image": "/images/skills_new-1781259609936_1781259616583.png",
     "tags": [],
     "category": "materials",
-    "updatedAt": "2026-06-11T15:05:34.683Z",
-    "image": "/images/materials_new-1781188252520_1781189280928.png"
+    "updatedAt": "2026-06-12T10:27:36.042Z"
+  },
+  {
+    "id": "6a5e5bd7-238e-4c58-b8e9-beadd5d95250",
+    "slug": "boar-tusk",
+    "name": {
+      "ru": "Бивень кабана",
+      "en": "Boar Tusk"
+    },
+    "description": {
+      "ru": "Крепкий и острый бивень взрослого кабана, закалённый многочисленными схватками и годами выживания в дикой природе. Благодаря своей прочности он часто используется для создания оружия, инструментов, украшений и усиленных деталей снаряжения.\n\n**Источник получения:**\n\n* Добывается с существа: **Кабан**\n\n> **Подсказка:**\n> Изделия, созданные с использованием бивня кабана, получают повышенную прочность и могут наносить дополнительный урон зверям и другим существам природного происхождения.\n\n> «Каждая царапина на бивне — память о битве, которую зверь пережил.»",
+      "en": "A strong and sharp tusk from an adult boar, hardened by countless battles and years of survival in the wild. Thanks to its durability, it is commonly used for crafting weapons, tools, jewelry, and reinforced equipment components.\n\n**Source:**\n\n* Obtained from creature: **Boar**\n\n> **Hint:**\n> Items crafted using a Boar Tusk gain increased durability and may deal additional damage to beasts and other creatures of natural origin.\n\n> “Every scratch upon the tusk is a memory of a battle the beast survived.”"
+    },
+    "image": "/images/skills_new-1781260097407_1781260104951.png",
+    "tags": [],
+    "category": "materials",
+    "updatedAt": "2026-06-12T10:33:17.281Z"
   }
 ]

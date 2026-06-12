@@ -10,34 +10,124 @@
       "ru": "Сочное и питательное мясо дичи, наполненное ароматом лесов и свежего воздуха. Подходит как для приготовления сытных блюд, так и для простой обжарки на костре, способной утолить голод даже после долгого путешествия. Ценится охотниками и торговцами за свои превосходные вкусовые качества.\n\n**Источник получения:**\n\n*  Добывается с существа **Олень**.\n\n> 🔥 Можно приготовить на костре и насладиться насыщенным вкусом свежей дичи.\n\n\n\n\n\n",
       "en": "Juicy and nutritious wild game meat infused with the essence of the forest. Perfect for crafting hearty meals or simply roasting over a campfire to satisfy hunger during long journeys. Highly valued by hunters and traders for its rich flavor.\n\n**Obtained from:**\n\n*  Harvested from **Deer**.\n\n> 🔥 Can be roasted over a campfire to enjoy the rich taste of fresh game meat.\n"
     },
-    "category": "consumables",
+    "image": "/images/skills_new_1781177807764.png",
     "tags": [],
-    "updatedAt": "2026-06-11T11:35:03.251Z",
-    "manaCost": 0,
-    "cooldown": 0,
-    "requirements": {
-      "level": 1
+    "relatedIds": [
+      "f93e4b2a-55c4-4d8e-8835-454f959d3b31"
+    ],
+    "category": "consumables",
+    "updatedAt": "2026-06-11T15:46:44.283Z"
+  },
+  {
+    "id": "f491a6a1-5e2c-4eba-9df6-ee58e0f27129",
+    "slug": "stable-azure-soulstone",
+    "name": {
+      "ru": "Стабильный лазурный камень души",
+      "en": "Stable azure soulstone"
     },
-    "image": "/images/skills_new_1781177807764.png"
-  },{
-  "id": "f491a6a1-5e2c-4eba-9df6-ee58e0f27129",
-  "slug": "stable-azure-soulstone",
-  "name": {
-    "ru": "Стабильный лазурный камень души",
-    "en": "Stable azure soulstone"
+    "description": {
+      "ru": "Стабильный камень души, в котором сосредоточена мана его носителя. Его мягкое лазурное свечение стабилизирует потоки маны и делает его ценным компонентом для создания магических инструментов, оружия, а также печатей и заклинаний.\n\n**Источник получения:**\n\n* Добывается с существа: Олень, Баран\n\n> Подсказка: Из **стабильного**  камня легче извлекать энергию манны, а так же он менее подвержен разрушению\n> Особенно полезен для создания магических печатей, усиливающих контроль над маной и защитные заклинания.\n\n> «Где лазурь души спокойна — там даже хаос вынужден подчиниться.»",
+      "en": "A stable soul stone in which the mana of its bearer is concentrated. Its soft azure glow stabilizes mana flows, making it a valuable component for crafting magical tools, weapons, as well as seals and spells.\n\n**Source of acquisition:**\n\n* Obtained from creature: Deer\n\n> Hint: It is easier to extract mana energy from a **stable** stone, and it is also less prone to destruction.\n> Especially useful for creating magical seals that enhance mana control and defensive spells.\n\n> “Where the azure of the soul is calm, even chaos is forced to obey.”"
+    },
+    "image": "/images/skills_new-1781185297174_1781185301363.png",
+    "tags": [],
+    "relatedIds": [
+      "45fc5404-9174-4fa2-bec1-45cad50a4adb"
+    ],
+    "category": "consumables",
+    "updatedAt": "2026-06-11T16:01:00.474Z"
   },
-  "description": {
-    "ru": "Стабильный камень души, в котором сосредоточена мана его носителя. Его мягкое лазурное свечение стабилизирует потоки маны и делает его ценным компонентом для создания магических инструментов, оружия, а также печатей и заклинаний.\n\n**Источник получения:**\n\n* Добывается с существа: Олень, Баран\n\n> Подсказка: Из **стабильного**  камня легче извлекать энергию манны, а так же он менее подвержен разрушению\n> Особенно полезен для создания магических печатей, усиливающих контроль над маной и защитные заклинания.\n\n> «Где лазурь души спокойна — там даже хаос вынужден подчиниться.»",
-    "en": "A stable soul stone in which the mana of its bearer is concentrated. Its soft azure glow stabilizes mana flows, making it a valuable component for crafting magical tools, weapons, as well as seals and spells.\n\n**Source of acquisition:**\n\n* Obtained from creature: Deer\n\n> Hint: It is easier to extract mana energy from a **stable** stone, and it is also less prone to destruction.\n> Especially useful for creating magical seals that enhance mana control and defensive spells.\n\n> “Where the azure of the soul is calm, even chaos is forced to obey.”"
+  {
+    "id": "7ab868aa-75a4-4b49-9d5b-4ba14a1c9f41",
+    "slug": "holy-deer-meat",
+    "name": {
+      "ru": "Мясо святого оленя",
+      "en": "Holy deer meat"
+    },
+    "description": {
+      "ru": "Мясо, пропитанное остатками священной энергии благословлённого зверя. Оно ценится среди путешественников, алхимиков и жрецов благодаря своим необычным свойствам. При правильном приготовлении способно укреплять тело и усиливать сопротивление тёмной магии.\n\n**Источник получения:**\n\n* Добывается с существа: **Святой олень**\n\n> **Подсказка:**\n> Блюда, приготовленные из этого мяса, временно повышают сопротивление тёмной магии и увеличивают эффективность восстановления здоровья.\n\n> «Даже после смерти святой зверь продолжает даровать свою силу тем, кто достоин её принять.»",
+      "en": "The meat is infused with the remnants of the sacred energy of a blessed beast. It is highly valued among travelers, alchemists, and priests for its unusual properties. When properly prepared, it can strengthen the body and enhance resistance to dark magic.\n\n**Source:**\n\n* Obtained from creature: **Sacred Deer**\n\n> **Hint:**\n> Meals prepared from this meat temporarily increase resistance to dark magic and improve health regeneration.\n\n> “Even in death, the sacred beast continues to grant its power to those worthy of receiving it.”"
+    },
+    "image": "/images/skills_new-1781195218263_1781195229133.png",
+    "tags": [],
+    "category": "consumables",
+    "updatedAt": "2026-06-11T16:31:26.520Z",
+    "relatedIds": [
+      "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+      "eb2bbf93-80a0-4547-a284-d4547b8f9b1a"
+    ]
   },
-  "category": "consumables",
-  "tags": [],
-  "updatedAt": "2026-06-11T14:08:11.188Z",
-  "manaCost": 0,
-  "cooldown": 0,
-  "requirements": {
-    "level": 1
+  {
+    "id": "89946de8-9d41-4906-a0a6-b84fbcb9e4d5",
+    "slug": "absolute-yellow-soulstone",
+    "name": {
+      "ru": "Абсолютный желтый камень души",
+      "en": "Absolute Yellow Soulstone"
+    },
+    "description": {
+      "ru": "Абсолютный камень души, в котором заключена очищенная до совершенства мана своего носителя. Его яркое золотистое сияние излучает невероятно стабильную энергию, делая камень бесценным компонентом для создания могущественных артефактов, оружия высшего качества и легендарных заклинаний.\n\n**Источник получения:**\n\n* Добывается с существа: Святой олень\n\n\n> **Подсказка:**\n> Из **абсолютного** камня души можно извлекать ману практически без потерь. Он обладает исключительной прочностью и способен значительно усиливать эффективность магических предметов и заклинаний.\n\n> «Когда душа достигает совершенства, её свет становится вечным.»\n",
+      "en": "An Absolute Soul Stone containing the perfectly purified mana of its bearer. Its brilliant golden radiance emits incredibly stable energy, making the stone an invaluable component for crafting powerful artifacts, masterwork weapons, and legendary spells.\n\n**Source:**\n\n* Obtained from creature: **Holy Deer**\n\n> **Hint:**\n> Mana can be extracted from an **Absolute** Soul Stone with virtually no loss. It possesses exceptional durability and can significantly enhance the effectiveness of magical items and spells.\n\n> “When a soul reaches perfection, its light becomes eternal.”\n"
+    },
+    "image": "/images/skills_new-1781195879795_1781195883792.png",
+    "tags": [],
+    "category": "consumables",
+    "updatedAt": "2026-06-11T16:45:08.310Z",
+    "relatedIds": [
+      "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+      "7ab868aa-75a4-4b49-9d5b-4ba14a1c9f41",
+      "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+      "eb2bbf93-80a0-4547-a284-d4547b8f9b1a"
+    ]
   },
-  "image": "/images/skills_new-1781185297174_1781185301363.png"
-}
+  {
+    "id": "219cbce3-588d-4abc-9102-eff917a20000",
+    "slug": "boar-meat",
+    "name": {
+      "ru": "Мясо кабана",
+      "en": "Boar Meat"
+    },
+    "description": {
+      "ru": "Плотное и питательное мясо дикого кабана, ценящееся охотниками и путешественниками за свою сытность. При правильном приготовлении оно помогает быстрее восстанавливать силы и надолго утоляет голод, что делает его популярным ингредиентом для походных блюд.\n\n**Источник получения:**\n\n* Добывается с существа: **Кабан**\n\n> **Подсказка:**\n> Блюда, приготовленные из мяса кабана, временно повышают выносливость.\n\n> «Хорошая охота кормит не один день, а удачная добыча кабана — целую неделю.»",
+      "en": "Dense and nutritious meat from a wild boar, valued by hunters and travelers for its ability to satisfy hunger. When properly prepared, it helps restore strength more quickly and keeps hunger at bay for a long time, making it a popular ingredient for campfire meals.\n\n**Source:**\n\n* Obtained from creature: **Boar**\n\n> **Hint:**\n> Meals prepared from boar meat temporarily increase endurance.\n\n> “A good hunt feeds you for a day, but a successful boar hunt feeds you for a week.”"
+    },
+    "image": "/images/skills_new-1781260425225_1781260430754.png",
+    "tags": [],
+    "category": "consumables",
+    "updatedAt": "2026-06-12T10:37:24.901Z"
+  },
+  {
+    "id": "fe94b993-95bd-4103-8543-b28cfe16f876",
+    "slug": "dim-azure-soul-stone",
+    "name": {
+      "ru": "Тусклый Лазурный Камень Души",
+      "en": "Dim Azure Soul Stone"
+    },
+    "description": {
+      "ru": "Тусклый камень души, содержащий небольшое количество маны своего носителя. Обычно такие камни остаются после существ, не обладающих значительной духовной силой. Несмотря на слабый магический потенциал, они отличаются высокой прочностью и часто используются в качестве основы для простых магических инструментов, печатей и зачарований.\n\n**Источник получения:**\n\n* Добывается с существа: **Кабан**\n\n> **Подсказка:**\n> Из **тусклого** камня души извлекается меньше маны, чем из более стабильных и ярких разновидностей, однако он значительно устойчивее к повреждениям и разрушению при обработке.\n\n> «Не каждая душа сияет ярко.»",
+      "en": "A dim soul stone containing a small amount of its bearer’s mana. Such stones are usually left behind by creatures that do not possess significant spiritual power. Despite their weak magical potential, they are highly durable and are often used as a foundation for simple magical tools, seals, and enchantments.\n\n**Source:**\n\n* Obtained from creature: **Boar**\n\n> **Hint:**\n> Less mana can be extracted from a **Dim** Soul Stone than from more stable and radiant varieties; however, it is significantly more resistant to damage and destruction during crafting.\n\n> “Not every soul shines brightly.”"
+    },
+    "image": "/images/skills_new-1781260674847_1781260682727.png",
+    "tags": [],
+    "category": "consumables",
+    "updatedAt": "2026-06-12T10:47:19.717Z"
+  },
+  {
+    "id": "36371a0f-dec9-4dee-9659-3ff7cc6f2b5e",
+    "slug": "dire-boar-meat",
+    "name": {
+      "ru": "Мясо Люто-Кабана",
+      "en": "Dire Boar Meat"
+    },
+    "description": {
+      "ru": "Плотное, тяжёлое и чрезвычайно питательное мясо люто-кабана. Благодаря высокой концентрации энергии и жировых тканей оно значительно превосходит обычное мясо диких зверей по насыщению и восстановлению сил. Часто используется опытными охотниками и воинами перед длительными сражениями.\n\n**Источник получения:**\n\n* Добывается с существа: **Люто-кабан**\n\n> **Подсказка:**\n> Блюда, приготовленные из мяса люто-кабана, временно значительно повышают выносливость и увеличивают силу ближнего боя.\n\n> «Сила люто-кабана продолжает жить в каждом куске его мяса. Только не ешьте слишком много перед сном, если не хотите всю ночь гоняться за врагами во снах.»\n",
+      "en": "Dense, heavy, and extremely nutritious meat from a Dire Boar. Due to its high concentration of energy and fat, it far surpasses ordinary wild meat in terms of nourishment and stamina recovery. It is often used by experienced hunters and warriors before long battles.\n\n**Source:**\n\n* Obtained from creature: **Dire Boar**\n\n> **Hint:**\n> Meals prepared from Dire Boar meat temporarily greatly increase endurance and enhance melee strength.\n\n> “Those who can endure the beast’s strength become part of its fury themselves.”"
+    },
+    "image": "/images/skills_new-1781265067269_1781265075045.png",
+    "tags": [],
+    "category": "consumables",
+    "updatedAt": "2026-06-12T11:57:05.174Z",
+    "relatedIds": [
+      "3f7ea44a-3d7a-4518-bb10-9d0adbf352af"
+    ]
+  }
 ]

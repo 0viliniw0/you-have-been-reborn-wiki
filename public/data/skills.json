@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "4f1db2a9-c72f-4e14-b639-d2246f59990f",
+    "slug": "boar-hide",
+    "name": {
+      "ru": "Шкура кабана",
+      "en": "Boar hide"
+    },
+    "description": {
+      "ru": "Прочная и грубая шкура дикого кабана, ценящаяся ремесленниками за свою плотность и износостойкость. Хотя щетина кабана имеет невысокую ценность, его кожа широко используется для изготовления брони, одежды, сумок, ремней и других предметов.\n\n**Источник получения:**\n\n* Добывается с существа: **Кабан**\n\n> **Подсказка:**\n> Изделия из шкуры кабана обладают повышенной прочностью и долговечностью. Часто используется как основной материал для создания простой и средней кожаной брони.\n\n> «Там, где охотник видит добычу, мастер видит десятки будущих изделий.»",
+      "en": "A tough and coarse hide from a wild boar, valued by craftsmen for its density and durability. Although boar bristles are of little value, its leather is widely used for crafting armor, clothing, bags, belts, and other items.\n\n**Source:**\n\n* Obtained from creature: **Boar**\n\n> **Hint:**\n> Items crafted from boar hide have increased durability and longevity. It is commonly used as a primary material for creating basic and medium leather armor.\n\n> “Where a hunter sees prey, a craftsman sees dozens of future creations.”"
+    },
+    "category": "skills",
+    "tags": [],
+    "updatedAt": "2026-06-12T10:26:58.957Z",
+    "image": "/images/skills_new-1781259609936_1781259616583.png"
+  }
+]

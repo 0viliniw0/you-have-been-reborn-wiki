@@ -14,5 +14,44 @@
     "tags": [],
     "category": "locations",
     "updatedAt": "2026-06-11T15:40:09.724Z"
+  },
+  {
+    "id": "c44edc33-47e4-4bc8-b4fd-63677694af9a",
+    "slug": "new-1781194372439",
+    "name": {
+      "ru": "Лес",
+      "en": "Forest"
+    },
+    "description": {
+      "ru": "Лес — один из самых распространённых природных биомов. Высокие деревья образуют густой полог, укрывающий землю от палящего солнца, а многочисленные животные и монстры находят здесь пищу и убежище. Несмотря на внешнее спокойствие, в глубине леса путешественников подстерегают опасности.\n\n**Обитатели биома:**\n\n* Олень, Святой олень, Волк, Лютоволк, Лиса, Большая лиса, Баран, Большерогий баран, Белоснежная овца, Чёрная овца\n* Гоблин, Гоблин с топором, \n* Кровавый паук\n\n**Ресурсы биома:**\n\n* Древесина, Камень, Руда,  Самоцветы, Ягоды, Грибы, Лекарственные травы\n\n**Боссы биома:**\n\n* Дух цветов\n\n> «Лес хранит множество тайн, но раскрывает их лишь тем, кто готов слушать шелест его листвы.»\n\n**Подсказка:**\nДнём лес относительно безопасен, однако ночью здесь появляется больше хищников и враждебных существ.\n\n> **Совет игроку:**\n> Исследуй чащи и поляны — редкие существа и ценные ресурсы чаще встречаются вдали от протоптанных троп.\n",
+      "en": "The Forest is one of the most common natural biomes. Tall trees form a dense canopy that shields the ground from the blazing sun, while numerous animals and monsters find food and shelter here. Despite its peaceful appearance, dangers lurk deep within the woods.\n\n**Biome Inhabitants:**\n\n* Deer, Sacred Deer, Wolf, Dire Wolf, Fox, Large Fox, Ram, Great-Horned Ram, Snow-White Sheep, Black Sheep\n* Goblin, Axe Goblin\n* Blood Spider\n\n**Biome Resources:**\n\n* Wood, Stone, Ore, Gemstones, Berries, Mushrooms, Medicinal Herbs\n\n**Biome Bosses:**\n\n* Spirit of Flowers\n\n> “The forest holds many secrets, but reveals them only to those willing to listen to the rustling of its leaves.”\n\n**Hint:**\nThe forest is relatively safe during the day, but at night more predators and hostile creatures emerge.\n\n> **Player Tip:**\n> Explore dense groves and clearings — rare creatures and valuable resources are more commonly found away from well-traveled paths.\n"
+    },
+    "image": "/images/locations_new-1781194372439_1781194477792.png",
+    "tags": [],
+    "category": "locations",
+    "updatedAt": "2026-06-11T16:22:45.391Z",
+    "relatedIds": [
+      "45fc5404-9174-4fa2-bec1-45cad50a4adb",
+      "eb2bbf93-80a0-4547-a284-d4547b8f9b1a"
+    ]
+  },
+  {
+    "id": "4a10f95a-f892-40f3-bb61-980b75a28b95",
+    "slug": "steppe",
+    "name": {
+      "ru": "Степь ",
+      "en": "Steppe"
+    },
+    "description": {
+      "ru": "Степь — это обширный биом бескрайних лугов и плодородных земель, где ветер свободно гуляет по открытым просторам. В отличие от пустынных земель, здесь кипит жизнь: травы густо покрывают почву, а стада животных и дикие существа постоянно перемещаются в поисках пищи и воды. Открытая местность делает степь одновременно богатой ресурсами и опасной для путешественников.\n\n**Обитатели биома:**\n\n* Кабан, Лютокабан, Волк, Люто-Волк, Лиса, Баран, Большерогий баран, Заяц, Голем,  Древний Голем\n* Белоснежная овца, Чёрная овца, Скелет Лучник, Скелет Рыцарь\n\n**Ресурсы биома:**\n\n* Трава, дикорастущая пшеница, лекарственные травы, камень, редкие полевые цветы\n\n**Боссы биома:**\n\n* Вожак стаи степных хищников\n* Кочевой шаман\n\n> «Степь не знает тишины — даже ветер здесь звучит как дыхание живого мира.»\n\n**Подсказка:**\nСтепь удобна для передвижения более простой дорогой, но из-за отсутствия укрытий игрок легко становится заметной целью для хищников и разбойников.\n\n> **Совет игроку:**\n> Используй рельеф и высокую траву для скрытного перемещения. Стада животных часто мигрируют — следуй за ними, чтобы найти редкие ресурсы и хищников.",
+      "en": "The steppe is a vast biome of endless grasslands and fertile lands, where the wind sweeps freely across the open spaces. Unlike desert lands, it is teeming with life: grasses thickly cover the soil, and herds of animals and wild creatures constantly move in search of food and water. The open terrain makes the steppe both rich in resources and dangerous for travelers.\n\n**Biome Inhabitants:**\n\n* Boar, Dire Boar, Wolf, Dire Wolf, Fox, Ram, Bighorn Ram, Hare, Golem, Ancient Golem\n* Snow-White Sheep, Black Sheep, Skeleton Archer, Skeleton Knight\n\n**Biome Resources:**\n\n* Grass, Wild Wheat, Medicinal Herbs, Stone, Rare Wildflowers\n\n**Biome Bosses:**\n\n* Steppe Predator Pack Leader\n* Nomadic Shaman\n\n> \"The steppe knows no silence—even the wind here sounds like the breath of a living world.\"\n\n**Hint:**\nThe steppe offers easier travel via a simpler route, but the lack of cover makes the player a visible target for predators and bandits.\n\n> **Player Tip:**\n> Use the terrain and tall grass for stealthy movement. Animal herds often migrate—follow them to find rare resources and predators."
+    },
+    "image": "/images/skills_new-1781263482072_1781263485969.png",
+    "tags": [],
+    "relatedIds": [
+      "54da7a59-f08a-432d-818c-82fe4a1b6a92"
+    ],
+    "category": "locations",
+    "updatedAt": "2026-06-12T11:42:19.042Z"
   }
 ]

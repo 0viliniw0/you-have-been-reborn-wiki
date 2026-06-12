@@ -14,10 +14,11 @@
     "tags": [],
     "relatedIds": [],
     "category": "bestiary",
-    "updatedAt": "2026-06-11T15:45:18.375Z",
+    "updatedAt": "2026-06-11T16:25:51.114Z",
     "behavior": "passive",
     "locationIds": [
-      "eb24d594-56c3-4e70-8183-bba8ff5bd3d7"
+      "a389641f-aa7c-43e8-a7e1-4fed76aabe89",
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a"
     ],
     "drops": [
       {
@@ -35,6 +36,114 @@
       {
         "id": "f491a6a1-5e2c-4eba-9df6-ee58e0f27129",
         "chance": 25
+      }
+    ]
+  },
+  {
+    "id": "eb2bbf93-80a0-4547-a284-d4547b8f9b1a",
+    "slug": "holy-deer",
+    "name": {
+      "ru": "Святой олень",
+      "en": "Holy deer"
+    },
+    "description": {
+      "ru": "Святой олень — редкое благословлённое существо, появляющееся в местах сильной природной и духовной магии. Его тело окружено мягким светом, а следы, оставленные им, будто очищают землю от скверны. Считается проводником между миром живых и священными потоками маны.\n\n* Процент спавна: 8%\n* Можно оседлать/приручить: **да**\n* Биом спавна: **Магический лес, Лес**\n\n> «Тот, кто увидел святого оленя в тишине леса, уже не идёт по миру прежним путём.»\n\n>**Подсказка:**\n>Святой олень не атакует первым, исчезает при агрессии. Лучше наблюдать или преследовать осторожно — он появляется чаще рядом с аномалиями маны.\n\n**Особенность:**\nСущество усиливает святую магию поблизости и может оставлять после себя редкие ресурсы, связанные с благословением.\n",
+      "en": "The Sacred Deer is a rare blessed creature that appears in places rich with natural and spiritual magic. Its body is surrounded by a gentle glow, and the tracks it leaves behind seem to cleanse the land of corruption. It is believed to serve as a bridge between the world of the living and the sacred currents of mana.\n\n* Spawn Rate: 8%\n* Can be ridden/tamed: **Yes**\n* Spawn Biomes: **Magical Forest, Forest**\n\n> “Those who behold a Sacred Deer in the silence of the forest never walk the world the same way again.”\n\n> **Hint:**\n> The Sacred Deer does not attack first and will vanish if threatened. It is best observed or followed with caution, as it appears more frequently near mana anomalies.\n\n**Special Ability:**\nThe creature enhances holy magic in its vicinity and may leave behind rare blessed resources.\n"
+    },
+    "image": "/images/bestiary_holy-deer_1781193928383.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-11T16:49:10.283Z",
+    "behavior": "peaceful",
+    "locationIds": [
+      "a389641f-aa7c-43e8-a7e1-4fed76aabe89",
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a"
+    ],
+    "drops": [
+      {
+        "id": "ab86bc5f-e23c-45cb-829c-8d93f89e7b18",
+        "chance": 30
+      },
+      {
+        "id": "89946de8-9d41-4906-a0a6-b84fbcb9e4d5",
+        "chance": 15
+      },
+      {
+        "id": "e09cb4b0-ac46-44c3-a214-778dc2d2e448",
+        "chance": 20
+      },
+      {
+        "id": "7ab868aa-75a4-4b49-9d5b-4ba14a1c9f41",
+        "chance": 100
+      }
+    ]
+  },
+  {
+    "id": "54da7a59-f08a-432d-818c-82fe4a1b6a92",
+    "slug": "boar",
+    "name": {
+      "ru": "Кабан",
+      "en": "Boar"
+    },
+    "description": {
+      "ru": "Кабан — распространённое дикое животное, известное своей выносливостью и свирепым нравом. Большую часть времени он проводит в поисках пищи, однако при угрозе способен стремительно атаковать обидчика своими острыми бивнями. Кабаны ценятся охотниками за мясо, шкуру и прочные бивни, используемые в ремесле.\n\n* Процент спавна: 65%\n* Можно оседлать: **нет**\n* Приручить: **да (только детёнышей)**\n* Биом спавна: **Лес, Степь**\n* Размер группы: **1–5 особей**\n* Особенность спавна: **При групповом появлении (больше 3-х особей) вместе со взрослыми кабанами могут появляться детёныши.**\n\n> «Не каждый зверь ищет битвы, но кабан никогда не отступает от неё.»\n\n> **Подсказка:**\n> Взрослые кабаны агрессивны при защите своей группы. Если рядом находятся детёныши, они становятся значительно опаснее. Если вы хотите получить животное для хозяйства, ищите группы кабанов с молодняком.\n\n**Особенность:**\nКабаны часто перемещаются небольшими стадами и могут быстро атаковать цель на короткой дистанции. В группе они отлично координируют свои действия, окружая угрозу и защищая более слабых членов стада. Особенно опасны кабаны становятся на защиту детёнышей — в такие моменты вся группа действует сообща и без колебаний атакует любого нарушителя.",
+      "en": "Boar — a common wild animal known for its endurance and fierce temperament. It spends most of its time searching for food, but when threatened, it can rapidly attack an enemy using its sharp tusks. Boars are valued by hunters for their meat, hide, and strong tusks used in crafting.\n\n* Spawn rate: 65%\n* Can be ridden: **no**\n* Can be tamed: **yes (young only)**\n* Spawn biomes: **Forest, Steppe**\n* Group size: **1–5 individuals**\n* Spawn feature: **When spawning in groups (more than 3 individuals), piglets may appear alongside adult boars.**\n\n> “Not every beast seeks battle, but a boar never retreats from it.”\n\n> **Hint:**\n> Adult boars are aggressive when defending their group. If piglets are present, they become significantly more dangerous. If you want to obtain an animal for farming, look for boar groups with juveniles.\n\n**Special trait:**\nBoars often travel in small herds and can quickly rush targets at close range. In a group, they coordinate their actions well, surrounding threats and protecting weaker members of the herd. They become especially dangerous when defending their young — at such moments the entire group acts together without hesitation, attacking any intruder."
+    },
+    "image": "/images/bestiary_new-1781261253336_1781261274873.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-12T11:33:47.936Z",
+    "behavior": "passive",
+    "locationIds": [
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a",
+      "4a10f95a-f892-40f3-bb61-980b75a28b95"
+    ],
+    "drops": [
+      {
+        "id": "219cbce3-588d-4abc-9102-eff917a20000",
+        "chance": 100
+      },
+      {
+        "id": "6a5e5bd7-238e-4c58-b8e9-beadd5d95250",
+        "chance": 30
+      },
+      {
+        "id": "4f1db2a9-c72f-4e14-b639-d2246f59990f",
+        "chance": 80
+      },
+      {
+        "id": "fe94b993-95bd-4103-8543-b28cfe16f876",
+        "chance": 30
+      }
+    ]
+  },
+  {
+    "id": "3f7ea44a-3d7a-4518-bb10-9d0adbf352af",
+    "slug": "dire-boar",
+    "name": {
+      "ru": "Люто-Кабан",
+      "en": "Dire Boar"
+    },
+    "description": {
+      "ru": "Люто-кабан — значительно более крупная и агрессивная разновидность обычного кабана. Его массивное тело, усиленные кости и огромные бивни делают его одним из самых опасных хищников леса и степи. Он не просто атакует — он сметает всё на своём пути, пробивая оборону противников мощными рывками. Несмотря на свирепость, люто-кабаны могут быть приручены и использованы как боевые ездовые звери.\n\n* Процент спавна: 30%\n* Можно оседлать: **да**\n* Приручить: **да**\n* Биом спавна: **Лес, Степь**\n* Размер группы: **3-5 особи**\n* Особенность спавна: **Иногда появляются в одиночку или возглавляют небольшие стада кабанов размером от 3-5 существ.**\n\n> «Где проходит люто-кабан, остаются лишь сломанные кости и те, кому повезло выжить, чтобы рассказать об этом.»\n\n> **Подсказка:**\n> Люто-кабан крайне опасен в прямом столкновении. После приручения становится мощным боевым ездовым животным с высокой выносливостью и уроном в рывке.\n\n**Особенность:**\nЛюто-кабан обладает усиленной бронёй тела и способен совершать сокрушительные атаки в лоб. В бою он легко раскидывает группы врагов, делая его ценным боевым маунтом.",
+      "en": "The Dire Boar is a significantly larger and more aggressive variety of the common boar. Its massive body, reinforced bones, and enormous tusks make it one of the most dangerous predators of the forest and steppe. It doesn't simply attack—it sweeps everything in its path, breaking through enemy defenses with powerful charges. Despite their ferocity, Dire Boars can be tamed and used as combat mounts.\n\n* Spawn Rate: 30%\n* Ridgable: **yes**\n* Tamable: **yes**\n* Spawn Biome: **Forest, Steppe**\n* Group Size: **1–3 individuals**\n* Spawn Trait: **Sometimes appear alone or lead small herds of 3–5 boars.**\n\n> \"Where a Dire Boar passes, only broken bones and those lucky enough to live to tell the tale remain.\"\n\n> **Hint:**\n> The Dire Boar is extremely dangerous in direct combat. Once tamed, it becomes a powerful combat mount with high stamina and charge damage.\n\n**Special Feature:**\nThe Dire Boar has enhanced body armor and is capable of devastating frontal attacks. In combat, it easily scatters groups of enemies, making it a valuable combat mount."
+    },
+    "image": "/images/bestiary_new-1781264573523_1781264609099.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-12T11:58:01.518Z",
+    "behavior": "aggressive",
+    "locationIds": [
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a",
+      "4a10f95a-f892-40f3-bb61-980b75a28b95"
+    ],
+    "drops": [
+      {
+        "id": "36371a0f-dec9-4dee-9659-3ff7cc6f2b5e",
+        "chance": 10
       }
     ]
   }
