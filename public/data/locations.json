@@ -53,5 +53,24 @@
     ],
     "category": "locations",
     "updatedAt": "2026-06-12T11:42:19.042Z"
+  },
+  {
+    "id": "eb7603ab-26d8-4617-8113-3d0d5f0b9ce7",
+    "slug": "swamp",
+    "name": {
+      "ru": "Болото",
+      "en": "Swamp"
+    },
+    "description": {
+      "ru": "Болото — тёмный и сырой биом, наполненный густым туманом, стоячей водой и разложившейся растительностью. Здесь магия природы и тления переплетаются, создавая нестабильную и опасную среду. Воздух тяжёлый, а земля под ногами часто уходит в трясину, скрывая опасности под мутной поверхностью.\n\nНесмотря на враждебность, болото богато редкими алхимическими ингредиентами, ядовитыми растениями и существами, связанными с тёмной и природной магией.\n\n**Обитатели биома:**\n\n* Болотная тварь, Кровавый паук, Гигантская пиявка, Болотный дух, Гоблин-отшельник, Ядовитая жаба, Трясинный змей\n\n**Ресурсы биома:**\n\n* Ядовитые травы, Грибы тления, Болотная слизь, Кости древних существ, Чёрная глина\n\n**Боссы биома:**\n\n* Болотный владыка\n* Дух гниения\n\n> «Болото не охотится за тобой — оно просто ждёт, пока ты сам сделаешь шаг не туда.»\n\n**Подсказка:**\nВ болоте передвижение замедлено, а скрытые участки трясины могут мгновенно затянуть неосторожного путешественника. Ночью активность агрессивных существ значительно возрастает.\n\n> **Совет игроку:**\n> Используй лёгкое снаряжение и зелья защиты от яда. Редкие ресурсы чаще встречаются глубже в болоте, но путь туда всегда самый опасный.",
+      "en": "The Swamp is a dark and damp biome filled with thick fog, stagnant water, and decaying vegetation. Here, nature magic and decay intertwine, creating an unstable and dangerous environment. The air is heavy, and the ground often gives way into deep marshes, hiding dangers beneath the murky surface.\n\nDespite its hostility, the swamp is rich in rare alchemical ingredients, poisonous plants, and creatures tied to dark and natural magic.\n\n**Biome inhabitants:**\n\n* Swamp Creature, Blood Spider, Giant Leech, Swamp Spirit, Hermit Goblin, Poison Frog, Bog Serpent\n\n**Biome resources:**\n\n* Poisonous Herbs, Rot Mushrooms, Swamp Slime, Ancient Bones, Black Clay\n\n**Biome bosses:**\n\n* Swamp Lord\n* Spirit of Decay\n\n> “The swamp does not hunt you — it simply waits for you to take the wrong step.”\n\n**Hint:**\nMovement in the swamp is slowed, and hidden patches of marsh can instantly trap careless travelers. At night, hostile creature activity increases significantly.\n\n> **Player tip:**\n> Use light equipment and poison resistance potions. Rare resources are more common deeper in the swamp, but the path there is always the most dangerous."
+    },
+    "image": "/images/skills_new-1781280414275_1781280419523.png",
+    "tags": [],
+    "category": "locations",
+    "updatedAt": "2026-06-12T16:08:08.804Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
   }
 ]

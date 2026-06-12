@@ -129,5 +129,62 @@
     "relatedIds": [
       "3f7ea44a-3d7a-4518-bb10-9d0adbf352af"
     ]
+  },
+  {
+    "id": "312fb6c8-398f-4fc6-836c-ace4bb8af396",
+    "slug": "sparkling-azure-soul-stone",
+    "name": {
+      "ru": "Искрящийся Лазурный Камень Души",
+      "en": "Sparkling Azure Soul Stone"
+    },
+    "description": {
+      "ru": "Искрящийся камень души, наполненный большим объёмом чистой и активной  маны. Его поверхность излучает мерцающее лазурное сияние, будто внутри постоянно вспыхивают искры энергии. Такой камень значительно превосходит обычные и стабильные разновидности по запасу маны и используется для создания мощных магических артефактов и высокоуровневых заклинаний.\n\n**Источник получения:**\n\n* Добывается с существа: ** **\n\n> **Подсказка:**\n> Из **искрящегося** камня души можно извлечь значительно больше маны, чем из стабильных и тусклых вариантов. Однако из-за высокой концентрации энергии он требует осторожной обработки при создании магических предметов.\n\n> «Он сияет так ярко, что некоторые путешественники используют его вместо фонаря. Но помни: внутри этого света заключена настоящая магия.»",
+      "en": "A sparkling soul stone filled with a large amount of pure and actively pulsating mana. Its surface emits a shimmering azure glow, as if bursts of energy are constantly flashing within it. This stone significantly surpasses common and stable variants in mana capacity and is used to create powerful magical artifacts and high-tier spells.\n\n**Source:**\n\n* Obtained from creature: ___\n* Can also be obtained from: ___\n\n> **Hint:**\n> A **Sparkling** Soul Stone yields significantly more mana than stable and dull variants. However, due to its high energy concentration, it requires careful handling during the crafting of magical items.\n\n> “Where the sparks of the soul never fade, magic knows no limits.”"
+    },
+    "image": "/images/skills_new-1781271977522_1781271988340.png",
+    "tags": [],
+    "category": "consumables",
+    "updatedAt": "2026-06-12T13:53:28.068Z",
+    "relatedIds": [
+      "3f7ea44a-3d7a-4518-bb10-9d0adbf352af"
+    ]
+  },
+  {
+    "id": "1ee07df2-30cd-408d-9138-1249fc5b6443",
+    "slug": "fire-salamander-meat",
+    "name": {
+      "ru": "Мясо Огненной Саламандры",
+      "en": "Fire Salamander Meat"
+    },
+    "description": {
+      "ru": "Мясо магического существа, пропитанное остаточной энергией стихии огня. Несмотря на необычное происхождение, после правильного приготовления оно становится ценным источником питания для путешественников, магов и охотников, отправляющихся в опасные регионы.\n\nБлагодаря природной связи с огненной магией это мясо ценится не только за питательность, но и за особые свойства, проявляющиеся после употребления.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная саламандра**\n\n> **Подсказка:**\n> Блюда, приготовленные из мяса огненной саламандры, временно повышают сопротивление огню и увеличивают скорость восстановления маны.\n\n> «Не каждый осмелится попробовать плоть существа, рождённого в пламени.»",
+      "en": "## 🍖 Fire Salamander Meat\n\nMeat from a magical creature infused with residual fire elemental energy. Despite its unusual origin, when properly prepared it becomes a valuable source of nourishment for travelers, mages, and hunters venturing into dangerous regions.\n\nThanks to its natural connection to fire magic, this meat is valued not only for its nutritional benefits but also for the unique effects it grants when consumed.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n\n> **Hint:**\n> Meals prepared from Fire Salamander meat temporarily increase fire resistance and improve mana regeneration.\n\n> “Not everyone dares to taste the flesh of a creature born in flame.”"
+    },
+    "image": "/images/skills_new-1781278903393_1781278910042.png",
+    "tags": [],
+    "category": "consumables",
+    "updatedAt": "2026-06-12T15:46:40.600Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
+  },
+  {
+    "id": "6b3d2697-760e-4937-9add-3170e18ffba7",
+    "slug": "bright-blood-soul-stone",
+    "name": {
+      "ru": "Яркий Кровавый Камень Души",
+      "en": "Bright Blood Soul Stone"
+    },
+    "description": {
+      "ru": "Редкий камень души, наполненный огромным количеством духовной энергии своего носителя. Его насыщенное алое свечение словно пульсирует изнутри, создавая впечатление, будто внутри заключён живой источник силы. Такой камень считается ценным компонентом для создания мощных артефактов, магических предметов и сложных энергетических конструкций.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная Саламандра**\n\n> **Подсказка:**\n> Из **яркого** кровавого камня души можно извлечь большое количество энергии без значительных потерь. Он особенно ценится при создании могущественных артефактов, зачарованных предметов и других высокоуровневых магических изделий.\n\n> «Чем ярче сияние камня, тем больше силы скрыто внутри него.»",
+      "en": "A rare soul stone filled with an immense amount of its bearer’s spiritual energy. Its rich crimson glow seems to pulse from within, creating the impression that a living source of power is trapped inside. Such a stone is considered a valuable component for crafting powerful artifacts, magical items, and complex energy constructs.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n\n> **Hint:**\n> A **Bright** Blood Soul Stone can provide a large amount of energy with minimal loss. It is especially prized for crafting powerful artifacts, enchanted items, and other high-tier magical creations.\n\n> “The brighter the stone shines, the greater the power hidden within it.”"
+    },
+    "image": "/images/skills_new-1781279334205_1781279340719.png",
+    "tags": [],
+    "category": "consumables",
+    "updatedAt": "2026-06-12T15:55:59.563Z",
+    "relatedIds": [
+      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+    ]
   }
 ]
