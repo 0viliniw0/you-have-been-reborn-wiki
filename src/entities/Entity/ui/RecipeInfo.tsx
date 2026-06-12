@@ -12,7 +12,6 @@ export const RecipeInfo = ({ recipe, allEntities }: RecipeInfoProps) => {
   const { i18n } = useTranslation();
   const currentLang = i18n.language.split("-")[0] as "ru" | "en";
   const resultItem = allEntities.find((e) => e.id === recipe.resultId);
-  const station = allEntities.find((e) => e.id === recipe.stationId);
 
   const getImagePath = (image?: string) => {
     if (!image) return null;
@@ -187,26 +186,6 @@ export const RecipeInfo = ({ recipe, allEntities }: RecipeInfoProps) => {
             </div>
           </motion.div>
         </div>
-
-        {station && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-12 pt-8 border-t border-slate-100 dark:border-slate-800/50 flex flex-col sm:flex-row items-center gap-4 justify-center"
-          >
-            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-              Crafting Station:
-            </span>
-            <Link
-              to={`/${station.category}/${station.slug}`}
-              className="flex items-center gap-3 px-6 py-2 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-blue-600 hover:text-white transition-all font-bold text-sm"
-            >
-              <span>📍</span>
-              {station.name[currentLang] || station.name["ru"]}
-            </Link>
-          </motion.div>
-        )}
       </section>
     </motion.div>
   );

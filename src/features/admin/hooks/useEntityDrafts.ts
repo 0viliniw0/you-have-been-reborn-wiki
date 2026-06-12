@@ -47,6 +47,7 @@ export const useEntityDrafts = (dbEntities: Entity[] | undefined) => {
         description: selectedEntity.description,
         image: selectedEntity.image,
         tags: selectedEntity.tags,
+        relatedIds: selectedEntity.relatedIds || [],
         category: newCat,
         updatedAt: new Date().toISOString(),
       };

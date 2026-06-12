@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import {
   Entity,
   Bestiary,
-  Location,
   Npc,
   Recipe,
   Equipment,
@@ -35,21 +34,7 @@ export const EntityRelations = ({ entity, entities }: EntityRelationsProps) => {
       ? entity.skillIds.map((id) => findEntity(id)).filter(Boolean)
       : [];
 
-  const parentLocation =
-    entity.category === "locations" && entity.parentLocationId
-      ? findEntity(entity.parentLocationId)
-      : null;
-
   // --- Reverse Relations ---
-  const subZones =
-    entity.category === "locations"
-      ? (entities.filter(
-          (e) =>
-            e.category === "locations" &&
-            (e as Location).parentLocationId === entity.id,
-        ) as Location[])
-      : [];
-
   const locationInhabitants =
     entity.category === "locations"
       ? (entities.filter(
@@ -91,40 +76,38 @@ export const EntityRelations = ({ entity, entities }: EntityRelationsProps) => {
       (e as Recipe).ingredients.some((i) => i.id === entity.id),
   ) as Recipe[];
 
-  const craftingAvailable =
-    entity.category === "locations" || entity.category === "npcs"
-      ? (entities.filter(
-          (e) =>
-            e.category === "recipes" && (e as Recipe).stationId === entity.id,
-        ) as Recipe[])
-      : [];
-
   const manualRelations = (entity.relatedIds || [])
     .map((id) => findEntity(id))
     .filter(Boolean) as Entity[];
-  const referencedBy = entities.filter((e) => e.relatedIds?.includes(entity.id));
+  const referencedBy = entities.filter((e) =>
+    e.relatedIds?.includes(entity.id),
+  );
 
-  const sections = [
+  interface SectionItem {
+    entity: Entity;
+    subtitle: string;
+    badge?: string;
+  }
+
+  const sections: { title: string; items: SectionItem[] }[] = [
     {
       title: "Located In",
-      items: [...habitats, ...npcLocations, parentLocation]
-        .filter(Boolean)
-        .map((e) => ({ entity: e!, subtitle: "Primary Location" })),
+      items: [...habitats, ...npcLocations]
+        .filter((e): e is Entity => Boolean(e))
+        .map((e) => ({ entity: e, subtitle: "Primary Location" })),
     },
     {
       title: "Grants Skills",
-      items: itemSkills.map((e) => ({
-        entity: e,
-        subtitle: "Inherent Ability",
-      })),
+      items: itemSkills
+        .filter((e): e is Entity => Boolean(e))
+        .map((e) => ({
+          entity: e,
+          subtitle: "Inherent Ability",
+        })),
     },
     {
       title: "Available from Equipment",
       items: skillGivers.map((e) => ({ entity: e, subtitle: "Equipment" })),
-    },
-    {
-      title: "Sub-Zones",
-      items: subZones.map((e) => ({ entity: e, subtitle: "Region" })),
     },
     {
       title: "Local Inhabitants",
@@ -149,13 +132,6 @@ export const EntityRelations = ({ entity, entities }: EntityRelationsProps) => {
       })),
     },
     {
-      title: "Crafting Available",
-      items: craftingAvailable.map((r) => ({
-        entity: findEntity(r.resultId) || r,
-        subtitle: "Available Here",
-      })),
-    },
-    {
       title: "Related Content",
       items: manualRelations.map((e) => ({
         entity: e,
@@ -169,7 +145,7 @@ export const EntityRelations = ({ entity, entities }: EntityRelationsProps) => {
         subtitle: e.category.toUpperCase(),
       })),
     },
-  ].filter((s) => s.items.length > 0 && s.items.every((i) => i.entity));
+  ].filter((s) => s.items.length > 0);
 
   if (sections.length === 0) return null;
 
