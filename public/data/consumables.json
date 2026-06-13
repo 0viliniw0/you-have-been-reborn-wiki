@@ -205,5 +205,43 @@
     ],
     "category": "consumables",
     "updatedAt": "2026-06-13T15:50:33.169Z"
+  },
+  {
+    "id": "d1231a8f-4126-4802-843b-005949f55fd0",
+    "slug": "purple-salamander-meat",
+    "name": {
+      "ru": "Мясо Пурпурной Саламандры",
+      "en": "Purple Salamander Meat"
+    },
+    "description": {
+      "ru": "Плотное мясо пурпурной саламандры, насквозь пропитанное токсичным ядом и следами аномальной маны. Из-за крайне высокой концентрации опасных веществ оно полностью непригодно для употребления в пищу даже после обработки и представляет серьёзную угрозу для здоровья.\n\nИспользуется исключительно в алхимии как компонент для создания слабодействующих ядов, токсичных зелий и других составов, связанных с отравляющими эффектами.\n\n**Источник получения:**\n\n* Добывается с существа: **Пурпурная саламандра**\n\n> **Подсказка:**\n> Мясо пурпурной саламандры крайне ядовито и считается непригодным для употребления в пищу. Ходят слухи о существовании способа его безопасного приготовления, однако достоверных сведений об этом рецепте никто не встречал.\n\n> «Это будет ваш последний приём пищи.»",
+      "en": "**Dense meat of the Purple Salamander**, thoroughly saturated with toxic venom and traces of anomalous mana. Due to the extremely high concentration of hazardous substances, it is completely unsuitable for consumption even after processing and poses a severe threat to health.\n\nIt is used exclusively in alchemy as an ingredient for creating low-grade poisons, toxic potions, and other mixtures associated with poisoning effects.\n\n**Source:**\n\n* Obtained from: **Purple Salamander**\n\n> **Tip:**\n> Purple Salamander meat is extremely toxic and is considered inedible. There are rumors of a method to prepare it safely, but no reliable evidence of such a recipe has ever been found.\n\n> “This will be your last meal.”"
+    },
+    "image": "/images/skills_new-1781368332000_1781368337445.png",
+    "tags": [],
+    "relatedIds": [
+      "a8d06175-e419-4785-8575-a0a110010819"
+    ],
+    "category": "consumables",
+    "updatedAt": "2026-06-13T16:46:39.405Z"
+  },
+  {
+    "id": "edde8ee1-38c3-4bd3-8f6b-93d84495fdc6",
+    "slug": "green-lizard-meat",
+    "name": {
+      "ru": "Мясо Зеленого Ящера",
+      "en": "Green Lizard Meat"
+    },
+    "description": {
+      "ru": "Плотное мясо зелёного ящера, обладающее насыщенным вкусом и высокой питательной ценностью. Несмотря на приятные вкусовые качества, структура мяса остаётся немного жёсткой.\n\nПосле правильного приготовления становится мягким и сочным, хорошо утоляет голод и подходит для длительных путешествий. Часто используется в походной кухне благодаря своей доступности и высокой калорийности.\n\n**Источник получения:**\n\n* Добывается с существа: **Зелёный ящер**\n\n> **Подсказка:**\n> Рекомендуется длительное тушение или варка. Чем дольше готовится мясо, тем более мягким и приятным по текстуре оно становится.\n\n> «Простая пища, которая не удивит магией, но надолго избавит от голода.»",
+      "en": "**Dense meat of the Green Lizard**, with a rich flavor and high nutritional value. Despite its pleasant taste, the texture of the meat remains somewhat tough.\n\nWhen properly prepared, it becomes tender and juicy, effectively satisfies hunger, and is well-suited for long journeys. It is commonly used in field cooking due to its availability and high caloric content.\n\n**Source:**\n\n* Obtained from: **Green Lizard**\n\n> **Tip:**\n> Long stewing or boiling is recommended. The longer it is cooked, the softer and more pleasant its texture becomes."
+    },
+    "image": "/images/consumables_new-1781370397606_1781370538920.png",
+    "tags": [],
+    "relatedIds": [
+      "8b0a21a5-6202-45d6-bcb0-ec688b55d40b"
+    ],
+    "category": "consumables",
+    "updatedAt": "2026-06-13T17:15:30.624Z"
   }
 ]

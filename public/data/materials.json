@@ -338,5 +338,41 @@
     ],
     "category": "materials",
     "updatedAt": "2026-06-13T16:18:32.592Z"
+  },
+  {
+    "id": "3e3998e1-fa8b-4719-bc43-19298e917825",
+    "slug": "new-1781370951679",
+    "name": {
+      "ru": "Шкура Зеленого Ящера",
+      "en": "New Entity"
+    },
+    "description": {
+      "ru": "Плотная шкура зелёного ящера, отличающаяся лёгкостью и высокой прочностью. Благодаря своей упругой структуре и природной стойкости к повреждениям, она эффективно защищает от большинства поверхностных ран и царапин, включая удары острым оружием.\n\nИспользуется для создания лёгкой защитной экипировки, походной одежды и усиленных элементов брони, где важны мобильность и базовая защита без утяжеления снаряжения.\n\n**Источник получения:**\n\n* Добывается с существа: **Зелёный ящер**\n\n> **Подсказка:**\n> Особенно ценится охотниками и путешественниками за удачное сочетание прочности и малого веса.\n\n> «Лёгкая защита, которая не мешает двигаться, но всё ещё умеет сдерживать удар.»",
+      "en": "**Dense hide of the Green Lizard**, distinguished by its light weight and high durability. Thanks to its flexible structure and natural resistance to damage, it effectively protects against most superficial wounds and cuts, including strikes from sharp weapons.\n\nIt is used in crafting light protective gear, travel clothing, and reinforced armor components where mobility and basic defense are essential without adding extra weight.\n\n**Source:**\n\n* Obtained from: **Green Lizard**\n\n> **Tip:**\n> Highly valued by hunters and travelers for its excellent balance of strength and low weight.\n\n> “Light protection that doesn’t slow you down, yet still knows how to withstand a strike.”"
+    },
+    "image": "/images/skills_new-1781370951679_1781370959954.png",
+    "tags": [],
+    "relatedIds": [
+      "8b0a21a5-6202-45d6-bcb0-ec688b55d40b"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-13T17:19:37.602Z"
+  },
+  {
+    "id": "3b724bea-33c8-488e-af63-7abbe42a558b",
+    "slug": "new-1781371187450",
+    "name": {
+      "ru": "Чешуя Зеленого Ящера",
+      "en": "New Entity"
+    },
+    "description": {
+      "ru": "Плотная чешуя зелёного ящера, используемая в ремесле как базовый материал для укрепления защитного снаряжения. Обладает умеренной прочностью и низким весом, благодаря чему не утяжеляет готовые изделия и подходит для создания лёгких защитных пластин.\n\nЧаще всего применяется в изготовлении броневых вставок и усиленных элементов экипировки, где требуется простое и надёжное укрепление без дополнительных магических или специальных свойств.\n\n**Источник получения:**\n\n* Добывается с существа: **Зелёный ящер**\n\n> **Подсказка:**\n> Практичный материал для базовой защиты.\n\n> «Ничего лишнего — просто надёжная защита там, где она нужна.»",
+      "en": "**Dense scales of the Green Lizard**, used in crafting as a basic material for reinforcing protective equipment. They have moderate durability and low weight, which prevents them from significantly increasing the overall weight of finished items and makes them suitable for creating light protective plates.\n\nThey are most commonly used in the production of armor inserts and reinforced gear components where simple and reliable strengthening is required without any additional magical or special properties.\n\n**Source:**\n\n* Obtained from: **Green Lizard**\n\n> **Tip:**\n> A practical material for basic protection.\n\n> “Nothing extra—just reliable defense where it is needed.”"
+    },
+    "tags": [],
+    "relatedIds": [],
+    "category": "materials",
+    "updatedAt": "2026-06-13T17:23:59.382Z",
+    "image": "/images/materials_new-1781371187450_1781371439301.png"
   }
 ]

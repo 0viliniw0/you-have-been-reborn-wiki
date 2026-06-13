@@ -224,14 +224,14 @@
       "en": "Purple salamander"
     },
     "description": {
-      "ru": "**Пурпурная саламандра** — магическое существо, насыщенное нестабильной энергией магических аномалий. Её тело покрыто гладкими пурпурными чешуйками, которые переливаются мягким фиолетовым свечением в темноте. В отличие от своих огненных сородичей, пурпурная саламандра намного меньше размером, а так же менее агресивна в бою, но она всё еще представляет серьёзную угрозу для неподготовленных путешественников благодаря, своей токсичной природе и непредсказуемому воздействию на живые существа.\n\nНесмотря на свою опасность, пурпурная саламандра ценится алхимиками и магами как источник редких компонентов для создания зелий заклинаний и печатей.\n\n* Процент спавна: **30%**\n* Можно оседлать: **нет**\n* Приручить: **нет**\n* Биом спавна: **Магический лес, Болото, Скалистое нагорье**\n* Особенность спавна: **Появляется чаще возле водоёмов и влажных камней**\n\n> «Если среди камней или болотной дымки вспыхнуло пурпурное свечение — возможно, вас уже заметили.»\n\n> **Подсказка:**\n>  Рекомендуется иметь при себе противоядия и средства для снятия негативных эффектов.\n\n**Особенность:**\nСущество обладает высокой устойчивостью к ядам и при атаке накладывает на цель случайный анти-бафф.",
-      "en": "**Purple Salamander** is a magical creature infused with the unstable energy of magical anomalies. Its body is covered in smooth purple scales that shimmer with a soft violet glow in the darkness. Unlike its fiery relatives, the Purple Salamander is much smaller in size and less aggressive in combat. However, it still poses a serious threat to unprepared travelers due to its toxic nature and unpredictable effects on living creatures.\n\nDespite its danger, the Purple Salamander is highly valued by alchemists and mages as a source of rare components used in the creation of potions, spells, and magical seals.\n\n* Spawn Chance: **30%**\n* Can Be Mounted: **No**\n* Can Be Tamed: **No**\n* Spawn Biomes: **Magical Forest, Swamp, Rocky Highlands**\n* Special Spawn Condition: **Appears more frequently near bodies of water and damp rocks**\n\n> “If a purple glow suddenly flickers among the rocks or through the swamp mist, chances are it has already noticed you.”\n\n> **Tip:**\n> It is recommended to carry antidotes and items capable of removing negative status effects.\n\n**Special Trait:**\nThe creature has high resistance to poisons and applies a random debuff to its target when attacking."
+      "ru": "**Пурпурная саламандра** — магическое существо, насыщенное нестабильной энергией магических аномалий. Её тело покрыто гладкими пурпурными чешуйками, которые переливаются мягким фиолетовым свечением в темноте. В отличие от своих огненных сородичей, пурпурная саламандра намного меньше размером, а так же менее агресивна в бою, но она всё еще представляет серьёзную угрозу для неподготовленных путешественников благодаря, своей токсичной природе и непредсказуемому воздействию на живые существа.\n\nНесмотря на свою опасность, пурпурная саламандра ценится алхимиками и магами как источник редких компонентов для создания зелий заклинаний и печатей.\n\n* Процент спавна: **30%**\n* Можно оседлать: **нет**\n* Приручить: **нет**\n* Биом спавна: **Магический лес, Болото, Нагорье**\n* Особенность спавна: **Появляется чаще возле водоёмов и влажных камней**\n\n> «Если среди камней или болотной дымки вспыхнуло пурпурное свечение — возможно, вас уже заметили.»\n\n> **Подсказка:**\n>  Рекомендуется иметь при себе противоядия и средства для снятия негативных эффектов.\n\n**Особенность:**\nСущество обладает высокой устойчивостью к ядам и при атаке накладывает на цель случайный анти-бафф.",
+      "en": "**Purple Salamander** is a magical creature infused with the unstable energy of magical anomalies. Its body is covered in smooth purple scales that shimmer with a soft violet glow in the darkness. Unlike its fiery relatives, the Purple Salamander is much smaller in size and less aggressive in combat. However, it still poses a serious threat to unprepared travelers due to its toxic nature and unpredictable effects on living creatures.\n\nDespite its danger, the Purple Salamander is highly valued by alchemists and mages as a source of rare components used in the creation of potions, spells, and magical seals.\n\n* Spawn Chance: **30%**\n* Can Be Mounted: **No**\n* Can Be Tamed: **No**\n* Spawn Biomes: **Magical Forest, Swamp, Highlands**\n* Special Spawn Condition: **Appears more frequently near bodies of water and damp rocks**\n\n> “If a purple glow suddenly flickers among the rocks or through the swamp mist, chances are it has already noticed you.”\n\n> **Tip:**\n> It is recommended to carry antidotes and items capable of removing negative status effects.\n\n**Special Trait:**\nThe creature has high resistance to poisons and applies a random debuff to its target when attacking."
     },
     "image": "/images/bestiary_new-1781358031477_1781358058721.png",
     "tags": [],
     "relatedIds": [],
     "category": "bestiary",
-    "updatedAt": "2026-06-13T16:24:14.611Z",
+    "updatedAt": "2026-06-13T16:50:27.718Z",
     "behavior": "aggressive",
     "locationIds": [
       "88f16f79-fcd0-4e87-99e4-911e8c7c8591",
@@ -258,6 +258,50 @@
       {
         "id": "4a10026e-a339-4171-b352-7bf8864d4d3c",
         "chance": 15
+      },
+      {
+        "id": "d1231a8f-4126-4802-843b-005949f55fd0",
+        "chance": 100
+      }
+    ]
+  },
+  {
+    "id": "8b0a21a5-6202-45d6-bcb0-ec688b55d40b",
+    "slug": "green-lizard",
+    "name": {
+      "ru": "Зеленый Ящер",
+      "en": "Green Lizard"
+    },
+    "description": {
+      "ru": "**Зелёный ящер** — пассивное лесное существо среднего размера, обитающее в высокой траве и влажных прибрежных зонах. Его тело покрыто плотной зелёной чешуёй, обеспечивающей отличную маскировку среди растительности. Несмотря на спокойный характер, при угрозе он становится агрессивным и способен нанести серьёзные раны острыми когтями и мощным укусом.\n\nЗелёный ящер предпочитает держаться рядом с водоёмами, где легче скрываться и находить пищу. Чаще всего встречается в лесах и болотах, оставаясь незаметным до момента опасности.\n\n* Процент спавна: **60%**\n* Можно оседлать: **нет**\n* Приручить: **нет**\n* Биом спавна: **Лес, Болото**\n* Особенность спавна: **Появляется в высокой траве и зарослях рядом с водоёмами**\n\n> «Тот, кто принял его за безобидную ящерицу, обычно узнаёт правду слишком поздно.»\n\n> **Подсказка:**\n> Зелёный ящер не нападает первым, но при атаке становится очень опасным. Лучше избегать ближнего боя — его когти и укус наносят высокий урон и могут застать врасплох в густой траве.\n\n**Особенность:**\nСущество обладает высокой скрытностью в траве и получает бонус к защите в природной среде.",
+      "en": "**Green Lizard** is a passive, medium-sized forest creature that inhabits tall grass and damp riverside areas. Its body is covered in dense green scales, providing excellent camouflage within vegetation. Despite its calm nature, it becomes aggressive when threatened and can inflict serious wounds with its sharp claws and powerful bite.\n\nThe Green Lizard prefers to stay near bodies of water, where it can more easily hide and find food. It is most commonly found in forests and swamps, remaining unnoticed until danger arises.\n\n* Spawn Chance: **60%**\n* Can Be Mounted: **No**\n* Can Be Tamed: **No**\n* Spawn Biomes: **Forest, Swamp**\n* Special Spawn Condition: **Appears in tall grass and dense vegetation near water sources**\n\n> “Those who mistake it for an harmless lizard usually learn the truth too late.”\n\n> **Tip:**\n> The Green Lizard does not attack first, but becomes extremely dangerous when provoked. Close combat is not recommended—its claws and bite deal high damage and can easily catch you off guard in dense grass.\n\n**Special Trait:**\nThe creature has high stealth in grassy environments and gains a defensive bonus in natural terrain."
+    },
+    "image": "/images/skills_new-1781369640099_1781369706165.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-13T17:25:11.494Z",
+    "behavior": "passive",
+    "locationIds": [
+      "eb7603ab-26d8-4617-8113-3d0d5f0b9ce7",
+      "c44edc33-47e4-4bc8-b4fd-63677694af9a"
+    ],
+    "drops": [
+      {
+        "id": "fe94b993-95bd-4103-8543-b28cfe16f876",
+        "chance": 25
+      },
+      {
+        "id": "edde8ee1-38c3-4bd3-8f6b-93d84495fdc6",
+        "chance": 100
+      },
+      {
+        "id": "3e3998e1-fa8b-4719-bc43-19298e917825",
+        "chance": 40
+      },
+      {
+        "id": "3b724bea-33c8-488e-af63-7abbe42a558b",
+        "chance": 80
       }
     ]
   }
