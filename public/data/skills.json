@@ -1,37 +1,21 @@
 [
   {
-    "id": "4f1db2a9-c72f-4e14-b639-d2246f59990f",
-    "slug": "boar-hide",
+    "id": "4a10026e-a339-4171-b352-7bf8864d4d3c",
+    "slug": "purple-salamander-gland",
     "name": {
-      "ru": "Шкура кабана",
-      "en": "Boar hide"
+      "ru": "Железа Пурпурной Саламандры",
+      "en": "Purple Salamander Gland"
     },
     "description": {
-      "ru": "Прочная и грубая шкура дикого кабана, ценящаяся ремесленниками за свою плотность и износостойкость. Хотя щетина кабана имеет невысокую ценность, его кожа широко используется для изготовления брони, одежды, сумок, ремней и других предметов.\n\n**Источник получения:**\n\n* Добывается с существа: **Кабан**\n\n> **Подсказка:**\n> Изделия из шкуры кабана обладают повышенной прочностью и долговечностью. Часто используется как основной материал для создания простой и средней кожаной брони.\n\n> «Там, где охотник видит добычу, мастер видит десятки будущих изделий.»",
-      "en": "A tough and coarse hide from a wild boar, valued by craftsmen for its density and durability. Although boar bristles are of little value, its leather is widely used for crafting armor, clothing, bags, belts, and other items.\n\n**Source:**\n\n* Obtained from creature: **Boar**\n\n> **Hint:**\n> Items crafted from boar hide have increased durability and longevity. It is commonly used as a primary material for creating basic and medium leather armor.\n\n> “Where a hunter sees prey, a craftsman sees dozens of future creations.”"
+      "ru": "Опасный материал, извлекаемый из организма пурпурной саламандры, насыщенный токсичным ядом. Даже после извлечения железа сохраняет высокую парализующую силу, из-за чего особенно ценится алхимиками, тёмными зачарователями и магами, специализирующимися на проклятиях и ядовитой магии.\n\nШироко используется в алхимии для создания сильнодействующих ядов и зелий с негативными эффектами, а также служит важным компонентом при изготовлении отравленного оружия, ядовитых магических посохов, проклятых артефактов и заклинательных печатей, связанных с токсичной и аномальной магией.\n\n**Источник получения:**\n\n* Добывается с существа: **Пурпурная саламандра**\n\n> **Подсказка:**\n> Не трогайте голыми руками!\n\n> «Тот, кто умеет контролировать яд этой саламандры, способен превратить слабость в оружие.»",
+      "en": "**Dangerous material extracted from the body of the Purple Salamander**, saturated with toxic venom. Even after extraction, the gland retains a high paralyzing potency, making it especially valued by alchemists, dark enchanters, and mages specializing in curses and poison-based magic.\n\nIt is widely used in alchemy for creating potent poisons and potions with negative effects, and also serves as a key component in the crafting of poisoned weapons, toxic magical staves, cursed artifacts, and spell seals associated with toxic and anomalous magic.\n\n**Source:**\n\n* Obtained from: **Purple Salamander**\n\n> **Tip:**\n> Do not handle with bare hands!\n\n> “Those who can control this salamander’s venom can turn weakness into a weapon.”"
     },
     "category": "skills",
     "tags": [],
-    "updatedAt": "2026-06-12T10:26:58.957Z",
-    "image": "/images/skills_new-1781259609936_1781259616583.png"
-  },
-  {
-    "id": "d89bee7a-42ff-4805-ba01-e43cedd3b5b2",
-    "slug": "fire-salamander-heart",
-    "name": {
-      "ru": "Сердце огненной саламандры",
-      "en": "Fire Salamander Heart"
-    },
-    "description": {
-      "ru": "Редкий магический орган, сохраняющий в себе огромную концентрацию огненной энергии даже после извлечения из тела существа. Сердце огненной саламандры высоко ценится алхимиками, магами и мастерами артефактов благодаря своей стабильной магической природе и мощному энергетическому потенциалу.\n\nИспользуется в алхимии, магических ритуалах, создании посохов, артефактов и других предметов, связанных со стихией огня.\n\n**Источник получения:**\n\n* Добывается с существа: **Огненная саламандра**\n\n> **Подсказка:**\n>  Если бой с саламандрой затянется слишком долго, сердце может потерять свою силу и исчезнуть после гибели существа.\n\n> «Пока сердце саламандры не остыло — в нём всё ещё живёт пламя.»",
-      "en": "A rare magical organ that retains an immense concentration of fire energy even after being removed from the creature's body. The Fire Salamander Heart is highly valued by alchemists, mages, and artifact crafters for its stable magical properties and powerful energy potential.\n\nIt is used in alchemy, magical rituals, the creation of staves, artifacts, and other items associated with the fire element.\n\n**Source:**\n\n* Obtained from creature: **Fire Salamander**\n\n> **Hint:**\n> The Fire Salamander Heart is a rare component used in advanced alchemy recipes and the crafting of magical staves. Many craftsmen are willing to pay a high price for this material.\n\n> “As long as the salamander's heart has not grown cold, the flame still lives within it.”\n"
-    },
-    "category": "skills",
-    "tags": [],
-    "updatedAt": "2026-06-12T15:40:02.140Z",
-    "image": "/images/skills_new-1781278693126_1781278697354.png",
+    "updatedAt": "2026-06-13T16:02:52.832Z",
+    "image": "/images/skills_new-1781366022239_1781366027583.png",
     "relatedIds": [
-      "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
+      "a8d06175-e419-4785-8575-a0a110010819"
     ]
   }
 ]

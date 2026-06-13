@@ -72,5 +72,22 @@
     "relatedIds": [
       "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
     ]
+  },
+  {
+    "id": "88f16f79-fcd0-4e87-99e4-911e8c7c8591",
+    "slug": "highlands",
+    "name": {
+      "ru": "Нагорье",
+      "en": "Highlands"
+    },
+    "description": {
+      "ru": "Нагорье — суровый и величественный биом, расположенный на стыке цветущих долин и неприступных скалистых гор. Этот регион характеризуется резкими перепадами высот, каменистыми ущельями и бескрайними плато, поросшими жестким вереском. Из-за постоянных ветров и разреженного воздуха выживание здесь требует от путешественников высокой выносливости, однако скрытые в скалах богатства привлекают сюда как искателей приключений, так и воинственные горные кланы.\n\n**Обитатели биома:**\n\n* Горный козел, Златорогий тур, Горный баран, Дикий як, Горный волк, Матерый лютоволк, Скальный леопард\n* Беркут, Грифон, Скальный элемент, Каменный паук, Горная саламандра\n* Горный гоблин, Гоблин-пращник, Варвар-налетчик, Разведчик горных кланов\n\n**Ресурсы биома:**\n\n* Железная руда, Медная руда, Каменный уголь, Серебряная жила, Горный хрусталь\n* Обнаженная скальная порода, Гранит, Вереск, Горная арника, Морозостойкий лишайник\n\n**Боссы биома:**\n\n* Древний каменный колосс\n\n>«Ветры Нагорья не знают пощады, они либо закалят твою сталь, либо сбросят твои кости в бездонное ущелье.»\n\n**Подсказка:**\n>Из-за сложного вертикального рельефа и глубоких расщелин падение с высоты представляет смертельную опасность. >Перемещение по биому значительно упрощается при наличии специальной экипировки или летающих маунтов.\n\n**Совет игроку:**\nИз-за редкой растительности и открытой местности дальнобойные оружия работают на все 100%.\n",
+      "en": "The Highlands is a harsh and majestic biome located at the crossroads of flourishing valleys and inaccessible rocky mountains. This region is characterized by sharp changes in elevation, rocky gorges, and endless plateaus overgrown with tough heather. Due to constant winds and thin air, survival here demands high endurance from travelers; however, the riches hidden within the crags attract both adventurers and bellicose mountain clans.\n\n**Biome Inhabitants:**\n\n* Mountain Goat, Golden-Horned Tur, Bighorn Sheep, Wild Yak, Mountain Wolf, Alpha Direwolf, Crag Leopard\n* Golden Eagle, Gryphon, Rock Elemental, Stone Spider, Mountain Salamander\n* Mountain Goblin, Goblin Slinger, Barbarian Raider, Mountain Clan Scout\n\n**Biome Resources:**\n\n* Iron Ore, Copper Ore, Coal, Silver Vein, Rock Crystal\n* Exposed Bedrock, Granite, Heather, Mountain Arnica, Frost-Resistant Lichen\n\n**Biome Bosses:**\n\n* Ancient Stone Colossus\n\n>\"The winds of the Highlands know no mercy; they will either temper your steel or cast your bones into a bottomless gorge.\"\n\n**Tip:**\n\n>Due to the complex vertical terrain and deep crevices, falling from heights poses a deadly hazard. Traversing the biome is >significantly eased with special equipment or flying mounts.\n\n**Player Advice:**\nDue to sparse vegetation and open terrain, ranged weapons perform at 100% efficiency."
+    },
+    "image": "/images/locations_new-1781355468674_1781355478719.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "locations",
+    "updatedAt": "2026-06-13T13:29:19.378Z"
   }
 ]
