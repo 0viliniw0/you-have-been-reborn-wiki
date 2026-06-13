@@ -87,6 +87,19 @@ export const useWikiEditor = () => {
         }
       });
 
+      // Handle category changes: if entity category changed, delete it from old category file
+      draftEntities.forEach((draft) => {
+        const original = dbEntities.find((e) => e.id === draft.id);
+        if (original && original.category !== draft.category) {
+          if (!deletionsByCategory[original.category]) {
+            deletionsByCategory[original.category] = [];
+          }
+          if (!deletionsByCategory[original.category].includes(draft.id)) {
+            deletionsByCategory[original.category].push(draft.id);
+          }
+        }
+      });
+
       const allCats = new Set([...Object.keys(groups), ...Object.keys(deletionsByCategory)]);
 
       for (const cat of allCats) {
