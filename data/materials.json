@@ -262,5 +262,81 @@
     "relatedIds": [
       "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
     ]
+  },
+  {
+    "id": "3ed79886-8a3d-4f34-a15b-68bf8d06edbc",
+    "slug": "purple-salamander-scales",
+    "name": {
+      "ru": "Чешуя Пурпурной Саламандры",
+      "en": "Purple Salamander Scales"
+    },
+    "description": {
+      "ru": "Плотная чешуя с тела пурпурной саламандры, пропитанная остаточной энергией магических аномалий. Её гладкая поверхность переливается фиолетовыми оттенками, а при определённом освещении на ней можно заметить слабые вспышки пурпурного света. Несмотря на сравнительно небольшой размер существа, его чешуя обладает высокой прочностью и необычными магическими свойствами.\n\nИспользуется для изготовления магической брони, зачарованных одеяний, амулетов и защитных артефактов. При применении в экипировке повышает устойчивость к негативным эффектам ядов, ослабляющим заклинаниям и некоторым видам магии.\n\n**Источник получения:**\n\n* Добывается с существа: **Пурпурная саламандра**\n\n> **Подсказка:**\n> Чешуя пурпурной саламандры особенно востребована среди зачарователей и алхимиков. Она хорошо удерживает магическую энергию и часто используется как основа для создания защитных печатей и аномальных артефактов.\n\n> «Говорят, каждая такая чешуйка хранит крошечный след той аномалии, в которой родилась саламандра.»",
+      "en": "**Dense scales from the body of the Purple Salamander**, imbued with residual energy from magical anomalies. Its smooth surface shimmers with violet hues, and under certain lighting, faint bursts of purple light can be seen across it. Despite the creature’s relatively small size, its scales possess high durability and unusual magical properties.\n\nThey are used in the crafting of magical armor, enchanted robes, amulets, and protective artifacts. When incorporated into equipment, they increase resistance to negative effects such as poisons, debuffs, and certain types of magical attacks.\n\n**Source:**\n\n* Obtained from: **Purple Salamander**\n\n> **Tip:**\n> Purple Salamander scales are highly valued among enchanters and alchemists. They efficiently retain magical energy and are often used as a foundation for creating protective seals and anomalous artifacts.\n\n> “It is said that each scale holds a tiny trace of the anomaly in which the salamander was born.”"
+    },
+    "image": "/images/skills_new-1781365729854_1781365735480.png",
+    "tags": [],
+    "relatedIds": [
+      "a8d06175-e419-4785-8575-a0a110010819"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-13T15:52:24.238Z"
+  },
+  {
+    "id": "ff352d9c-000e-40cc-9c0b-31f04a64e4a9",
+    "slug": "purple-salamander-hide",
+    "name": {
+      "ru": "Шкура Пурпурной Саламандры",
+      "en": "Purple Salamander Hide"
+    },
+    "description": {
+      "ru": "Плотная шкура пурпурной саламандры, хорошо подойдет для создания легкого и прочного снаряжения. Несмотря на своё происхождение от небольшого существа, материал отличается высокой прочностью при удивительно малом весе.\n\nБлагодаря своей природной устойчивости к токсинам и ядовитым воздействиям, шкура широко используется в ремесле для изготовления защитной экипировки, походной одежды и усиленных элементов брони. При правильной обработке значительно повышает сопротивление ядам и различным негативным эффектам.\n\n**Источник получения:**\n\n* Добывается с существа: **Пурпурная саламандра**\n\n> **Подсказка:**\n> Чтобы собрать достаточно материала для полного комплекта экипировки, придётся выследить немало пурпурных саламандр. Запаситесь противоядиями и терпением — лёгкой эта охота точно не будет.\n\n> «Там, где яд проникает в металл, эта шкура остаётся спокойной и непроницаемой.»",
+      "en": "**Dense hide of the Purple Salamander**, well-suited for crafting light and durable equipment. Despite originating from a relatively small creature, the material is distinguished by high durability combined with an exceptionally low weight.\n\nDue to its natural resistance to toxins and poisonous effects, this hide is widely used in crafting protective gear, travel clothing, and reinforced armor components. When properly treated, it significantly increases resistance to poisons and various negative effects.\n\n**Source:**\n\n* Obtained from: **Purple Salamander**\n\n> **Tip:**\n> To gather enough material for a full equipment set, you will need to track down many Purple Salamanders. Stock up on antidotes and patience—this hunt will not be easy.\n\n> “Where poison seeps through metal, this hide remains calm and impenetrable.”"
+    },
+    "image": "/images/skills_new-1781366579064_1781366589728.png",
+    "tags": [],
+    "relatedIds": [
+      "a8d06175-e419-4785-8575-a0a110010819"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-13T16:17:52.806Z"
+  },
+  {
+    "id": "4d758327-a39a-4308-989a-f7381b038bc1",
+    "slug": "purple-salamander-law",
+    "name": {
+      "ru": "Коготь Пурпурной Саламандры",
+      "en": "Purple Salamander Claw"
+    },
+    "description": {
+      "ru": "Острый коготь пурпурной саламандры, пропитанный концентрированной токсичной энергией магических аномалий. Его структура отличается необычайной плотностью и микроскопическими каналами, в которых сохраняется активный яд, мгновенно реагирующий при повреждении поверхности. Даже лёгкая царапина этим когтем способна вызвать кратковременный паралич у живого существа.\n\nБлагодаря своим свойствам коготь широко используется в создании оружия скрытого и охотничьего типа: наконечников стрел, копий, кинжалов и метательных клинков. Также он применяется в изготовлении особых видов брони с встроенными шипами, которые способны наносить обратный урон при ближнем контакте с противником.\n\n**Источник получения:**\n\n* Добывается с существа: **Пурпурная саламандра**\n\n> **Подсказка:**\n> Из-за нестабильной природы яда коготь требует осторожной обработки. Неправильная зачистка может привести к потере его парализующих свойств или преждевременному высвобождению токсина.\n\n> «Иногда одного прикосновения достаточно, чтобы бой закончился, так и не начавшись.»",
+      "en": "**Sharp claw of the Purple Salamander**, imbued with concentrated toxic energy derived from magical anomalies. Its structure is exceptionally dense and contains microscopic channels that preserve active venom, instantly reacting upon contact or surface damage. Even a slight scratch from this claw can cause temporary paralysis in a living creature.\n\nDue to its properties, the claw is widely used in crafting stealth and hunting weapons such as arrowheads, spears, daggers, and throwing blades. It is also incorporated into specialized armor types with integrated spikes, capable of dealing counter-damage upon close contact with an attacker.\n\n**Source:**\n\n* Obtained from: **Purple Salamander**\n\n> **Tip:**\n> Due to the unstable nature of its venom, the claw requires careful processing. Improper refinement may result in the loss of its paralyzing effect or accidental premature release of toxins.\n\n> “Sometimes a single touch is enough to end a battle before it even begins.”"
+    },
+    "image": "/images/skills_new-1781367003457_1781367011173.png",
+    "tags": [],
+    "relatedIds": [
+      "a8d06175-e419-4785-8575-a0a110010819"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-13T16:16:49.542Z"
+  },
+  {
+    "id": "4a10026e-a339-4171-b352-7bf8864d4d3c",
+    "slug": "purple-salamander-gland",
+    "name": {
+      "ru": "Железа Пурпурной Саламандры",
+      "en": "Purple Salamander Gland"
+    },
+    "description": {
+      "ru": "Опасный материал, извлекаемый из организма пурпурной саламандры, насыщенный токсичным ядом. Даже после извлечения железа сохраняет высокую парализующую силу, из-за чего особенно ценится алхимиками, тёмными зачарователями и магами, специализирующимися на проклятиях и ядовитой магии.\n\nШироко используется в алхимии для создания сильнодействующих ядов и зелий с негативными эффектами, а также служит важным компонентом при изготовлении отравленного оружия, ядовитых магических посохов, проклятых артефактов и заклинательных печатей, связанных с токсичной и аномальной магией.\n\n**Источник получения:**\n\n* Добывается с существа: **Пурпурная саламандра**\n\n> **Подсказка:**\n> Не трогайте голыми руками!\n\n> «Тот, кто умеет контролировать яд этой саламандры, способен превратить слабость в оружие.»",
+      "en": "**Dangerous material extracted from the body of the Purple Salamander**, saturated with toxic venom. Even after extraction, the gland retains a high paralyzing potency, making it especially valued by alchemists, dark enchanters, and mages specializing in curses and poison-based magic.\n\nIt is widely used in alchemy for creating potent poisons and potions with negative effects, and also serves as a key component in the crafting of poisoned weapons, toxic magical staves, cursed artifacts, and spell seals associated with toxic and anomalous magic.\n\n**Source:**\n\n* Obtained from: **Purple Salamander**\n\n> **Tip:**\n> Do not handle with bare hands!\n\n> “Those who can control this salamander’s venom can turn weakness into a weapon.”"
+    },
+    "image": "/images/skills_new-1781366022239_1781366027583.png",
+    "tags": [],
+    "relatedIds": [
+      "a8d06175-e419-4785-8575-a0a110010819"
+    ],
+    "category": "materials",
+    "updatedAt": "2026-06-13T16:18:32.592Z"
   }
 ]

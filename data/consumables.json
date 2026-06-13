@@ -186,5 +186,24 @@
     "relatedIds": [
       "d08d90c5-4111-4721-9cb1-0061b0b3f0cc"
     ]
+  },
+  {
+    "id": "a7638ee9-7a72-4768-8318-93b743c46aeb",
+    "slug": "sparkling-purple-soul-stone",
+    "name": {
+      "ru": "Искрящийся Пурпурный Камень Души",
+      "en": "Sparkling Purple Soul Stone"
+    },
+    "description": {
+      "ru": "Искрящийся Пурпурный Камень Души — магический кристалл, наполненный нестабильной энергией маны. Его поверхность переливается глубокими фиолетовыми оттенками, а внутри постоянно вспыхивают пурпурные искры, словно пытаясь вырваться наружу. В отличие от обычных камней души, этот камень содержит не только огромный запас маны, но и следы магических аномалий, способных усиливать или искажать заклинания.\n\nТакой камень высоко ценится среди магов, алхимиков и создателей артефактов благодаря своей исключительной энергетической ёмкости и способности служить проводником нестабильной магии.\n\n**Источник получения:**\n\n* Добывается с существа: **Пурпурная саламандра**\n\n> **Подсказка:**\n> Из **искрящегося пурпурного камня души** можно извлечь огромное количество аномальной маны. Однако её нестабильная природа способна вызвать непредсказуемые эффекты во время создания артефактов, зелий и магических печатей.\n\n> «Некоторые маги утверждают, что внутри камня можно увидеть отблески других миров. Другие считают, что это лишь игра энергии. Проверять это на практике решаются немногие.»",
+      "en": "**Sparkling Purple Soul Stone** is a magical crystal infused with unstable mana energy. Its surface shimmers with deep violet hues, while purple sparks continuously flare within, as if trying to break free. Unlike ordinary soul stones, this crystal contains not only a vast reserve of mana but also traces of magical anomalies capable of enhancing or distorting spells.\n\nSuch a stone is highly prized among mages, alchemists, and artifact crafters due to its exceptional energy capacity and its ability to act as a conduit for unstable magic.\n\n**Source:**\n\n* Obtained from: **Purple Salamander**\n\n> **Tip:**\n> A **Sparkling Purple Soul Stone** can be used to extract an enormous amount of anomalous mana. However, its unstable nature may cause unpredictable effects during the creation of artifacts, potions, and magical seals.\n\n> “Some mages claim that glimpses of other worlds can be seen within the stone. Others believe it is merely the play of energy. Few are willing to test either theory for themselves.”"
+    },
+    "image": "/images/consumables_new-1781364789743_1781365011687.png",
+    "tags": [],
+    "relatedIds": [
+      "a8d06175-e419-4785-8575-a0a110010819"
+    ],
+    "category": "consumables",
+    "updatedAt": "2026-06-13T15:50:33.169Z"
   }
 ]

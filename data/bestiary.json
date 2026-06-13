@@ -167,27 +167,28 @@
       "en": "Fire Salamander"
     },
     "description": {
-      "ru": "Огненная саламандра — магическое существо, пропитанное огненной энергией. Её тело покрыто прочными чешуйками. Хоть она и несёт в себе огненную силу, это существо, как и любая саламандра, любит влажные места обитания. Представляет серьёзную опасность даже для опытных путешественников.\n\nНесмотря на агрессивную природу, огненная саламандра может быть использована как источник редких магических материалов, связанных с огненной стихией.\n\n* Процент спавна: **20%**\n* Можно оседлать: **да**\n* Приручить: **да**\n* Биом спавна: **Болото, Магический лес**\n* Особенность спавна: **Появляется в местах скопления маны, чаще вблизи водоёмов**\n\n> «Не советуем даже приближаться к огненной саламандре, если не хотите стать её следующим обедом.»\n\n> **Подсказка:**\n> Огненная саламандра атакует огненной магией и наносит урон по области. Лучше держаться на дистанции и использовать заклинания охлаждения или защиты от огня.\n\n**Особенность:**\nСущество устойчиво к огненным атакам и магии.",
-      "en": "The Fire Salamander is a rare magical creature infused with flame energy. Its body is covered in hot scales, and every movement leaves behind traces of heat and sparks. It inhabits areas with high concentrations of fire mana and poses a serious threat even to experienced travelers.\n\nDespite its aggressive nature, the Fire Salamander can be used as a source of rare magical materials connected to the fire element.\n\n* Spawn rate: 8%\n* Can be ridden: no\n* Can be tamed: rarely (after weakening and magical binding)\n* Spawn biomes: mountainous regions, caves, volcanic zones\n* Group size: 1–2 individuals\n* Spawn feature: sometimes appears near fire mana sources and lava fissures\n\n> “Where fire treads, the salamander has already passed first.”\n\n> **Hint:**\n> The Fire Salamander attacks with fire magic and deals area damage. It is best kept at a distance and countered with frost spells or fire resistance.\n\n**Special trait:**\nThe creature is immune to fire and lava, and its body can be used to craft fire-related artifacts and enhance fire magic spells."
+      "ru": "Огненная саламандра — магическое существо, пропитанное огненной энергией. Её тело покрыто прочными чешуйками. Хоть она и несёт в себе огненную силу, это существо, как и любая саламандра, любит влажные места обитания. Представляет серьёзную опасность даже для опытных путешественников.\n\nНесмотря на агрессивную природу, огненная саламандра может быть использована как источник редких магических материалов, связанных с огненной стихией.\n\n* Процент спавна: **20%**\n* Можно оседлать: **да**\n* Приручить: **да**\n* Биом спавна: **Болото, Нагорье, Магический лес**\n* Особенность спавна: **Появляется в местах скопления маны, чаще вблизи водоёмов, процент спавна увеличивается в биоме: Нагорье**\n\n> «Не советуем даже приближаться к огненной саламандре, если не хотите стать её следующим обедом.»\n\n> **Подсказка:**\n> Огненная саламандра атакует огненной магией и наносит урон по области. Лучше держаться на дистанции и использовать заклинания охлаждения или защиты от огня.\n\n**Особенность:**\nСущество устойчиво к огненным атакам и магии.",
+      "en": "**Fire Salamander** is a magical creature infused with fiery energy. Its body is covered in tough, durable scales. Although it carries the power of fire within it, this creature, like all salamanders, prefers damp and humid habitats. It poses a serious threat even to experienced adventurers.\n\nDespite its aggressive nature, the Fire Salamander can be harvested for rare magical materials associated with the element of fire.\n\n* Spawn Chance: **20%**\n* Can Be Mounted: **Yes**\n* Can Be Tamed: **Yes**\n* Spawn Biomes: **Swamp, Highlands, Magical Forest**\n* Special Spawn Condition: **Appears in areas with high concentrations of mana, most commonly near bodies of water. Its spawn rate is increased in the Highlands biome.**\n\n> “We do not recommend getting anywhere near a Fire Salamander unless you wish to become its next meal.”\n\n> **Tip:**\n> The Fire Salamander attacks with fire magic and deals area-of-effect damage. It is best to keep your distance and use cooling spells or fire-resistance magic.\n\n**Special Trait:**\nThe creature is resistant to fire-based attacks and magic.\n"
     },
     "image": "/images/bestiary_fire-salamander_1781272839051.png",
     "tags": [],
     "relatedIds": [],
     "category": "bestiary",
-    "updatedAt": "2026-06-12T16:08:20.666Z",
+    "updatedAt": "2026-06-13T16:22:27.659Z",
     "behavior": "aggressive",
     "locationIds": [
       "a389641f-aa7c-43e8-a7e1-4fed76aabe89",
-      "eb7603ab-26d8-4617-8113-3d0d5f0b9ce7"
+      "eb7603ab-26d8-4617-8113-3d0d5f0b9ce7",
+      "88f16f79-fcd0-4e87-99e4-911e8c7c8591"
     ],
     "drops": [
       {
         "id": "26434401-2acf-4e03-9a79-502c2059f485",
-        "chance": 15
+        "chance": 55
       },
       {
         "id": "3bd9f47a-6802-4f72-8a3a-554833bfae35",
-        "chance": 30
+        "chance": 15
       },
       {
         "id": "518c7868-7039-46c8-8d17-8f1086f40578",
@@ -207,11 +208,56 @@
       },
       {
         "id": "718c08cb-3ed4-47ce-8953-2d7fa6fcf2cb",
-        "chance": 90
+        "chance": 30
       },
       {
         "id": "6b3d2697-760e-4937-9add-3170e18ffba7",
         "chance": 20
+      }
+    ]
+  },
+  {
+    "id": "a8d06175-e419-4785-8575-a0a110010819",
+    "slug": "purple-salamander",
+    "name": {
+      "ru": "Пурпурная саламандра",
+      "en": "Purple salamander"
+    },
+    "description": {
+      "ru": "**Пурпурная саламандра** — магическое существо, насыщенное нестабильной энергией магических аномалий. Её тело покрыто гладкими пурпурными чешуйками, которые переливаются мягким фиолетовым свечением в темноте. В отличие от своих огненных сородичей, пурпурная саламандра намного меньше размером, а так же менее агресивна в бою, но она всё еще представляет серьёзную угрозу для неподготовленных путешественников благодаря, своей токсичной природе и непредсказуемому воздействию на живые существа.\n\nНесмотря на свою опасность, пурпурная саламандра ценится алхимиками и магами как источник редких компонентов для создания зелий заклинаний и печатей.\n\n* Процент спавна: **30%**\n* Можно оседлать: **нет**\n* Приручить: **нет**\n* Биом спавна: **Магический лес, Болото, Скалистое нагорье**\n* Особенность спавна: **Появляется чаще возле водоёмов и влажных камней**\n\n> «Если среди камней или болотной дымки вспыхнуло пурпурное свечение — возможно, вас уже заметили.»\n\n> **Подсказка:**\n>  Рекомендуется иметь при себе противоядия и средства для снятия негативных эффектов.\n\n**Особенность:**\nСущество обладает высокой устойчивостью к ядам и при атаке накладывает на цель случайный анти-бафф.",
+      "en": "**Purple Salamander** is a magical creature infused with the unstable energy of magical anomalies. Its body is covered in smooth purple scales that shimmer with a soft violet glow in the darkness. Unlike its fiery relatives, the Purple Salamander is much smaller in size and less aggressive in combat. However, it still poses a serious threat to unprepared travelers due to its toxic nature and unpredictable effects on living creatures.\n\nDespite its danger, the Purple Salamander is highly valued by alchemists and mages as a source of rare components used in the creation of potions, spells, and magical seals.\n\n* Spawn Chance: **30%**\n* Can Be Mounted: **No**\n* Can Be Tamed: **No**\n* Spawn Biomes: **Magical Forest, Swamp, Rocky Highlands**\n* Special Spawn Condition: **Appears more frequently near bodies of water and damp rocks**\n\n> “If a purple glow suddenly flickers among the rocks or through the swamp mist, chances are it has already noticed you.”\n\n> **Tip:**\n> It is recommended to carry antidotes and items capable of removing negative status effects.\n\n**Special Trait:**\nThe creature has high resistance to poisons and applies a random debuff to its target when attacking."
+    },
+    "image": "/images/bestiary_new-1781358031477_1781358058721.png",
+    "tags": [],
+    "relatedIds": [],
+    "category": "bestiary",
+    "updatedAt": "2026-06-13T16:24:14.611Z",
+    "behavior": "aggressive",
+    "locationIds": [
+      "88f16f79-fcd0-4e87-99e4-911e8c7c8591",
+      "eb7603ab-26d8-4617-8113-3d0d5f0b9ce7",
+      "a389641f-aa7c-43e8-a7e1-4fed76aabe89"
+    ],
+    "drops": [
+      {
+        "id": "3ed79886-8a3d-4f34-a15b-68bf8d06edbc",
+        "chance": 80
+      },
+      {
+        "id": "a7638ee9-7a72-4768-8318-93b743c46aeb",
+        "chance": 25
+      },
+      {
+        "id": "4d758327-a39a-4308-989a-f7381b038bc1",
+        "chance": 30
+      },
+      {
+        "id": "ff352d9c-000e-40cc-9c0b-31f04a64e4a9",
+        "chance": 55
+      },
+      {
+        "id": "4a10026e-a339-4171-b352-7bf8864d4d3c",
+        "chance": 15
       }
     ]
   }
